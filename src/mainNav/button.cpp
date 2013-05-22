@@ -102,19 +102,23 @@ void button::update(ofPoint newPosition) {
 //------------------------------------------------------------------
 void button::draw() {
 
+    ofEnableAlphaBlending();
     if (touching) ofSetColor(255, 0, 0,250);
     else ofSetColor(thisColor);
     ofRect(thisRectangle);
+    ofDisableAlphaBlending();
     
 }
 
 //------------------------------------------------------------------
 void button::drawToggle() {
     
+    ofEnableAlphaBlending();
     if (touching) ofSetColor(255, 0, 0,250);
     if (toggle) ofSetColor(90, 90, 90);
     else ofSetColor(thisColor);
     ofRect(thisRectangle);
+    ofDisableAlphaBlending();
     
 }
 
@@ -122,6 +126,7 @@ void button::drawToggle() {
 //------------------------------------------------------------------
 void button::draw(ofTrueTypeFont& basicFont) {
     
+    ofEnableAlphaBlending();
     if (touching) ofSetColor(255, 0, 0,250);
     else ofSetColor(thisColor, 120);
     ofRect(thisRectangle);
@@ -132,7 +137,7 @@ void button::draw(ofTrueTypeFont& basicFont) {
     ofNoFill();
     ofRect(thisRectangle);
     ofFill();
-    
+    ofDisableAlphaBlending();
 }
 
 //------------------------------------------------------------------
@@ -140,7 +145,7 @@ void button::draw(ofTrueTypeFont& basicFont, ofImage& basicImage) {
     
     ofEnableAlphaBlending();
     if (touching) ofSetColor(255, 0, 0,250);
-    else ofSetColor(thisColor, 120);
+    else ofSetColor(thisColor);
     ofRect(thisRectangle);
     
     basicImage.draw(pos.x, pos.y);
@@ -159,6 +164,8 @@ void button::draw(ofTrueTypeFont& basicFont, ofImage& basicImage) {
 //------------------------------------------------------------------
 void button::drawNoColor() {
     
+    ofEnableAlphaBlending();
+    
     if (touching) ofSetColor(90, 90, 90);
     else ofSetColor(thisColor);
     ofRect(thisRectangle);
@@ -167,11 +174,15 @@ void button::drawNoColor() {
     ofSetColor(0, 0, 0);
     ofRect(thisRectangle);
     ofFill();
+
+    ofDisableAlphaBlending();
 }
 
 //------------------------------------------------------------------
 void button::drawNoColorWithImage() {
     
+    ofEnableAlphaBlending();
+
     if (touching) ofSetColor(90, 90, 90);
     else ofSetColor(thisColor);
     if (toggle) ofSetColor(90, 90, 90);
@@ -179,36 +190,39 @@ void button::drawNoColorWithImage() {
     
     ofRect(thisRectangle);
     
-    ofEnableAlphaBlending();
     theImage.draw(pos.x+offSet.x, pos.y+offSet.y);
-    ofDisableAlphaBlending();
     
     ofNoFill();
     ofSetColor(0, 0, 0);
     ofRect(thisRectangle);
     ofFill();
+
+    ofDisableAlphaBlending();
+
 }
 
 //------------------------------------------------------------------
 void button::drawNoColorWithImageToggle() {
     
+    ofEnableAlphaBlending();
     if (touching) ofSetColor(90, 90, 90);
     else ofSetColor(thisColor);
     if (toggle) ofSetColor(90, 90, 90);
     else ofSetColor(thisColor);
     ofRect(thisRectangle);
 
-    ofEnableAlphaBlending();
+
     if (toggle) theImage.draw(pos.x+offSet.x, pos.y+offSet.y);
     else theImageTwo.draw(pos.x+offSet.x, pos.y+offSet.y);
-    ofDisableAlphaBlending();
     
     ofNoFill();
     ofSetColor(0, 0, 0);
     ofRect(thisRectangle);
     ofFill();
+
+    ofDisableAlphaBlending();
     
-    printf(" toggle is: %d \n", toggle);
+//    printf(" toggle is: %d \n", toggle);
     
 }
 

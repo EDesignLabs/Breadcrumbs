@@ -20,12 +20,12 @@ uiCreate::~uiCreate() {
 
     //uiCreate elements
     delete pencil;
-    delete font;
+    delete erase;
     delete table;
     delete okSave;
 
     delete pencilSelected;
-    delete fontSelected;
+    delete eraseSelected;
     delete tableSelected;
     delete okSaveSelected;
     
@@ -46,23 +46,23 @@ uiCreate::uiCreate(string theText) {
     
     //load uiCreate images
     pencil = new ofImage;
-    font = new ofImage;
+    erase = new ofImage;
     table = new ofImage;
     okSave = new ofImage;
     
     pencil->loadImage("images/ui/glyphicons_030_pencil.png");
-    font->loadImage("images/ui/glyphicons_100_font.png");
+    erase->loadImage("images/ui/erase.png");
     table->loadImage("images/ui/glyphicons_119_table.png");
     okSave->loadImage("images/ui/glyphicons_206_ok_2.png");
     
     //set initial values for state
     pencilSelected = new bool;
-    fontSelected = new bool;
+    eraseSelected = new bool;
     tableSelected = new bool;
     okSaveSelected = new bool;
     
     *pencilSelected = true;
-    *fontSelected = false;
+    *eraseSelected = false;
     *tableSelected = false;
     *okSaveSelected = false;
 
@@ -82,7 +82,7 @@ uiCreate::uiCreate(string theText) {
     
     ofPoint posTwo;
     posTwo.set(0, 345);
-    fontButton.setup(posTwo, size, color);
+    eraseButton.setup(posTwo, size, color);
     
     ofPoint posThree;
     posThree.set(0, 390);
@@ -107,22 +107,22 @@ void uiCreate::update() {
     //NAV state is sorted out
     
     if (pencilButton.selected) {
-        *fontSelected = false;
+        *eraseSelected = false;
         *tableSelected = false;
         *okSaveSelected = false;
         *pencilSelected = true;
         pencilButton.selected=false;
-        fontButton.toggle = false;
+        eraseButton.toggle = false;
         tableButton.toggle = false;
         okSaveButton.toggle = false;
     }
     
-    if (fontButton.selected) {
+    if (eraseButton.selected) {
         *pencilSelected = false;
         *tableSelected = false;
         *okSaveSelected = false;
-        *fontSelected = true;
-        fontButton.selected=false;
+        *eraseSelected = true;
+        eraseButton.selected=false;
         pencilButton.toggle = false;
         tableButton.toggle = false;
         okSaveButton.toggle = false;
@@ -130,28 +130,28 @@ void uiCreate::update() {
     
     if (tableButton.selected) {
         *pencilSelected = false;
-        *fontSelected = false;
+        *eraseSelected = false;
         *okSaveSelected = false;
         *tableSelected = true;
         tableButton.selected=false;
         pencilButton.toggle = false;
-        fontButton.toggle = false;
+        eraseButton.toggle = false;
         okSaveButton.toggle = false;
     }
     
     if (okSaveButton.selected) {
         *pencilSelected = false;
-        *fontSelected = false;
+        *eraseSelected = false;
         *tableSelected = false;
         *okSaveSelected = true;
         okSaveButton.selected=false;
         pencilButton.toggle = false;
-        fontButton.toggle = false;
+        eraseButton.toggle = false;
         tableButton.toggle = false;
     }
 
     
-    if (*fontSelected) {
+    if (*eraseSelected) {
     }
 
         
@@ -175,6 +175,8 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 //What is created
 
     for (int i = 0; i < drawThese.size(); i++) {
+        ofSetColor(drawThese[i].thePoints[0].color);
+        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
         drawThese[i].draw();
     }
     
@@ -182,21 +184,29 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 //-----------------------------------------------
 //Tools
         
-    if (*fontSelected) {
-//        basicFont.drawString("text selected", 10, 500);
-    }
     
-    ofSetLineWidth(2.0);
+//    ofSetLineWidth(2.0);
     
     if (*pencilSelected) {
-//        basicFont.drawString("pencil selected", 10, 500);
-                
+        ofSetColor(0, 0, 0);
+        ofSetLineWidth(2.0);
         if (currentDrawing.size()>0) {
             for (int i = 1; i < currentDrawing.size(); i++) {
                 ofLine(currentDrawing[i-1].x, currentDrawing[i-1].y, currentDrawing[i].x, currentDrawing[i].y);
             }
         }
     }
+    
+    if (*eraseSelected) {
+        ofSetColor(255, 255, 255);
+        ofSetLineWidth(300.0);
+        if (currentDrawing.size()>0) {
+            for (int i = 1; i < currentDrawing.size(); i++) {
+                ofLine(currentDrawing[i-1].x, currentDrawing[i-1].y, currentDrawing[i].x, currentDrawing[i].y);
+            }
+        }
+    }
+
     
     if (*tableSelected) {
 //        basicFont.drawString("table selected", 10, 500);
@@ -206,20 +216,22 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 //        basicFont.drawString("ok save selected", 10, 500);
     }
 
-    
+    ofSetLineWidth(2.0);
+
 //-----------------------------------------------
 //Tool Button UI
 
+    
     pencilButton.drawToggle();
-    fontButton.drawToggle();
+    eraseButton.drawToggle();
     tableButton.drawToggle();
     okSaveButton.drawToggle();
     
-    ofSetHexColor(0x000000);
+    ofSetHexColor(0xFFFFFF);
     
     ofEnableAlphaBlending();
     pencil->draw(10, 310);
-    font->draw(10, 355);
+    erase->draw(10, 355);
     table->draw(10, 400);
     okSave->draw(10, 445);
     ofDisableAlphaBlending();
@@ -235,26 +247,46 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 void uiCreate::touchingDown(ofTouchEventArgs &touch) {
     
     pencilButton.touchingDown(touch);
-    fontButton.touchingDown(touch);
+    eraseButton.touchingDown(touch);
     tableButton.touchingDown(touch);
     okSaveButton.touchingDown(touch);
     
     if (*pencilSelected) {
-
         ofPoint currentPos;
         currentPos.x = touch.x;
         currentPos.y = touch.y;
-
+        
+        ofColor theColor;
+        theColor.set(0, 0, 0);
+        float lineWidth;
+        lineWidth = 2.0;
+        
         currentDrawing.push_back(currentPos);
-        thisDrawing.update(touch);
+        thisDrawing.update(touch, theColor, lineWidth);
     }
+
+
+    if (*eraseSelected) {
+        ofPoint currentPos;
+        currentPos.x = touch.x;
+        currentPos.y = touch.y;
+        
+        ofColor theColor;
+        theColor.set(255, 255, 255);
+        float lineWidth;
+        lineWidth = 300.0;
+        
+        currentDrawing.push_back(currentPos);
+        thisDrawing.update(touch, theColor, lineWidth);
+    }
+
 }
 
 //------------------------------------------------------------------
 void uiCreate::touchingMove(ofTouchEventArgs &touch) {
     
     pencilButton.touchingMove(touch);
-    fontButton.touchingMove(touch);
+    eraseButton.touchingMove(touch);
     tableButton.touchingMove(touch);
     okSaveButton.touchingMove(touch);
 
@@ -262,10 +294,31 @@ void uiCreate::touchingMove(ofTouchEventArgs &touch) {
         ofPoint currentPos;
         currentPos.x = touch.x;
         currentPos.y = touch.y;
-
+        
+        ofColor theColor;
+        theColor.set(0, 0, 0);
+        float lineWidth;
+        lineWidth = 2.0;
+        
         currentDrawing.push_back(currentPos);
-        thisDrawing.update(touch);
+        thisDrawing.update(touch, theColor, lineWidth);
     }
+    
+    
+    if (*eraseSelected) {
+        ofPoint currentPos;
+        currentPos.x = touch.x;
+        currentPos.y = touch.y;
+        
+        ofColor theColor;
+        theColor.set(255, 255, 255);
+        float lineWidth;
+        lineWidth = 300.0;
+        
+        currentDrawing.push_back(currentPos);
+        thisDrawing.update(touch, theColor, lineWidth);
+    }
+
     
 }
 
@@ -273,11 +326,18 @@ void uiCreate::touchingMove(ofTouchEventArgs &touch) {
 void uiCreate::touchingUp(ofTouchEventArgs &touch) {
     
     pencilButton.touchingUp(touch);
-    fontButton.touchingUp(touch);
+    eraseButton.touchingUp(touch);
     tableButton.touchingUp(touch);
     okSaveButton.touchingUp(touch);
 
     if (*pencilSelected) {
+        currentDrawing.clear();
+        drawThese.push_back(thisDrawing);
+        thisDrawing.reset();
+    }
+    
+    
+    if (*eraseSelected) {
         currentDrawing.clear();
         drawThese.push_back(thisDrawing);
         thisDrawing.reset();
@@ -290,7 +350,7 @@ void uiCreate::touchingUp(ofTouchEventArgs &touch) {
 void uiCreate::doubleTap(ofTouchEventArgs &touch) {
 
     pencilButton.doubleTap(touch);
-    fontButton.doubleTap(touch);
+    eraseButton.doubleTap(touch);
     tableButton.doubleTap(touch);
     okSaveButton.doubleTap(touch);
 

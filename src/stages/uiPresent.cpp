@@ -212,10 +212,13 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
     scrubBox->drawNoColor();
     currentPos->draw();
     
-    ofSetLineWidth(2.0);
+//    ofSetLineWidth(2.0);
+//    ofSetColor(0, 0, 0);
+
     //drawing from create
-    ofSetColor(0, 0, 0);
     for (int i = 0; i < drawThese.size(); i++) {
+        ofSetColor(drawThese[i].thePoints[0].color);
+        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
         drawThese[i].draw(scrubPos.x);
     }
     
@@ -278,7 +281,12 @@ void uiPresent::touchingDown(ofTouchEventArgs &touch) {
         currentPos.y = touch.y;
         
         currentDrawing.push_back(currentPos);
-        thisDrawing.update(touch);
+        
+        ofColor thisColor;
+        thisColor.set(255, 220, 0);
+        float lineWidth;
+        lineWidth = 6.0;
+        thisDrawing.update(touch, thisColor, lineWidth);
     }
 
     
@@ -302,7 +310,13 @@ void uiPresent::touchingMove(ofTouchEventArgs &touch) {
         currentPos.y = touch.y;
         
         currentDrawing.push_back(currentPos);
-        thisDrawing.update(touch);
+        
+        ofColor thisColor;
+        thisColor.set(255, 220, 0);
+        float lineWidth;
+        lineWidth = 6.0;
+        
+        thisDrawing.update(touch, thisColor, lineWidth);
     }
 
     

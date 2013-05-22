@@ -200,6 +200,7 @@ void uiReflect::update() {
         theFlagState.selectingButton();
         
         if (theFlagState.theReflectionFlag.selected) {
+            checkFlags();
             theFlagStates.push_back(theFlagState);
             theFlagState.reset();
         }
@@ -208,6 +209,56 @@ void uiReflect::update() {
     
 }
 
+
+//------------------------------------------------------------------
+void uiReflect::checkFlags() {
+
+                   // theFlagState.adjustMarker();
+    bool    floor [20];
+    
+    for (int i = 0; i<20; i++) {
+        floor[i] = false;
+    }
+    
+    bool    chosen = 0;
+    int     counter = 0;
+
+    printf("theFlagStates.size = %ld \n", theFlagStates.size());
+
+    //first get all the floors that are taken
+    if (theFlagStates.size() >= 1) {
+        for (int i = 0; i<theFlagStates.size(); i++) {
+            
+            float dist = theFlagStates[i].theReflectionFlag.startPos.x - theFlagState.theReflectionFlag.startPos.x;
+            
+            dist = abs(dist);
+            printf("dist = %f \n", dist);
+            
+            if (dist < 96) {
+                floor[theFlagStates[i].theReflectionFlag.floor] = true;
+            }
+        
+        }
+    
+        for (int i = 0; i < 20; i++) {
+            printf("floor: %d, ", i);
+            printf("true/false: %d \n ", floor[i]);
+        }
+        
+        while (chosen == false) {
+            printf("chosen run: %d \n", counter);
+            //check through each floor.
+            //if true, go to next.
+            //if false, assign the floor to current flag
+            if (floor[counter]==true) {
+                counter++;
+            } else {
+                theFlagState.adjustMarker(counter);
+                chosen = true;
+            }
+        }
+    }
+}
 
 
 ////////////////////////////////////////////////////////////////////
@@ -222,12 +273,15 @@ void uiReflect::draw(ofTrueTypeFont& basicFont) {
     scrubBox->drawNoColor();
     currentPos->draw();
     
-    ofSetLineWidth(2.0);
-    ofSetColor(0, 0, 0);
+//    ofSetLineWidth(2.0);
+//    ofSetColor(0, 0, 0);
     for (int i = 0; i < drawThese.size(); i++) {
+        ofSetColor(drawThese[i].thePoints[0].color);
+        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
         drawThese[i].draw(scrubPos.x);
     } 
     
+    ofSetColor(0, 0, 0);
     ofSetLineWidth(1.0);
     if (scrubFeedback.size() > 0) {
         for (int i = 1; i < scrubFeedback.size(); i++) {

@@ -23,7 +23,7 @@ void nav::setup() {
     size.set(homeButton.getWidth()+20, homeButton.getHeight()+20);
     offSet.set(25, 40);
     
-    color.set(170, 170, 170);
+    color.set(170, 170, 170, 120);
     homeButtonRect.setup(pos, size, color);
 
     raleigh.loadImage("images/raleigh.jpg");

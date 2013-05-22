@@ -19,7 +19,15 @@ typedef struct {
     ofPoint endPos;
     ofPoint size;
     
+    ofPoint textPos;
+    ofPoint tabPos;
+    ofPoint tabSize;
+    ofPoint tabPostPos;
+    ofPoint tabPostSize;
+    
     ofColor color;
+    
+    int     floor;
     
     //has a state been names yet, if not, show list of selections
     bool    ended;
@@ -36,7 +44,6 @@ class flagState {
 	
 	public:
     
-    
         flagState();
         ~flagState();
     
@@ -46,6 +53,8 @@ class flagState {
 
         void createButtons();
         void selectingButton();
+        void makeMarker();
+        void adjustMarker(int floor);
     
         void draw(ofTrueTypeFont& basicFont);
 
@@ -55,13 +64,14 @@ class flagState {
 
         void reset();
     
-        button  decoding;
+        button  identifying;
         button  planning;
-        button  doing;
-        button  checking;
+        button  walking;
+        button  changing;
+        button  verifying;
     
         reflectionFlag theReflectionFlag;
-    
+        
 };
 
 #endif

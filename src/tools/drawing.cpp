@@ -44,11 +44,15 @@ void drawing::setup() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void drawing::update(ofTouchEventArgs &touch) {
+void drawing::update(ofTouchEventArgs &touch, ofColor color, float lineWidth) {
     
     touchPoint newLocation;
     newLocation.pos.x = touch.x;
     newLocation.pos.y = touch.y;
+    
+    newLocation.color = color;
+    newLocation.lineWidth = lineWidth;
+    
     newLocation.timeStamp = ofGetElapsedTimeMillis();
     
     thePoints.push_back(newLocation);

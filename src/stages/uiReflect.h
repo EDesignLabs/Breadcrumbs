@@ -28,6 +28,8 @@ class uiReflect {
         void setPoints(vector <drawing> theDrawings);
 		void update();
 		void draw(ofTrueTypeFont& basicFont);
+    
+        void checkFlags();
 
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);

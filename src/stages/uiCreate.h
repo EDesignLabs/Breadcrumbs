@@ -52,17 +52,17 @@ class uiCreate {
     
         //uiCreate
         ofImage*    pencil;
-        ofImage*    font;
+        ofImage*    erase;
         ofImage*    table;
         ofImage*    okSave;
 
         button      pencilButton;
-        button      fontButton;
+        button      eraseButton;
         button      tableButton;
         button      okSaveButton;
     
         bool*       pencilSelected;
-        bool*       fontSelected;
+        bool*       eraseSelected;
         bool*       tableSelected;
         bool*       okSaveSelected;
     

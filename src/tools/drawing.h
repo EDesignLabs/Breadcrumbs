@@ -15,8 +15,10 @@
 typedef struct {
     
     ofPoint pos;
-    int timeStamp;
-	
+    int     timeStamp;
+    ofColor color;
+	float   lineWidth;
+    
 }	touchPoint;
 
 class drawing {
@@ -24,7 +26,7 @@ class drawing {
 	public:
     
         void setup();
-        void update(ofTouchEventArgs &touch);
+        void update(ofTouchEventArgs &touch, ofColor color, float lineWidth);
 		void draw();
 		void draw(int currentPos);
         void reset();

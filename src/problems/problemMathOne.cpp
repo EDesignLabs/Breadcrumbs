@@ -57,17 +57,17 @@ problemMathOne::problemMathOne() {
     ofPoint posTwo;
     posTwo.set(46, 0);
     size.set(311, 46);
-    color.set(200, 52, 70);
+    color.set(200, 52, 70, 255);
     createButton.setup(posTwo, size, offSet, "1. Create", color);
     
     ofPoint posThree;
     posThree.set(357, 0);
-    color.set(68, 116, 176);
+    color.set(68, 116, 176, 255);
     reflectButton.setup(posThree, size, offSet, "2. Reflect", color);
     
     ofPoint posFour;
     posThree.set(668, 0);
-    color.set(230, 224, 47);
+    color.set(230, 224, 47, 255);
     presentButton.setup(posThree, size, offSet, "3. Present", color);
     
     navStateCreate = true;
@@ -181,6 +181,8 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //-----------------------------------------------
 //poor man's feedback
     
+    ofSetLineWidth(1.0);
+
     ofRect(feedbackBrickPos.x, feedbackBrickPos.y, 311, 5);
 
     ofEnableAlphaBlending();
@@ -200,6 +202,7 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 
     ofSetColor(0, 0, 0);
     basicFont.drawString(theText, 10, 100);
+    
 //-----------------------------------------------
 //Feedback
     
