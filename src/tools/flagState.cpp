@@ -156,7 +156,7 @@ void flagState::createButtons() {
     planning.setup(pos, size, offSet, thisString, thisColor);
     
     pos.y += 40;
-    thisString = "Walking";
+    thisString = "Doing";
     thisColor.set(223, 250, 0, 120);
     walking.setup(pos, size, offSet, thisString, thisColor);
     
@@ -193,7 +193,7 @@ void flagState::selectingButton() {
 
     if (walking.selected) {
         theReflectionFlag.color.set(223, 250, 0, 120);
-        theReflectionFlag.stateMessage = "Walking";
+        theReflectionFlag.stateMessage = "Doing";
         theReflectionFlag.state = 3;
         theReflectionFlag.selected = true;
         makeMarker();
@@ -270,6 +270,9 @@ void flagState::draw(ofTrueTypeFont& basicFont) {
     
     else if (theReflectionFlag.ended && !theReflectionFlag.selected) {
 
+        ofSetColor(255,255,255);
+        ofRect(theReflectionFlag.startPos.x, ofGetHeight()-250, 100, 200);
+        
         identifying.draw(basicFont);
         planning.draw(basicFont);
         walking.draw(basicFont);

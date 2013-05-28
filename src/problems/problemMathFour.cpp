@@ -1,11 +1,11 @@
 /*
- *  problemMathOne.cpp
+ *  problemMathFour.cpp
  *
  *  Created by Ryan Raffa on 4/25/13.
  *
  */
 
-#include "problemMathOne.h"
+#include "problemMathFour.h"
 
 
 
@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-problemMathOne::~problemMathOne() {
+problemMathFour::~problemMathFour() {
 
     delete create;
     delete reflect;
@@ -30,10 +30,10 @@ problemMathOne::~problemMathOne() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-problemMathOne::problemMathOne() {
+problemMathFour::problemMathFour() {
         
  
-    theText = "Four women live in different cities. One of the cities is San Francisco.\nDetermine which city each woman lives in.\n1. The woman from Charleston (South Carolina), the woman from Gainesville (Florida), and Riana are not related.\n2. Wendy and the woman from Provo are cousins.\n3. Neither Phyllis nor Wendy is from the West Coast.\n4. Ann is from a coastal city.";
+    theText = "Which value of x is the solution of the following equation?";
     
 //-----------------------------------------------    
 //setup math problem one
@@ -75,14 +75,14 @@ problemMathOne::problemMathOne() {
     navStatePresent = false;
     navStateQuestion = false;
     
-    grid.loadImage("images/grid.png");
+    equation.loadImage("images/equation.png");
     
 //-----------------------------------------------
 //poor man's feedback
     
     feedbackBrickPos.set(50, 46);
     
-    printf(" problemMathOne Setup ended \n ");
+    printf(" problemMathFour Setup ended \n ");
 
 }
 
@@ -92,7 +92,7 @@ problemMathOne::problemMathOne() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------        
-void problemMathOne::update() {
+void problemMathFour::update() {
     
     
 //-----------------------------------------------
@@ -176,7 +176,7 @@ void problemMathOne::update() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void problemMathOne::draw(ofTrueTypeFont& basicFont) {
+void problemMathFour::draw(ofTrueTypeFont& basicFont) {
 
 //-----------------------------------------------
 //poor man's feedback
@@ -184,28 +184,24 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
     ofSetLineWidth(1.0);
 
     ofRect(feedbackBrickPos.x, feedbackBrickPos.y, 311, 5);
-
+    
 //-----------------------------------------------
 //actual state
     
     if (navStateCreate) create->draw(basicFont);
+    if (navStateReflect) reflect->draw(basicFont);
+    if (navStatePresent) present->draw(basicFont);
     
 //-----------------------------------------------
 //The Question
 
     ofSetColor(0, 0, 0);
     basicFont.drawString(theText, 10, 100);
-
+    
     ofEnableAlphaBlending();
     ofSetColor(255, 255, 255);
-    grid.draw(175, ofGetHeight()/3+50);
+    equation.draw(15,125);
     ofDisableAlphaBlending();
-
-//-----------------------------------------------
-//more actual state
-    
-    if (navStateReflect) reflect->draw(basicFont);
-    if (navStatePresent) present->draw(basicFont);
 
     
 //-----------------------------------------------
@@ -236,7 +232,7 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void problemMathOne::touchingDown(ofTouchEventArgs &touch) {
+void problemMathFour::touchingDown(ofTouchEventArgs &touch) {
 
     createButton.touchingDown(touch);
     reflectButton.touchingDown(touch);
@@ -250,7 +246,7 @@ void problemMathOne::touchingDown(ofTouchEventArgs &touch) {
 }
 
 //------------------------------------------------------------------
-void problemMathOne::touchingMove(ofTouchEventArgs &touch) {
+void problemMathFour::touchingMove(ofTouchEventArgs &touch) {
     
     createButton.touchingMove(touch);
     reflectButton.touchingMove(touch);
@@ -264,7 +260,7 @@ void problemMathOne::touchingMove(ofTouchEventArgs &touch) {
 }
 
 //------------------------------------------------------------------
-void problemMathOne::touchingUp(ofTouchEventArgs &touch) {
+void problemMathFour::touchingUp(ofTouchEventArgs &touch) {
     
     createButton.touchingUp(touch);
     reflectButton.touchingUp(touch);
@@ -278,7 +274,7 @@ void problemMathOne::touchingUp(ofTouchEventArgs &touch) {
 }
 
 //------------------------------------------------------------------
-void problemMathOne::doubleTap(ofTouchEventArgs &touch) {
+void problemMathFour::doubleTap(ofTouchEventArgs &touch) {
 
     createButton.doubleTap(touch);
     reflectButton.doubleTap(touch);

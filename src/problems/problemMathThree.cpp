@@ -1,11 +1,11 @@
 /*
- *  problemMathOne.cpp
+ *  problemMathThree.cpp
  *
  *  Created by Ryan Raffa on 4/25/13.
  *
  */
 
-#include "problemMathOne.h"
+#include "problemMathThree.h"
 
 
 
@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-problemMathOne::~problemMathOne() {
+problemMathThree::~problemMathThree() {
 
     delete create;
     delete reflect;
@@ -30,10 +30,10 @@ problemMathOne::~problemMathOne() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-problemMathOne::problemMathOne() {
+problemMathThree::problemMathThree() {
         
  
-    theText = "Four women live in different cities. One of the cities is San Francisco.\nDetermine which city each woman lives in.\n1. The woman from Charleston (South Carolina), the woman from Gainesville (Florida), and Riana are not related.\n2. Wendy and the woman from Provo are cousins.\n3. Neither Phyllis nor Wendy is from the West Coast.\n4. Ann is from a coastal city.";
+    theText = "A car dealer has 22 vehicles on his lot. If 8 of the vehicles are vans\nand 6 of the vehicles are red, and 10 vehicles are neither vans nor red,\nhow many red vans does he have on his lot?";
     
 //-----------------------------------------------    
 //setup math problem one
@@ -75,14 +75,14 @@ problemMathOne::problemMathOne() {
     navStatePresent = false;
     navStateQuestion = false;
     
-    grid.loadImage("images/grid.png");
+//    grid.loadImage("images/grid2.jpg");
     
 //-----------------------------------------------
 //poor man's feedback
     
     feedbackBrickPos.set(50, 46);
     
-    printf(" problemMathOne Setup ended \n ");
+    printf(" problemMathThree Setup ended \n ");
 
 }
 
@@ -92,7 +92,7 @@ problemMathOne::problemMathOne() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------        
-void problemMathOne::update() {
+void problemMathThree::update() {
     
     
 //-----------------------------------------------
@@ -176,7 +176,7 @@ void problemMathOne::update() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void problemMathOne::draw(ofTrueTypeFont& basicFont) {
+void problemMathThree::draw(ofTrueTypeFont& basicFont) {
 
 //-----------------------------------------------
 //poor man's feedback
@@ -185,28 +185,23 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 
     ofRect(feedbackBrickPos.x, feedbackBrickPos.y, 311, 5);
 
+    ofEnableAlphaBlending();
+    ofSetColor(255, 255, 255);
+//    grid.draw(175, ofGetHeight()/3+50);
+    ofDisableAlphaBlending();
+    
 //-----------------------------------------------
 //actual state
     
     if (navStateCreate) create->draw(basicFont);
+    if (navStateReflect) reflect->draw(basicFont);
+    if (navStatePresent) present->draw(basicFont);
     
 //-----------------------------------------------
 //The Question
 
     ofSetColor(0, 0, 0);
     basicFont.drawString(theText, 10, 100);
-
-    ofEnableAlphaBlending();
-    ofSetColor(255, 255, 255);
-    grid.draw(175, ofGetHeight()/3+50);
-    ofDisableAlphaBlending();
-
-//-----------------------------------------------
-//more actual state
-    
-    if (navStateReflect) reflect->draw(basicFont);
-    if (navStatePresent) present->draw(basicFont);
-
     
 //-----------------------------------------------
 //Feedback
@@ -236,7 +231,7 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void problemMathOne::touchingDown(ofTouchEventArgs &touch) {
+void problemMathThree::touchingDown(ofTouchEventArgs &touch) {
 
     createButton.touchingDown(touch);
     reflectButton.touchingDown(touch);
@@ -250,7 +245,7 @@ void problemMathOne::touchingDown(ofTouchEventArgs &touch) {
 }
 
 //------------------------------------------------------------------
-void problemMathOne::touchingMove(ofTouchEventArgs &touch) {
+void problemMathThree::touchingMove(ofTouchEventArgs &touch) {
     
     createButton.touchingMove(touch);
     reflectButton.touchingMove(touch);
@@ -264,7 +259,7 @@ void problemMathOne::touchingMove(ofTouchEventArgs &touch) {
 }
 
 //------------------------------------------------------------------
-void problemMathOne::touchingUp(ofTouchEventArgs &touch) {
+void problemMathThree::touchingUp(ofTouchEventArgs &touch) {
     
     createButton.touchingUp(touch);
     reflectButton.touchingUp(touch);
@@ -278,7 +273,7 @@ void problemMathOne::touchingUp(ofTouchEventArgs &touch) {
 }
 
 //------------------------------------------------------------------
-void problemMathOne::doubleTap(ofTouchEventArgs &touch) {
+void problemMathThree::doubleTap(ofTouchEventArgs &touch) {
 
     createButton.doubleTap(touch);
     reflectButton.doubleTap(touch);

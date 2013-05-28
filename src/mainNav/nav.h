@@ -11,7 +11,10 @@
 #include "ofMain.h"
 
 //for different navigating
-#include "exercisesMath.h"
+#include "problemMathOne.h"
+#include "problemMathTwo.h"
+#include "problemMathThree.h"
+#include "problemMathFour.h"
 #include "button.h"
 
 class nav {
@@ -30,6 +33,7 @@ class nav {
         button             mathButton;
         button             scienceButton;
         button             historyButton;
+        button             mathAgainButton;
         button             homeButtonRect;
         ofImage            homeButton;
     
@@ -37,10 +41,17 @@ class nav {
         ofImage sanFran;
         ofImage gainesville;
     
-        exercisesMath*         mathExercises;
-
+        problemMathOne*         mathExercisesOne;
+        problemMathTwo*         mathExercisesTwo;
+        problemMathThree*       mathExercisesThree;
+        problemMathFour*        mathExercisesFour;
+    
         bool    navStateToc;
-        bool    navStateExercises;
+    
+        bool    navStateExerciseOne;
+        bool    navStateExerciseTwo;
+        bool    navStateExerciseThree;
+        bool    navStateExerciseFour;
     
         bool    endSplash;
     

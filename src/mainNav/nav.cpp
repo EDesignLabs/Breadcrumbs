@@ -41,13 +41,22 @@ void nav::setup() {
     scienceButton.setup(posThree, size, offSet, "Example #2", color);
 
     ofPoint posFour;
-    posThree.set(50, 250);
+    posFour.set(50, 250);
     size.set(625, 75);
-    historyButton.setup(posThree, size, offSet, "Example #3", color);
+    historyButton.setup(posFour, size, offSet, "Example #3", color);
+
+    ofPoint posFive;
+    posFive.set(50, 350);
+    size.set(625, 75);
+    mathAgainButton.setup(posFive, size, offSet, "Example #4", color);
+
     
     navStateToc = true;
-    navStateExercises = false;
-
+    navStateExerciseOne = false;
+    navStateExerciseTwo = false;
+    navStateExerciseThree = false;
+    navStateExerciseFour = false;
+    
     printf(" NAV setup ended \n");
     
 }
@@ -61,41 +70,84 @@ void nav::update() {
 //    printf(" NAV update started \n");
     
     if (mathButton.selected) {
-        mathExercises = new exercisesMath();
+        mathExercisesOne = new problemMathOne();
         navStateToc = false;
-        navStateExercises = true;
+        navStateExerciseOne = true;
+        navStateExerciseTwo = false;
+        navStateExerciseThree = false;
+        navStateExerciseFour = false;
         mathButton.selected=false;
     }
 
     if (scienceButton.selected) {
-        mathExercises = new exercisesMath();
+        mathExercisesTwo = new problemMathTwo();
         navStateToc = false;
-        navStateExercises = true;
+        navStateExerciseOne = false;
+        navStateExerciseTwo = true;
+        navStateExerciseThree = false;
+        navStateExerciseFour = false;
         scienceButton.selected=false;
     }
 
     if (historyButton.selected) {
-        mathExercises = new exercisesMath();
+        mathExercisesThree = new problemMathThree();
         navStateToc = false;
-        navStateExercises = true;
+        navStateExerciseOne = false;
+        navStateExerciseTwo = false;
+        navStateExerciseThree = true;
+        navStateExerciseFour = false;
         historyButton.selected=false;
+    }
+
+    if (mathAgainButton.selected) {
+        mathExercisesFour = new problemMathFour();
+        navStateToc = false;
+        navStateExerciseOne = false;
+        navStateExerciseTwo = false;
+        navStateExerciseThree = false;
+        navStateExerciseFour = true;
+        mathAgainButton.selected=false;
     }
 
     
     if (homeButtonRect.selected) {
         
-        if (navStateExercises) {
-            navStateExercises = false;
+        if (navStateExerciseOne) {
+            navStateExerciseOne = false;
             navStateToc = true;
-            delete mathExercises;
+            delete mathExercisesOne;
             homeButtonRect.selected=false;
         }
+
+        if (navStateExerciseTwo) {
+            navStateExerciseTwo = false;
+            navStateToc = true;
+            delete mathExercisesTwo;
+            homeButtonRect.selected=false;
+        }
+
+        if (navStateExerciseThree) {
+            navStateExerciseThree = false;
+            navStateToc = true;
+            delete mathExercisesThree;
+            homeButtonRect.selected=false;
+        }
+
+        if (navStateExerciseFour) {
+            navStateExerciseFour = false;
+            navStateToc = true;
+            delete mathExercisesFour;
+            homeButtonRect.selected=false;
+        }
+
+    
     }
 
     //based on what state is active, update information is passed
-    if (navStateExercises) {
-        mathExercises->update();
-    }
+    if (navStateExerciseOne) mathExercisesOne->update();
+    if (navStateExerciseTwo) mathExercisesTwo->update();
+    if (navStateExerciseThree) mathExercisesThree->update();
+    if (navStateExerciseFour) mathExercisesFour->update();
     
 //    printf(" NAV udpate ended \n");
     
@@ -109,14 +161,42 @@ void nav::draw(ofTrueTypeFont& basicFont) {
         mathButton.draw(basicFont, raleigh);
         scienceButton.draw(basicFont, sanFran);
         historyButton.draw(basicFont, gainesville);
+        mathAgainButton.draw(basicFont, raleigh);
     }
 
-    if (navStateExercises) {
-        mathExercises->draw(basicFont);
+    if (navStateExerciseOne) {
+        mathExercisesOne->draw(basicFont);
         homeButtonRect.draw(basicFont);
         
         ofEnableAlphaBlending();
             homeButton.draw(10, 10);
+        ofDisableAlphaBlending();
+    }
+
+    if (navStateExerciseTwo) {
+        mathExercisesTwo->draw(basicFont);
+        homeButtonRect.draw(basicFont);
+        
+        ofEnableAlphaBlending();
+        homeButton.draw(10, 10);
+        ofDisableAlphaBlending();
+    }
+
+    if (navStateExerciseThree) {
+        mathExercisesThree->draw(basicFont);
+        homeButtonRect.draw(basicFont);
+        
+        ofEnableAlphaBlending();
+        homeButton.draw(10, 10);
+        ofDisableAlphaBlending();
+    }
+
+    if (navStateExerciseFour) {
+        mathExercisesFour->draw(basicFont);
+        homeButtonRect.draw(basicFont);
+        
+        ofEnableAlphaBlending();
+        homeButton.draw(10, 10);
         ofDisableAlphaBlending();
     }
 
@@ -129,13 +209,29 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
         mathButton.touchingDown(touch);
         scienceButton.touchingDown(touch);
         historyButton.touchingDown(touch);
+        mathAgainButton.touchingDown(touch);
     }
     
-    if (navStateExercises) {
-        mathExercises->touchingDown(touch);
+    if (navStateExerciseOne) {
+        mathExercisesOne->touchingDown(touch);
         homeButtonRect.touchingDown(touch);
     }
-    
+
+    if (navStateExerciseTwo) {
+        mathExercisesTwo->touchingDown(touch);
+        homeButtonRect.touchingDown(touch);
+    }
+
+    if (navStateExerciseThree) {
+        mathExercisesThree->touchingDown(touch);
+        homeButtonRect.touchingDown(touch);
+    }
+
+    if (navStateExerciseFour) {
+        mathExercisesFour->touchingDown(touch);
+        homeButtonRect.touchingDown(touch);
+    }
+
 }
 
 //------------------------------------------------------------------
@@ -144,10 +240,26 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
         mathButton.touchingMove(touch);
         scienceButton.touchingMove(touch);
         historyButton.touchingMove(touch);
+        mathAgainButton.touchingMove(touch);
     }
     
-    if (navStateExercises) {
-        mathExercises->touchingMove(touch);
+    if (navStateExerciseOne) {
+        mathExercisesOne->touchingMove(touch);
+        homeButtonRect.touchingMove(touch);
+    }
+
+    if (navStateExerciseTwo) {
+        mathExercisesTwo->touchingMove(touch);
+        homeButtonRect.touchingMove(touch);
+    }
+
+    if (navStateExerciseThree) {
+        mathExercisesThree->touchingMove(touch);
+        homeButtonRect.touchingMove(touch);
+    }
+
+    if (navStateExerciseFour) {
+        mathExercisesFour->touchingMove(touch);
         homeButtonRect.touchingMove(touch);
     }
 
@@ -160,13 +272,29 @@ void nav::touchingUp(ofTouchEventArgs &touch) {
         mathButton.touchingUp(touch);
         scienceButton.touchingUp(touch);
         historyButton.touchingUp(touch);
+        mathAgainButton.touchingUp(touch);
     }
     
-    if (navStateExercises) {
-        mathExercises->touchingUp(touch);
+    if (navStateExerciseOne) {
+        mathExercisesOne->touchingUp(touch);
         homeButtonRect.touchingUp(touch);
     }
-    
+
+    if (navStateExerciseTwo) {
+        mathExercisesTwo->touchingUp(touch);
+        homeButtonRect.touchingUp(touch);
+    }
+
+    if (navStateExerciseThree) {
+        mathExercisesThree->touchingUp(touch);
+        homeButtonRect.touchingUp(touch);
+    }
+
+    if (navStateExerciseFour) {
+        mathExercisesFour->touchingUp(touch);
+        homeButtonRect.touchingUp(touch);
+    }
+
 }
 
 //------------------------------------------------------------------

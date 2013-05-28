@@ -214,9 +214,9 @@ void uiReflect::update() {
 void uiReflect::checkFlags() {
 
                    // theFlagState.adjustMarker();
-    bool    floor [20];
+    bool    floor [100];
     
-    for (int i = 0; i<20; i++) {
+    for (int i = 0; i<100; i++) {
         floor[i] = false;
     }
     
@@ -240,10 +240,10 @@ void uiReflect::checkFlags() {
         
         }
     
-        for (int i = 0; i < 20; i++) {
-            printf("floor: %d, ", i);
-            printf("true/false: %d \n ", floor[i]);
-        }
+//        for (int i = 0; i < 20; i++) {
+//            printf("floor: %d, ", i);
+//            printf("true/false: %d \n ", floor[i]);
+//        }
         
         while (chosen == false) {
             printf("chosen run: %d \n", counter);

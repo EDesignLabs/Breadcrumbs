@@ -41,6 +41,9 @@
 		EC311400171F389B001D2F35 /* EDesignLabLogo144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3113FF171F389B001D2F35 /* EDesignLabLogo144x144.png */; };
 		EC31140C171F3940001D2F35 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */; };
 		EC31140E171F3944001D2F35 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */; };
+		EC8D772B174E7389006F428F /* problemMathFour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7725174E7389006F428F /* problemMathFour.cpp */; };
+		EC8D772C174E7389006F428F /* problemMathThree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7727174E7389006F428F /* problemMathThree.cpp */; };
+		EC8D772D174E7389006F428F /* problemMathTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7729174E7389006F428F /* problemMathTwo.cpp */; };
 		EC978E7617345146002A7612 /* flagState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC978E7417345146002A7612 /* flagState.cpp */; };
 		EC9D031E1713312200591838 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D031C1713312200591838 /* drawing.cpp */; };
 		ECCFA4A41715F2EB00C04311 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECCFA4A21715F2EB00C04311 /* text.cpp */; };
@@ -116,6 +119,12 @@
 		EC3113FF171F389B001D2F35 /* EDesignLabLogo144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDesignLabLogo144x144.png; sourceTree = "<group>"; };
 		EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		EC8D7725174E7389006F428F /* problemMathFour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathFour.cpp; sourceTree = "<group>"; };
+		EC8D7726174E7389006F428F /* problemMathFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathFour.h; sourceTree = "<group>"; };
+		EC8D7727174E7389006F428F /* problemMathThree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathThree.cpp; sourceTree = "<group>"; };
+		EC8D7728174E7389006F428F /* problemMathThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathThree.h; sourceTree = "<group>"; };
+		EC8D7729174E7389006F428F /* problemMathTwo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathTwo.cpp; sourceTree = "<group>"; };
+		EC8D772A174E7389006F428F /* problemMathTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathTwo.h; sourceTree = "<group>"; };
 		EC978E7417345146002A7612 /* flagState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flagState.cpp; path = src/tools/flagState.cpp; sourceTree = SOURCE_ROOT; };
 		EC978E7517345146002A7612 /* flagState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flagState.h; path = src/tools/flagState.h; sourceTree = SOURCE_ROOT; };
 		EC9D031C1713312200591838 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = drawing.cpp; path = src/tools/drawing.cpp; sourceTree = SOURCE_ROOT; };
@@ -289,6 +298,12 @@
 			children = (
 				EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */,
 				EC2DEAB41729E9B0004F16DA /* problemMathOne.h */,
+				EC8D7729174E7389006F428F /* problemMathTwo.cpp */,
+				EC8D772A174E7389006F428F /* problemMathTwo.h */,
+				EC8D7727174E7389006F428F /* problemMathThree.cpp */,
+				EC8D7728174E7389006F428F /* problemMathThree.h */,
+				EC8D7725174E7389006F428F /* problemMathFour.cpp */,
+				EC8D7726174E7389006F428F /* problemMathFour.h */,
 			);
 			path = problems;
 			sourceTree = "<group>";
@@ -490,6 +505,9 @@
 				EC2DEAB51729E9B0004F16DA /* problemMathOne.cpp in Sources */,
 				EC2DEAB81729E9EC004F16DA /* exercisesMath.cpp in Sources */,
 				EC978E7617345146002A7612 /* flagState.cpp in Sources */,
+				EC8D772B174E7389006F428F /* problemMathFour.cpp in Sources */,
+				EC8D772C174E7389006F428F /* problemMathThree.cpp in Sources */,
+				EC8D772D174E7389006F428F /* problemMathTwo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
