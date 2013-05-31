@@ -27,6 +27,8 @@ typedef struct {
     
     ofColor color;
     
+    ofRectangle presentCheck;
+    
     int     floor;
     
     //has a state been names yet, if not, show list of selections

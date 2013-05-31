@@ -20,7 +20,7 @@ uiPresent::~uiPresent() {
     delete scrubLocation;
     delete currentPos;
     
-    
+    delete markerButtonSelected;
     delete playPauseButton;
     delete markerButton;
     
@@ -38,6 +38,11 @@ uiPresent::uiPresent() {
     
     scrubBox = new button;
     currentPos = new button;
+    
+    //set initial values for state
+    markerButtonSelected = new bool;
+    *markerButtonSelected = false;
+
     
     ofPoint pos;
     ofPoint size;
@@ -195,7 +200,13 @@ void uiPresent::update() {
         scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
         currentPos->update(*scrubLocation);
     }
-        
+ 
+    if (markerButton->selected) {
+        *markerButtonSelected = !*markerButtonSelected;
+        markerButton->selected=false;
+    }
+
+    
 }
 
 
@@ -233,11 +244,21 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
         theFlagStates[i].draw(basicFont);
     }
 
+    
+    //-----------------------------------------------
+    //What is from marker
+
+    for (int i = 0; i < markerThese.size(); i++) {
+        ofSetColor(markerThese[i].thePoints[0].color);
+        ofSetLineWidth(markerThese[i].thePoints[0].lineWidth);
+        markerThese[i].draw();
+    }
+
     //-----------------------------------------------
     //Marker feedback
     ofSetColor(255, 220, 0);
     
-    if (markerButton->toggle) {
+    if (*markerButtonSelected) {
 
         ofSetLineWidth(6.0);
         if (currentDrawing.size()>0) {
@@ -248,12 +269,6 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
 
     }
     
-    //What is from marker
-    
-    for (int i = 0; i < markerThese.size(); i++) {
-        markerThese[i].draw();
-    }
-
     ofSetLineWidth(1.0);
     //    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
 }
@@ -274,7 +289,7 @@ void uiPresent::touchingDown(ofTouchEventArgs &touch) {
         scrubLocation->set(touch.x, touch.y);
     }
     
-    if (markerButton->toggle) {
+    if (*markerButtonSelected) {
         
         ofPoint currentPos;
         currentPos.x = touch.x;
@@ -282,11 +297,22 @@ void uiPresent::touchingDown(ofTouchEventArgs &touch) {
         
         currentDrawing.push_back(currentPos);
         
-        ofColor thisColor;
-        thisColor.set(255, 220, 0);
+        //checks to see what flag we're in
+        for (int i = 0; i < theFlagStates.size(); i++) {
+        
+            if (theFlagStates[i].theReflectionFlag.presentCheck.inside(scrubLocation->x, scrubLocation->y)){
+        
+                markerColor.set(theFlagStates[i].theReflectionFlag.color);
+                printf(" found a color that matches! \n ");
+                break;
+            } else {
+                markerColor.set(0,255,0);
+            }
+        }
+        
         float lineWidth;
         lineWidth = 6.0;
-        thisDrawing.update(touch, thisColor, lineWidth);
+        thisDrawing.update(touch, markerColor, lineWidth);
     }
 
     
@@ -304,7 +330,7 @@ void uiPresent::touchingMove(ofTouchEventArgs &touch) {
     }
     
     
-    if (markerButton->toggle) {
+    if (*markerButtonSelected) {
         ofPoint currentPos;
         currentPos.x = touch.x;
         currentPos.y = touch.y;
@@ -316,7 +342,20 @@ void uiPresent::touchingMove(ofTouchEventArgs &touch) {
         float lineWidth;
         lineWidth = 6.0;
         
-        thisDrawing.update(touch, thisColor, lineWidth);
+        for (int i = 0; i < theFlagStates.size(); i++) {
+            
+            if (theFlagStates[i].theReflectionFlag.presentCheck.inside(scrubLocation->x, scrubLocation->y)){
+                
+                markerColor.set(theFlagStates[i].theReflectionFlag.color);
+                printf(" found a color that matches! \n ");
+                break;
+            } else {
+                markerColor.set(0,255,0);
+            }
+        }
+
+        
+        thisDrawing.update(touch, markerColor, lineWidth);
     }
 
     
@@ -333,7 +372,7 @@ void uiPresent::touchingUp(ofTouchEventArgs &touch) {
         scrubLocation->set(touch.x, touch.y);
     }
     
-    if (markerButton->toggle) {
+    if (*markerButtonSelected) {
         currentDrawing.clear();
         markerThese.push_back(thisDrawing);
         thisDrawing.reset();
@@ -353,4 +392,3 @@ void uiPresent::exit() {
     
     
 }
-

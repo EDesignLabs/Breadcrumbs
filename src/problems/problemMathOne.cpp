@@ -189,6 +189,8 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //actual state
     
     if (navStateCreate) create->draw(basicFont);
+    if (navStateReflect) reflect->draw(basicFont);
+    if (navStatePresent) present->draw(basicFont);
     
 //-----------------------------------------------
 //The Question
@@ -204,8 +206,6 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //-----------------------------------------------
 //more actual state
     
-    if (navStateReflect) reflect->draw(basicFont);
-    if (navStatePresent) present->draw(basicFont);
 
     
 //-----------------------------------------------

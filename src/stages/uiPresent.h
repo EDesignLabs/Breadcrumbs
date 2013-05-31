@@ -47,6 +47,7 @@ public:
     vector <drawing> markerThese;
     
     vector <drawing> drawThese;
+    ofColor          markerColor;
     
     int              startTime;
     int              endTime;
@@ -64,6 +65,7 @@ public:
     //for playback and leaving reflections
     button*         playPauseButton;
     button*         markerButton;
+    bool*           markerButtonSelected;
     
     //shows where pointer last left
     button*          currentPos;

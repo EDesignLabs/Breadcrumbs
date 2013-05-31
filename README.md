@@ -1,4 +1,4 @@
-# wordProblematator
+# Breadcrumbs
 Math is awesome!
 
 ## Getting started

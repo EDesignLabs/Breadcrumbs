@@ -17,7 +17,7 @@ void drawing::reset() {
     
     thePoints.clear();
     
-    printf(" drawing reset ended \n");
+//    printf(" drawing reset ended \n");
     
 }
 
@@ -59,6 +59,25 @@ void drawing::update(ofTouchEventArgs &touch, ofColor color, float lineWidth) {
 
 }
 
+//------------------------------------------------------------------
+void drawing::update(ofPoint &pos, ofColor color, float lineWidth) {
+    
+    touchPoint newLocation;
+    newLocation.pos = pos;
+    
+    newLocation.color = color;
+    newLocation.lineWidth = lineWidth;
+    
+    newLocation.timeStamp = ofGetElapsedTimeMillis();
+    
+    thePoints.push_back(newLocation);
+    
+}
+
+
+////////////////////////////////////////////////////////////////////
+//      DRAW                                                      //
+////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
 void drawing::draw() {

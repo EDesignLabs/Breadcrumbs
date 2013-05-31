@@ -215,6 +215,8 @@ void flagState::selectingButton() {
         makeMarker();
     }
 
+    theReflectionFlag.presentCheck.set(theReflectionFlag.startPos.x, theReflectionFlag.startPos.y, theReflectionFlag.size.x, theReflectionFlag.size.y);
+    
 }
 
 //------------------------------------------------------------------
