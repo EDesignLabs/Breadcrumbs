@@ -17,18 +17,23 @@ void nav::setup() {
     ofPoint size;
     ofPoint offSet;
     ofColor color;
-    homeButton.loadImage("images/ui/glyphicons_020_home.png");
+    home.loadImage("images/ui/glyphicons_020_home.png");
     
     pos.set(0, 0);
-    size.set(homeButton.getWidth()+20, homeButton.getHeight()+20);
+    size.set(home.getWidth()+20, home.getHeight()+20);
     offSet.set(25, 40);
     
     color.set(170, 170, 170, 120);
-    homeButtonRect.setup(pos, size, color);
+    homeButton.setup(pos, size, color);
 
     raleigh.loadImage("images/raleigh.jpg");
     sanFran.loadImage("images/SanFran.jpg");
     gainesville.loadImage("images/gainesville.jpg");
+    
+    //skip intro button
+    skipIntro.loadImage("images/ui/glyphicons_207_remove_2.png");
+    pos.set(ofGetWidth()-(skipIntro.getWidth()+20), 0);
+    skipIntroButton.setup(pos, size, color);    
     
     ofPoint posTwo;
     posTwo.set(50, 50);
@@ -50,8 +55,10 @@ void nav::setup() {
     size.set(625, 75);
     mathAgainButton.setup(posFive, size, offSet, "Example #4", color);
 
+    splash = new splashNav;
     
-    navStateToc = true;
+    navStateSplash = true;
+    navStateToc = false;
     navStateExerciseOne = false;
     navStateExerciseTwo = false;
     navStateExerciseThree = false;
@@ -62,12 +69,19 @@ void nav::setup() {
 }
 		 
 //------------------------------------------------------------------
-void nav::update() {
+void nav::update(int section) {
 
     //depending on the selection made, a specific setup is run
     //when returning to TOC from monster, monster is reset
 
 //    printf(" NAV update started \n");
+
+    if (skipIntroButton.selected) {
+        navStateSplash = false;
+        navStateToc = true;
+        delete splash;
+        skipIntroButton.selected=false;
+    }
     
     if (mathButton.selected) {
         mathExercisesOne = new problemMathOne();
@@ -110,40 +124,41 @@ void nav::update() {
     }
 
     
-    if (homeButtonRect.selected) {
+    if (homeButton.selected) {
         
         if (navStateExerciseOne) {
             navStateExerciseOne = false;
             navStateToc = true;
             delete mathExercisesOne;
-            homeButtonRect.selected=false;
+            homeButton.selected=false;
         }
 
         if (navStateExerciseTwo) {
             navStateExerciseTwo = false;
             navStateToc = true;
             delete mathExercisesTwo;
-            homeButtonRect.selected=false;
+            homeButton.selected=false;
         }
 
         if (navStateExerciseThree) {
             navStateExerciseThree = false;
             navStateToc = true;
             delete mathExercisesThree;
-            homeButtonRect.selected=false;
+            homeButton.selected=false;
         }
 
         if (navStateExerciseFour) {
             navStateExerciseFour = false;
             navStateToc = true;
             delete mathExercisesFour;
-            homeButtonRect.selected=false;
+            homeButton.selected=false;
         }
 
     
     }
 
     //based on what state is active, update information is passed
+    if (navStateSplash) splash->update(section);
     if (navStateExerciseOne) mathExercisesOne->update();
     if (navStateExerciseTwo) mathExercisesTwo->update();
     if (navStateExerciseThree) mathExercisesThree->update();
@@ -157,6 +172,16 @@ void nav::update() {
 //------------------------------------------------------------------
 void nav::draw(ofTrueTypeFont& basicFont) {
 
+    if (navStateSplash) {
+        splash->draw();
+        skipIntroButton.draw(basicFont);
+        
+        ofEnableAlphaBlending();
+        skipIntro.draw(ofGetWidth()-(skipIntro.getWidth()+10), 15);
+        ofDisableAlphaBlending();
+
+    }
+    
     if (navStateToc) {
         mathButton.draw(basicFont, raleigh);
         scienceButton.draw(basicFont, sanFran);
@@ -166,37 +191,37 @@ void nav::draw(ofTrueTypeFont& basicFont) {
 
     if (navStateExerciseOne) {
         mathExercisesOne->draw(basicFont);
-        homeButtonRect.draw(basicFont);
+        homeButton.draw(basicFont);
         
         ofEnableAlphaBlending();
-            homeButton.draw(10, 10);
+            home.draw(10, 10);
         ofDisableAlphaBlending();
     }
 
     if (navStateExerciseTwo) {
         mathExercisesTwo->draw(basicFont);
-        homeButtonRect.draw(basicFont);
+        homeButton.draw(basicFont);
         
         ofEnableAlphaBlending();
-        homeButton.draw(10, 10);
+        home.draw(10, 10);
         ofDisableAlphaBlending();
     }
 
     if (navStateExerciseThree) {
         mathExercisesThree->draw(basicFont);
-        homeButtonRect.draw(basicFont);
+        homeButton.draw(basicFont);
         
         ofEnableAlphaBlending();
-        homeButton.draw(10, 10);
+        home.draw(10, 10);
         ofDisableAlphaBlending();
     }
 
     if (navStateExerciseFour) {
         mathExercisesFour->draw(basicFont);
-        homeButtonRect.draw(basicFont);
+        homeButton.draw(basicFont);
         
         ofEnableAlphaBlending();
-        homeButton.draw(10, 10);
+        home.draw(10, 10);
         ofDisableAlphaBlending();
     }
 
@@ -204,6 +229,8 @@ void nav::draw(ofTrueTypeFont& basicFont) {
 
 //------------------------------------------------------------------
 void nav::touchingDown(ofTouchEventArgs &touch) {
+    
+    if (navStateSplash) skipIntroButton.touchingDown(touch);
     
     if (navStateToc) {
         mathButton.touchingDown(touch);
@@ -214,28 +241,31 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
     
     if (navStateExerciseOne) {
         mathExercisesOne->touchingDown(touch);
-        homeButtonRect.touchingDown(touch);
+        homeButton.touchingDown(touch);
     }
 
     if (navStateExerciseTwo) {
         mathExercisesTwo->touchingDown(touch);
-        homeButtonRect.touchingDown(touch);
+        homeButton.touchingDown(touch);
     }
 
     if (navStateExerciseThree) {
         mathExercisesThree->touchingDown(touch);
-        homeButtonRect.touchingDown(touch);
+        homeButton.touchingDown(touch);
     }
 
     if (navStateExerciseFour) {
         mathExercisesFour->touchingDown(touch);
-        homeButtonRect.touchingDown(touch);
+        homeButton.touchingDown(touch);
     }
 
 }
 
 //------------------------------------------------------------------
 void nav::touchingMove(ofTouchEventArgs &touch) {
+    
+    if (navStateSplash) skipIntroButton.touchingMove(touch);
+    
     if (navStateToc) {
         mathButton.touchingMove(touch);
         scienceButton.touchingMove(touch);
@@ -245,22 +275,22 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
     
     if (navStateExerciseOne) {
         mathExercisesOne->touchingMove(touch);
-        homeButtonRect.touchingMove(touch);
+        homeButton.touchingMove(touch);
     }
 
     if (navStateExerciseTwo) {
         mathExercisesTwo->touchingMove(touch);
-        homeButtonRect.touchingMove(touch);
+        homeButton.touchingMove(touch);
     }
 
     if (navStateExerciseThree) {
         mathExercisesThree->touchingMove(touch);
-        homeButtonRect.touchingMove(touch);
+        homeButton.touchingMove(touch);
     }
 
     if (navStateExerciseFour) {
         mathExercisesFour->touchingMove(touch);
-        homeButtonRect.touchingMove(touch);
+        homeButton.touchingMove(touch);
     }
 
 }
@@ -268,6 +298,8 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
 //------------------------------------------------------------------
 void nav::touchingUp(ofTouchEventArgs &touch) {
 
+    if (navStateSplash) skipIntroButton.touchingUp(touch);
+    
     if (navStateToc) {
         mathButton.touchingUp(touch);
         scienceButton.touchingUp(touch);
@@ -277,22 +309,22 @@ void nav::touchingUp(ofTouchEventArgs &touch) {
     
     if (navStateExerciseOne) {
         mathExercisesOne->touchingUp(touch);
-        homeButtonRect.touchingUp(touch);
+        homeButton.touchingUp(touch);
     }
 
     if (navStateExerciseTwo) {
         mathExercisesTwo->touchingUp(touch);
-        homeButtonRect.touchingUp(touch);
+        homeButton.touchingUp(touch);
     }
 
     if (navStateExerciseThree) {
         mathExercisesThree->touchingUp(touch);
-        homeButtonRect.touchingUp(touch);
+        homeButton.touchingUp(touch);
     }
 
     if (navStateExerciseFour) {
         mathExercisesFour->touchingUp(touch);
-        homeButtonRect.touchingUp(touch);
+        homeButton.touchingUp(touch);
     }
 
 }

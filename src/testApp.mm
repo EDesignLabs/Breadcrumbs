@@ -9,7 +9,12 @@ void testApp::setup(){
 	//If you want a landscape oreintation 
 	iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_LEFT);
     ofTrueTypeFont::setGlobalDpi(72);
-    
+    ofRegisterTouchEvents(this);            //method that passes touch events
+
+    EAGLView *view = ofxiPhoneGetGLView();
+    recogSwipe = [[ofSwipeGestureRecognizer alloc] initWithView:view];
+    section = 0;
+
     string fontName = "verdana.ttf";
     
     verdana12.loadFont(fontName, 12, true, true, true);
@@ -31,7 +36,9 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-    theNav.update();
+    section =     recogSwipe->section;
+    printf("swipping value: %d \n", section);
+    theNav.update(section);
     
 }
 

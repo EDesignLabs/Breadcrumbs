@@ -7,6 +7,7 @@
 //For retina display
 #include "ofxEasyRetina.h"
 #include "ofxiOSEAGLView+retinaPatch.h"
+#include "ofSwipeGestureRecognizer.h"
 
 
 #include "nav.h"
@@ -40,6 +41,11 @@ class testApp : public ofxiPhoneApp{
     
         //declare an ofxEasyRetina instance
         ofxEasyRetina retina;
+
+    
+        //to identify specific  swipe gestures
+        ofSwipeGestureRecognizer      *recogSwipe;
+        int            section;
 
 
 };

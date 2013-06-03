@@ -46,11 +46,19 @@
 		EC8D772D174E7389006F428F /* problemMathTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7729174E7389006F428F /* problemMathTwo.cpp */; };
 		EC978E7617345146002A7612 /* flagState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC978E7417345146002A7612 /* flagState.cpp */; };
 		EC9D031E1713312200591838 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D031C1713312200591838 /* drawing.cpp */; };
+		ECC7379B175D07A800C7DE79 /* splashSection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC73799175D07A800C7DE79 /* splashSection.cpp */; };
 		ECCFA4A41715F2EB00C04311 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECCFA4A21715F2EB00C04311 /* text.cpp */; };
 		ECDA3AD01714D4DD000036C2 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3AC91714D4DD000036C2 /* tinyxml.cpp */; };
 		ECDA3AD11714D4DD000036C2 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACB1714D4DD000036C2 /* tinyxmlerror.cpp */; };
 		ECDA3AD21714D4DD000036C2 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACC1714D4DD000036C2 /* tinyxmlparser.cpp */; };
 		ECDA3AD31714D4DD000036C2 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACE1714D4DD000036C2 /* ofxXmlSettings.cpp */; };
+		ECFFE939175CFAA500980F00 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = ECFFE92E175CFAA500980F00 /* .gitignore */; };
+		ECFFE93A175CFAA500980F00 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ECFFE92F175CFAA500980F00 /* README.md */; };
+		ECFFE93B175CFAA500980F00 /* ofPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFE932175CFAA500980F00 /* ofPanGestureRecognizer.m */; };
+		ECFFE93C175CFAA500980F00 /* ofPinchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFE934175CFAA500980F00 /* ofPinchGestureRecognizer.m */; };
+		ECFFE93D175CFAA500980F00 /* ofSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFE936175CFAA500980F00 /* ofSwipeGestureRecognizer.m */; };
+		ECFFE93E175CFAA500980F00 /* ofTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFE938175CFAA500980F00 /* ofTapGestureRecognizer.m */; };
+		ECFFE942175CFAC800980F00 /* splashNav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFFE940175CFAC800980F00 /* splashNav.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +137,8 @@
 		EC978E7517345146002A7612 /* flagState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flagState.h; path = src/tools/flagState.h; sourceTree = SOURCE_ROOT; };
 		EC9D031C1713312200591838 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = drawing.cpp; path = src/tools/drawing.cpp; sourceTree = SOURCE_ROOT; };
 		EC9D031D1713312200591838 /* drawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = drawing.h; path = src/tools/drawing.h; sourceTree = SOURCE_ROOT; };
+		ECC73799175D07A800C7DE79 /* splashSection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = splashSection.cpp; sourceTree = "<group>"; };
+		ECC7379A175D07A800C7DE79 /* splashSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = splashSection.h; sourceTree = "<group>"; };
 		ECCFA4A21715F2EB00C04311 /* text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = text.cpp; path = src/tools/text.cpp; sourceTree = SOURCE_ROOT; };
 		ECCFA4A31715F2EB00C04311 /* text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = text.h; path = src/tools/text.h; sourceTree = SOURCE_ROOT; };
 		ECDA3AC91714D4DD000036C2 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -137,6 +147,18 @@
 		ECDA3ACC1714D4DD000036C2 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		ECDA3ACE1714D4DD000036C2 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		ECDA3ACF1714D4DD000036C2 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		ECFFE92E175CFAA500980F00 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		ECFFE92F175CFAA500980F00 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		ECFFE931175CFAA500980F00 /* ofPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPanGestureRecognizer.h; sourceTree = "<group>"; };
+		ECFFE932175CFAA500980F00 /* ofPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofPanGestureRecognizer.m; sourceTree = "<group>"; };
+		ECFFE933175CFAA500980F00 /* ofPinchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPinchGestureRecognizer.h; sourceTree = "<group>"; };
+		ECFFE934175CFAA500980F00 /* ofPinchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofPinchGestureRecognizer.m; sourceTree = "<group>"; };
+		ECFFE935175CFAA500980F00 /* ofSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofSwipeGestureRecognizer.h; sourceTree = "<group>"; };
+		ECFFE936175CFAA500980F00 /* ofSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofSwipeGestureRecognizer.m; sourceTree = "<group>"; };
+		ECFFE937175CFAA500980F00 /* ofTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofTapGestureRecognizer.h; sourceTree = "<group>"; };
+		ECFFE938175CFAA500980F00 /* ofTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofTapGestureRecognizer.m; sourceTree = "<group>"; };
+		ECFFE940175CFAC800980F00 /* splashNav.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = splashNav.cpp; sourceTree = "<group>"; };
+		ECFFE941175CFAC800980F00 /* splashNav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = splashNav.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +241,7 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				ECFFE92D175CFAA500980F00 /* ofxGestureRecognizer */,
 				EC308BFE17274A3600E0F06F /* ofxEasyRetina */,
 				EC308C0317274A3600E0F06F /* ofxRetinaTrueTypeFont */,
 				ECDA3AC71714D4DD000036C2 /* ofxXmlSettings */,
@@ -261,6 +284,7 @@
 				E4D8936D11527B74007E1F53 /* testApp.mm */,
 				E4D8936C11527B74007E1F53 /* testApp.h */,
 				EC2DEAAB1729E6C7004F16DA /* mainNav */,
+				ECFFE93F175CFAC800980F00 /* splash */,
 				EC9D031F17133B1500591838 /* exercises */,
 				EC2DEAB21729E9B0004F16DA /* problems */,
 				EC2DEAA11729E262004F16DA /* stages */,
@@ -385,6 +409,43 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		ECFFE92D175CFAA500980F00 /* ofxGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				ECFFE92E175CFAA500980F00 /* .gitignore */,
+				ECFFE92F175CFAA500980F00 /* README.md */,
+				ECFFE930175CFAA500980F00 /* src */,
+			);
+			name = ofxGestureRecognizer;
+			path = ../../../addons/ofxGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		ECFFE930175CFAA500980F00 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				ECFFE931175CFAA500980F00 /* ofPanGestureRecognizer.h */,
+				ECFFE932175CFAA500980F00 /* ofPanGestureRecognizer.m */,
+				ECFFE933175CFAA500980F00 /* ofPinchGestureRecognizer.h */,
+				ECFFE934175CFAA500980F00 /* ofPinchGestureRecognizer.m */,
+				ECFFE935175CFAA500980F00 /* ofSwipeGestureRecognizer.h */,
+				ECFFE936175CFAA500980F00 /* ofSwipeGestureRecognizer.m */,
+				ECFFE937175CFAA500980F00 /* ofTapGestureRecognizer.h */,
+				ECFFE938175CFAA500980F00 /* ofTapGestureRecognizer.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		ECFFE93F175CFAC800980F00 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				ECFFE940175CFAC800980F00 /* splashNav.cpp */,
+				ECFFE941175CFAC800980F00 /* splashNav.h */,
+				ECC73799175D07A800C7DE79 /* splashSection.cpp */,
+				ECC7379A175D07A800C7DE79 /* splashSection.h */,
+			);
+			path = splash;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -459,6 +520,8 @@
 				EC311400171F389B001D2F35 /* EDesignLabLogo144x144.png in Resources */,
 				EC31140C171F3940001D2F35 /* Default-Portrait~ipad.png in Resources */,
 				EC31140E171F3944001D2F35 /* Default-Portrait@2x~ipad.png in Resources */,
+				ECFFE939175CFAA500980F00 /* .gitignore in Resources */,
+				ECFFE93A175CFAA500980F00 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +571,12 @@
 				EC8D772B174E7389006F428F /* problemMathFour.cpp in Sources */,
 				EC8D772C174E7389006F428F /* problemMathThree.cpp in Sources */,
 				EC8D772D174E7389006F428F /* problemMathTwo.cpp in Sources */,
+				ECFFE93B175CFAA500980F00 /* ofPanGestureRecognizer.m in Sources */,
+				ECFFE93C175CFAA500980F00 /* ofPinchGestureRecognizer.m in Sources */,
+				ECFFE93D175CFAA500980F00 /* ofSwipeGestureRecognizer.m in Sources */,
+				ECFFE93E175CFAA500980F00 /* ofTapGestureRecognizer.m in Sources */,
+				ECFFE942175CFAC800980F00 /* splashNav.cpp in Sources */,
+				ECC7379B175D07A800C7DE79 /* splashSection.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 #include "ofMain.h"
 
 //for different navigating
+#include "splashNav.h"
 #include "problemMathOne.h"
 #include "problemMathTwo.h"
 #include "problemMathThree.h"
@@ -21,7 +22,7 @@ class nav {
 	
 	public:
         void setup();
-		void update();
+		void update(int section);
 		void draw(ofTrueTypeFont& basicFont);
 
         //tracking touch events
@@ -34,27 +35,29 @@ class nav {
         button             scienceButton;
         button             historyButton;
         button             mathAgainButton;
-        button             homeButtonRect;
-        ofImage            homeButton;
+        button             homeButton;
+        ofImage            home;
+        button             skipIntroButton;
+        ofImage            skipIntro;
     
         ofImage raleigh;
         ofImage sanFran;
         ofImage gainesville;
     
+        splashNav*              splash;
         problemMathOne*         mathExercisesOne;
         problemMathTwo*         mathExercisesTwo;
         problemMathThree*       mathExercisesThree;
         problemMathFour*        mathExercisesFour;
     
         bool    navStateToc;
+        bool    navStateSplash;
     
         bool    navStateExerciseOne;
         bool    navStateExerciseTwo;
         bool    navStateExerciseThree;
         bool    navStateExerciseFour;
-    
-        bool    endSplash;
-    
+        
 };
 
 #endif
