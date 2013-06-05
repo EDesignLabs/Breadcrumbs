@@ -27,13 +27,13 @@
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		E4D8936F11527B74007E1F53 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* testApp.mm */; };
 		EC0B146E1714F4E8006DDB40 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0B146C1714F4E8006DDB40 /* image.cpp */; };
+		EC0D8D1D175E7F5F00EEAEC3 /* saveMathOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0D8D1B175E7F5F00EEAEC3 /* saveMathOne.cpp */; };
 		EC2DEAA41729E262004F16DA /* uiCreate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA21729E262004F16DA /* uiCreate.cpp */; };
 		EC2DEAA91729E4B1004F16DA /* uiPresent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA51729E4B1004F16DA /* uiPresent.cpp */; };
 		EC2DEAAA1729E4B1004F16DA /* uiReflect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA71729E4B1004F16DA /* uiReflect.cpp */; };
 		EC2DEAB01729E6C7004F16DA /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAAC1729E6C7004F16DA /* button.cpp */; };
 		EC2DEAB11729E6C7004F16DA /* nav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAAE1729E6C7004F16DA /* nav.cpp */; };
 		EC2DEAB51729E9B0004F16DA /* problemMathOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */; };
-		EC2DEAB81729E9EC004F16DA /* exercisesMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAB61729E9EC004F16DA /* exercisesMath.cpp */; };
 		EC308C0617274A3600E0F06F /* ofxEasyRetina.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */; };
 		EC308C0717274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0217274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm */; };
 		EC308C0817274A3600E0F06F /* ofxRetinaTrueTypeFont.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0517274A3600E0F06F /* ofxRetinaTrueTypeFont.mm */; };
@@ -41,7 +41,6 @@
 		EC311400171F389B001D2F35 /* EDesignLabLogo144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3113FF171F389B001D2F35 /* EDesignLabLogo144x144.png */; };
 		EC31140C171F3940001D2F35 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */; };
 		EC31140E171F3944001D2F35 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */; };
-		EC8D772B174E7389006F428F /* problemMathFour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7725174E7389006F428F /* problemMathFour.cpp */; };
 		EC8D772C174E7389006F428F /* problemMathThree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7727174E7389006F428F /* problemMathThree.cpp */; };
 		EC8D772D174E7389006F428F /* problemMathTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7729174E7389006F428F /* problemMathTwo.cpp */; };
 		EC978E7617345146002A7612 /* flagState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC978E7417345146002A7612 /* flagState.cpp */; };
@@ -103,6 +102,8 @@
 		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
 		EC0B146C1714F4E8006DDB40 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = src/tools/image.cpp; sourceTree = SOURCE_ROOT; };
 		EC0B146D1714F4E8006DDB40 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = image.h; path = src/tools/image.h; sourceTree = SOURCE_ROOT; };
+		EC0D8D1B175E7F5F00EEAEC3 /* saveMathOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saveMathOne.cpp; sourceTree = "<group>"; };
+		EC0D8D1C175E7F5F00EEAEC3 /* saveMathOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveMathOne.h; sourceTree = "<group>"; };
 		EC2DEAA21729E262004F16DA /* uiCreate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiCreate.cpp; sourceTree = "<group>"; };
 		EC2DEAA31729E262004F16DA /* uiCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiCreate.h; sourceTree = "<group>"; };
 		EC2DEAA51729E4B1004F16DA /* uiPresent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiPresent.cpp; sourceTree = "<group>"; };
@@ -115,8 +116,6 @@
 		EC2DEAAF1729E6C7004F16DA /* nav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nav.h; sourceTree = "<group>"; };
 		EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathOne.cpp; sourceTree = "<group>"; };
 		EC2DEAB41729E9B0004F16DA /* problemMathOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathOne.h; sourceTree = "<group>"; };
-		EC2DEAB61729E9EC004F16DA /* exercisesMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exercisesMath.cpp; sourceTree = "<group>"; };
-		EC2DEAB71729E9EC004F16DA /* exercisesMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exercisesMath.h; sourceTree = "<group>"; };
 		EC308BFF17274A3600E0F06F /* ofxEasyRetina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyRetina.h; sourceTree = "<group>"; };
 		EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxEasyRetina.mm; sourceTree = "<group>"; };
 		EC308C0117274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ofxiOSEAGLView+retinaPatch.h"; sourceTree = "<group>"; };
@@ -127,8 +126,6 @@
 		EC3113FF171F389B001D2F35 /* EDesignLabLogo144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDesignLabLogo144x144.png; sourceTree = "<group>"; };
 		EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		EC8D7725174E7389006F428F /* problemMathFour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathFour.cpp; sourceTree = "<group>"; };
-		EC8D7726174E7389006F428F /* problemMathFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathFour.h; sourceTree = "<group>"; };
 		EC8D7727174E7389006F428F /* problemMathThree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathThree.cpp; sourceTree = "<group>"; };
 		EC8D7728174E7389006F428F /* problemMathThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathThree.h; sourceTree = "<group>"; };
 		EC8D7729174E7389006F428F /* problemMathTwo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathTwo.cpp; sourceTree = "<group>"; };
@@ -285,7 +282,6 @@
 				E4D8936C11527B74007E1F53 /* testApp.h */,
 				EC2DEAAB1729E6C7004F16DA /* mainNav */,
 				ECFFE93F175CFAC800980F00 /* splash */,
-				EC9D031F17133B1500591838 /* exercises */,
 				EC2DEAB21729E9B0004F16DA /* problems */,
 				EC2DEAA11729E262004F16DA /* stages */,
 				ECA9A4A7170E45DE009F748E /* tools */,
@@ -326,8 +322,8 @@
 				EC8D772A174E7389006F428F /* problemMathTwo.h */,
 				EC8D7727174E7389006F428F /* problemMathThree.cpp */,
 				EC8D7728174E7389006F428F /* problemMathThree.h */,
-				EC8D7725174E7389006F428F /* problemMathFour.cpp */,
-				EC8D7726174E7389006F428F /* problemMathFour.h */,
+				EC0D8D1B175E7F5F00EEAEC3 /* saveMathOne.cpp */,
+				EC0D8D1C175E7F5F00EEAEC3 /* saveMathOne.h */,
 			);
 			path = problems;
 			sourceTree = "<group>";
@@ -352,15 +348,6 @@
 			);
 			name = ofxRetinaTrueTypeFont;
 			path = ../../../addons/ofxRetinaTrueTypeFont;
-			sourceTree = "<group>";
-		};
-		EC9D031F17133B1500591838 /* exercises */ = {
-			isa = PBXGroup;
-			children = (
-				EC2DEAB61729E9EC004F16DA /* exercisesMath.cpp */,
-				EC2DEAB71729E9EC004F16DA /* exercisesMath.h */,
-			);
-			path = exercises;
 			sourceTree = "<group>";
 		};
 		ECA9A4A7170E45DE009F748E /* tools */ = {
@@ -566,9 +553,7 @@
 				EC2DEAB01729E6C7004F16DA /* button.cpp in Sources */,
 				EC2DEAB11729E6C7004F16DA /* nav.cpp in Sources */,
 				EC2DEAB51729E9B0004F16DA /* problemMathOne.cpp in Sources */,
-				EC2DEAB81729E9EC004F16DA /* exercisesMath.cpp in Sources */,
 				EC978E7617345146002A7612 /* flagState.cpp in Sources */,
-				EC8D772B174E7389006F428F /* problemMathFour.cpp in Sources */,
 				EC8D772C174E7389006F428F /* problemMathThree.cpp in Sources */,
 				EC8D772D174E7389006F428F /* problemMathTwo.cpp in Sources */,
 				ECFFE93B175CFAA500980F00 /* ofPanGestureRecognizer.m in Sources */,
@@ -577,6 +562,7 @@
 				ECFFE93E175CFAA500980F00 /* ofTapGestureRecognizer.m in Sources */,
 				ECFFE942175CFAC800980F00 /* splashNav.cpp in Sources */,
 				ECC7379B175D07A800C7DE79 /* splashSection.cpp in Sources */,
+				EC0D8D1D175E7F5F00EEAEC3 /* saveMathOne.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

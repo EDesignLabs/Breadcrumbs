@@ -31,15 +31,18 @@ void testApp::setup(){
 
     theNav.setup();
 
+    iPhoneDocumentsDirectory = ofxiPhoneGetDocumentsDirectory();
+    
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     
     section =     recogSwipe->section;
-    printf("swipping value: %d \n", section);
-    theNav.update(section);
-    
+    theNav.update(section, iPhoneDocumentsDirectory);
+
+    //    printf("swipping value: %d \n", section);
+
 }
 
 //--------------------------------------------------------------

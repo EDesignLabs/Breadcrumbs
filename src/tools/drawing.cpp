@@ -75,6 +75,21 @@ void drawing::update(ofPoint &pos, ofColor color, float lineWidth) {
 }
 
 
+
+//------------------------------------------------------------------
+void drawing::update(ofPoint &pos, int timeStamp, ofColor color, float lineWidth) {
+    
+    touchPoint newLocation;
+    newLocation.pos = pos;
+    
+    newLocation.color = color;
+    newLocation.lineWidth = lineWidth;
+    
+    newLocation.timeStamp = timeStamp;
+    
+    thePoints.push_back(newLocation);
+    
+}
 ////////////////////////////////////////////////////////////////////
 //      DRAW                                                      //
 ////////////////////////////////////////////////////////////////////

@@ -47,6 +47,9 @@ class testApp : public ofxiPhoneApp{
         ofSwipeGestureRecognizer      *recogSwipe;
         int            section;
 
+    
+        //XML file location
+        string iPhoneDocumentsDirectory;
 
 };
 

@@ -28,6 +28,7 @@ class drawing {
         void setup();
         void update(ofTouchEventArgs &touch, ofColor color, float lineWidth);
         void update(ofPoint &pos, ofColor color, float lineWidth);
+        void update(ofPoint &pos, int timeStamp, ofColor color, float lineWidth);
         void draw();
 		void draw(int currentPos);
         void reset();

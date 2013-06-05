@@ -26,34 +26,36 @@ void nav::setup() {
     color.set(170, 170, 170, 120);
     homeButton.setup(pos, size, color);
 
-    raleigh.loadImage("images/raleigh.jpg");
-    sanFran.loadImage("images/SanFran.jpg");
-    gainesville.loadImage("images/gainesville.jpg");
+    birds.loadImage("images/problemNav/birds.png");
+    breadcrumbs.loadImage("images/problemNav/breadcrumbs.png");
+    candy.loadImage("images/problemNav/candy.png");
+    myWork.loadImage("images/problemNav/myWork.png");
     
     //skip intro button
     skipIntro.loadImage("images/ui/glyphicons_207_remove_2.png");
     pos.set(ofGetWidth()-(skipIntro.getWidth()+20), 0);
     skipIntroButton.setup(pos, size, color);    
-    
+
+    color.set(255, 255, 255, 255);
+
     ofPoint posTwo;
-    posTwo.set(50, 50);
-    size.set(625, 75);
-    mathButton.setup(posTwo, size, offSet, "Example #1", color);
+    posTwo.set(0, 0);
+    size.set(256, 768);
+    birdsButton.setup(posTwo, size, offSet, "BIRDS!", color);
 
     ofPoint posThree;
-    posThree.set(50, 150);
-    size.set(625, 75);
-    scienceButton.setup(posThree, size, offSet, "Example #2", color);
+    posThree.set(256, 0);
+    breadcrumbsButton.setup(posThree, size, offSet, "Find the path", color);
 
     ofPoint posFour;
-    posFour.set(50, 250);
-    size.set(625, 75);
-    historyButton.setup(posFour, size, offSet, "Example #3", color);
+    posFour.set(512, 0);
+    candyButton.setup(posFour, size, offSet, "Candy", color);
+
+    color.set(255, 255, 255, 120);
 
     ofPoint posFive;
-    posFive.set(50, 350);
-    size.set(625, 75);
-    mathAgainButton.setup(posFive, size, offSet, "Example #4", color);
+    posFive.set(768, 0);
+    myWorkButton.setup(posFive, size, offSet, "Recent Work", color);
 
     splash = new splashNav;
     
@@ -62,14 +64,14 @@ void nav::setup() {
     navStateExerciseOne = false;
     navStateExerciseTwo = false;
     navStateExerciseThree = false;
-    navStateExerciseFour = false;
+    navStateSavedMath = false;
     
     printf(" NAV setup ended \n");
     
 }
 		 
 //------------------------------------------------------------------
-void nav::update(int section) {
+void nav::update(int section, string iPhoneDocumentsDirectory) {
 
     //depending on the selection made, a specific setup is run
     //when returning to TOC from monster, monster is reset
@@ -83,44 +85,44 @@ void nav::update(int section) {
         skipIntroButton.selected=false;
     }
     
-    if (mathButton.selected) {
+    if (birdsButton.selected) {
         mathExercisesOne = new problemMathOne();
         navStateToc = false;
         navStateExerciseOne = true;
         navStateExerciseTwo = false;
         navStateExerciseThree = false;
-        navStateExerciseFour = false;
-        mathButton.selected=false;
+        navStateSavedMath = false;
+        birdsButton.selected=false;
     }
 
-    if (scienceButton.selected) {
+    if (breadcrumbsButton.selected) {
         mathExercisesTwo = new problemMathTwo();
         navStateToc = false;
         navStateExerciseOne = false;
         navStateExerciseTwo = true;
         navStateExerciseThree = false;
-        navStateExerciseFour = false;
-        scienceButton.selected=false;
+        navStateSavedMath = false;
+        breadcrumbsButton.selected=false;
     }
 
-    if (historyButton.selected) {
+    if (candyButton.selected) {
         mathExercisesThree = new problemMathThree();
         navStateToc = false;
         navStateExerciseOne = false;
         navStateExerciseTwo = false;
         navStateExerciseThree = true;
-        navStateExerciseFour = false;
-        historyButton.selected=false;
+        navStateSavedMath = false;
+        candyButton.selected=false;
     }
 
-    if (mathAgainButton.selected) {
-        mathExercisesFour = new problemMathFour();
+    if (myWorkButton.selected) {
+        savedMathOne = new saveMathOne(iPhoneDocumentsDirectory);
         navStateToc = false;
         navStateExerciseOne = false;
         navStateExerciseTwo = false;
         navStateExerciseThree = false;
-        navStateExerciseFour = true;
-        mathAgainButton.selected=false;
+        navStateSavedMath = true;
+        myWorkButton.selected=false;
     }
 
     
@@ -147,10 +149,10 @@ void nav::update(int section) {
             homeButton.selected=false;
         }
 
-        if (navStateExerciseFour) {
-            navStateExerciseFour = false;
+        if (navStateSavedMath) {
+            navStateSavedMath = false;
             navStateToc = true;
-            delete mathExercisesFour;
+            delete savedMathOne;
             homeButton.selected=false;
         }
 
@@ -159,10 +161,10 @@ void nav::update(int section) {
 
     //based on what state is active, update information is passed
     if (navStateSplash) splash->update(section);
-    if (navStateExerciseOne) mathExercisesOne->update();
+    if (navStateExerciseOne) mathExercisesOne->update(iPhoneDocumentsDirectory);
     if (navStateExerciseTwo) mathExercisesTwo->update();
     if (navStateExerciseThree) mathExercisesThree->update();
-    if (navStateExerciseFour) mathExercisesFour->update();
+    if (navStateSavedMath) savedMathOne->update();
     
 //    printf(" NAV udpate ended \n");
     
@@ -183,10 +185,12 @@ void nav::draw(ofTrueTypeFont& basicFont) {
     }
     
     if (navStateToc) {
-        mathButton.draw(basicFont, raleigh);
-        scienceButton.draw(basicFont, sanFran);
-        historyButton.draw(basicFont, gainesville);
-        mathAgainButton.draw(basicFont, raleigh);
+        ofColor textColor;
+        textColor.set(255, 255, 255);
+        birdsButton.drawTextColor(basicFont, birds, textColor);
+        breadcrumbsButton.drawTextColor(basicFont, breadcrumbs, textColor);
+        candyButton.drawTextColor(basicFont, candy, textColor);
+        myWorkButton.draw(basicFont, myWork);
     }
 
     if (navStateExerciseOne) {
@@ -216,8 +220,8 @@ void nav::draw(ofTrueTypeFont& basicFont) {
         ofDisableAlphaBlending();
     }
 
-    if (navStateExerciseFour) {
-        mathExercisesFour->draw(basicFont);
+    if (navStateSavedMath) {
+        savedMathOne->draw(basicFont);
         homeButton.draw(basicFont);
         
         ofEnableAlphaBlending();
@@ -233,10 +237,10 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
     if (navStateSplash) skipIntroButton.touchingDown(touch);
     
     if (navStateToc) {
-        mathButton.touchingDown(touch);
-        scienceButton.touchingDown(touch);
-        historyButton.touchingDown(touch);
-        mathAgainButton.touchingDown(touch);
+        birdsButton.touchingDown(touch);
+        breadcrumbsButton.touchingDown(touch);
+        candyButton.touchingDown(touch);
+        myWorkButton.touchingDown(touch);
     }
     
     if (navStateExerciseOne) {
@@ -254,8 +258,8 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
         homeButton.touchingDown(touch);
     }
 
-    if (navStateExerciseFour) {
-        mathExercisesFour->touchingDown(touch);
+    if (navStateSavedMath) {
+        savedMathOne->touchingDown(touch);
         homeButton.touchingDown(touch);
     }
 
@@ -267,10 +271,10 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
     if (navStateSplash) skipIntroButton.touchingMove(touch);
     
     if (navStateToc) {
-        mathButton.touchingMove(touch);
-        scienceButton.touchingMove(touch);
-        historyButton.touchingMove(touch);
-        mathAgainButton.touchingMove(touch);
+        birdsButton.touchingMove(touch);
+        breadcrumbsButton.touchingMove(touch);
+        candyButton.touchingMove(touch);
+        myWorkButton.touchingMove(touch);
     }
     
     if (navStateExerciseOne) {
@@ -288,8 +292,8 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
         homeButton.touchingMove(touch);
     }
 
-    if (navStateExerciseFour) {
-        mathExercisesFour->touchingMove(touch);
+    if (navStateSavedMath) {
+        savedMathOne->touchingMove(touch);
         homeButton.touchingMove(touch);
     }
 
@@ -301,10 +305,10 @@ void nav::touchingUp(ofTouchEventArgs &touch) {
     if (navStateSplash) skipIntroButton.touchingUp(touch);
     
     if (navStateToc) {
-        mathButton.touchingUp(touch);
-        scienceButton.touchingUp(touch);
-        historyButton.touchingUp(touch);
-        mathAgainButton.touchingUp(touch);
+        birdsButton.touchingUp(touch);
+        breadcrumbsButton.touchingUp(touch);
+        candyButton.touchingUp(touch);
+        myWorkButton.touchingUp(touch);
     }
     
     if (navStateExerciseOne) {
@@ -322,8 +326,8 @@ void nav::touchingUp(ofTouchEventArgs &touch) {
         homeButton.touchingUp(touch);
     }
 
-    if (navStateExerciseFour) {
-        mathExercisesFour->touchingUp(touch);
+    if (navStateSavedMath) {
+        savedMathOne->touchingUp(touch);
         homeButton.touchingUp(touch);
     }
 

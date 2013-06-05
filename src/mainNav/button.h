@@ -21,6 +21,7 @@ public:
     void drawToggle();
     void draw(ofTrueTypeFont& basicFont);
     void draw(ofTrueTypeFont& basicFont, ofImage& basicImage);
+    void drawTextColor(ofTrueTypeFont& basicFont, ofImage& basicImage, ofColor textColor);
     void drawNoColor();
     void drawNoColorWithImage();
     void drawNoColorWithImageToggle();

@@ -11,11 +11,12 @@
 
 #include "ofMain.h"
 
+#include "button.h"
+
 #include "drawing.h"
 #include "image.h"
 #include "text.h"
 
-#include "button.h"
 
 class uiCreate {
 	
@@ -59,8 +60,7 @@ class uiCreate {
     
         bool*       pencilSelected;
         bool*       eraseSelected;
-    
-
+        
 };
 
 #endif

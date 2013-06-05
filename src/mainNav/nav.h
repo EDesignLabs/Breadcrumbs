@@ -16,13 +16,16 @@
 #include "problemMathTwo.h"
 #include "problemMathThree.h"
 #include "problemMathFour.h"
+
+#include "saveMathOne.h"
+
 #include "button.h"
 
 class nav {
 	
 	public:
         void setup();
-		void update(int section);
+		void update(int section, string iPhoneDocumentsDirectory);
 		void draw(ofTrueTypeFont& basicFont);
 
         //tracking touch events
@@ -31,24 +34,25 @@ class nav {
         void touchingUp(ofTouchEventArgs &touch);
         void doubleTap(ofTouchEventArgs &touch);
 
-        button             mathButton;
-        button             scienceButton;
-        button             historyButton;
-        button             mathAgainButton;
+        button             birdsButton;
+        button             breadcrumbsButton;
+        button             candyButton;
+        button             myWorkButton;
         button             homeButton;
         ofImage            home;
         button             skipIntroButton;
         ofImage            skipIntro;
     
-        ofImage raleigh;
-        ofImage sanFran;
-        ofImage gainesville;
+        ofImage birds;
+        ofImage breadcrumbs;
+        ofImage candy;
+        ofImage myWork;
     
         splashNav*              splash;
         problemMathOne*         mathExercisesOne;
         problemMathTwo*         mathExercisesTwo;
         problemMathThree*       mathExercisesThree;
-        problemMathFour*        mathExercisesFour;
+        saveMathOne*            savedMathOne;
     
         bool    navStateToc;
         bool    navStateSplash;
@@ -56,7 +60,7 @@ class nav {
         bool    navStateExerciseOne;
         bool    navStateExerciseTwo;
         bool    navStateExerciseThree;
-        bool    navStateExerciseFour;
+        bool    navStateSavedMath;
         
 };
 

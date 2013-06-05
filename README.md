@@ -8,6 +8,7 @@ Math is awesome!
 #### Set Up
 - Get latest ios release of [openFrameworks](http://www.openframeworks.cc/download/)
 - Get latest release of [ofxEasyRetina](https://github.com/armadillu/ofxEasyRetina) and add it to the addons folder in oF
+- Get latest release of [ofxGestureRecognizer](https://github.com/rjraffa/ofxGestureRecognizer) and add it to the addons folder in oF
 - Clone this repository in your apps > myApps folder in oF
 
 ```

@@ -92,7 +92,7 @@ problemMathOne::problemMathOne() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------        
-void problemMathOne::update() {
+void problemMathOne::update(string iPhoneDocumentsDirectory) {
     
     
 //-----------------------------------------------
@@ -126,6 +126,15 @@ void problemMathOne::update() {
 
         //set value of drawing
         present->setPoints(create->drawThese, reflect->theFlagStates);
+
+        string xmlFileOne;
+        string xmlFileTwo;
+        xmlFileOne = "myCreateProbOne.xml";
+        xmlFileTwo = "myReflectProbOne.xml";
+        
+        //save XML file for later
+        present->xmlSetupThang(iPhoneDocumentsDirectory, xmlFileOne, xmlFileTwo);
+        present->saveXML(iPhoneDocumentsDirectory, xmlFileOne,xmlFileTwo);
 
     }
     
@@ -203,10 +212,6 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
     grid.draw(175, ofGetHeight()/3+50);
     ofDisableAlphaBlending();
 
-//-----------------------------------------------
-//more actual state
-    
-
     
 //-----------------------------------------------
 //Feedback
@@ -219,6 +224,7 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //-----------------------------------------------
 //Button UI
 
+    
     createButton.draw(basicFont);
     reflectButton.draw(basicFont);
     presentButton.draw(basicFont);

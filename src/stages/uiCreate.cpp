@@ -34,10 +34,6 @@ uiCreate::~uiCreate() {
 //------------------------------------------------------------------
 uiCreate::uiCreate(string theText) {
     
-//    sprintf (timeString, "time: %0.2i:%0.2i:%0.2i \nelapsed time %i", ofGetHours(), ofGetMinutes(), ofGetSeconds(), ofGetElapsedTimeMillis());
-//    
-//    sprintf(eventString, "touch = (%2.0f, %2.0f - id %i)", 0.0, 0.0, 0.0);
-
     thisImage.setup();
     
     //load uiCreate images
@@ -73,6 +69,7 @@ uiCreate::uiCreate(string theText) {
     eraseButton.setup(posTwo, size, color);
     
     this->theText = theText;
+    
 }
 
 

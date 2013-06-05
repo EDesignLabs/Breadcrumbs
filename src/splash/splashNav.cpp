@@ -12,7 +12,34 @@
 splashNav::~splashNav() {
 
     
-    delete splashSix;
+    if (this->section == 0) {
+        delete splashZero;
+    }
+
+    if (this->section == 1) {
+        delete splashOne;
+    }
+    
+    if (this->section == 2) {
+        delete splashTwo;
+    }
+    
+    if (this->section == 3) {
+        delete splashThree;
+    }
+    
+    if (this->section == 4) {
+        delete splashFour;
+    }
+    
+    if (this->section == 5) {
+        delete splashFive;
+    }
+    
+    if (this->section == 6) {
+        delete splashSix;
+    }
+
     
     printf(" splashNav deconstructor \n");
     

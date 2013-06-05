@@ -17,6 +17,7 @@
 #include "image.h"
 #include "text.h"
 
+#include "ofxXmlSettings.h"
 
 class uiPresent {
 	
@@ -28,7 +29,8 @@ public:
     void update();
     void draw(ofTrueTypeFont& basicFont);
     
-    //tracking touch events
+//-----------------------------------------------
+//tracking touch events
     void touchingDown(ofTouchEventArgs &touch);
     void touchingMove(ofTouchEventArgs &touch);
     void touchingUp(ofTouchEventArgs &touch);
@@ -39,41 +41,78 @@ public:
     void setPoints(vector <drawing> theDrawings, vector<flagState> theFlagStates);
     
     
-    //how initial spots are drawn
+//-----------------------------------------------
+//XML
+
+    void xmlSetupThang(string iPhoneDocumentsDirectory, string xmlFileOne, string xmlFileTwo);
+    void getXML (string xmlFileOne, string XMLFileTwo);
+    void saveXML(string iPhoneDocumentsDirectory, string xmlFileOne, string xmlFileTwo);
+    
+//-----------------------------------------------
+//how initial spots are drawn
+    
     drawing thisDrawing;
 
-    //This is the drawing that is tracked and then pushed on the stack
+//-----------------------------------------------
+//This is the drawing from Create
+    
+    vector <drawing> drawThese;
+
+    
+//-----------------------------------------------
+//This is the drawing that is tracked and then pushed on the stack
+
     vector <ofPoint> currentDrawing;
     vector <drawing> markerThese;
     
-    vector <drawing> drawThese;
     ofColor          markerColor;
     
     int              startTime;
     int              endTime;
     
-    //uiPresent
+//-----------------------------------------------
+//uiPresent
+
     button*          scrubBox;
     ofPoint*         scrubLocation;
     ofPoint          scrubPos;
     vector <ofPoint> scrubFeedback;
     
     
-    //for flagging process
+//-----------------------------------------------
+//for flagging process
+    
     vector<flagState> theFlagStates;
     
-    //for playback and leaving reflections
+//-----------------------------------------------
+//for playback and leaving reflections
+    
     button*         playPauseButton;
     button*         markerButton;
     bool*           markerButtonSelected;
     
-    //shows where pointer last left
+//-----------------------------------------------
+//shows where pointer last left
+
     button*          currentPos;
     
-    //used for playback
+//-----------------------------------------------
+//used for playback
+    
     int           currentTime;
     int           previousTime;
     
+//-----------------------------------------------
+//for saving the performance
+
+    ofxXmlSettings XMLOne;
+    ofxXmlSettings XMLTwo;
+    string messageOne;
+    string messageTwo;
+    
+    int lastTagNumberDrawing;
+    int lastTagNumberTouchPoint;
+    int lastTagNumberFlagstate;
     
 };
 

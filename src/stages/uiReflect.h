@@ -46,25 +46,30 @@ class uiReflect {
         int              startTime;
         int              endTime;
     
-        //uiReflect
+//-----------------------------------------------
+//uiReflect
         button*          scrubBox;
         ofPoint*         scrubLocation;
         ofPoint          scrubPos;
         vector <ofPoint> scrubFeedback;
     
     
-        //for flagging process
+//-----------------------------------------------
+//for flagging process
         vector<flagState> theFlagStates;
         flagState         theFlagState;
     
-        //for playback and leaving reflections
+//-----------------------------------------------
+//for playback and leaving reflections
         button*         playPauseButton;
         button*         flagButton;
     
-        //shows where pointer last left
+//-----------------------------------------------
+//shows where pointer last left
         button*          currentPos;
     
-        //used for playback
+//-----------------------------------------------
+//used for playback
         int           currentTime;
         int           previousTime;
     
