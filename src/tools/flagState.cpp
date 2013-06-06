@@ -33,8 +33,11 @@ void flagState::reset() {
     theReflectionFlag.color.set(0, 255, 0);
     
     //has a state been names yet, if not, show list of selections
+    theReflectionFlag.started = false;
     theReflectionFlag.ended = false;
     theReflectionFlag.selected = false;
+    
+    theReflectionFlag.removeFlagButton.selected = false;
     
     //determines if identifying, planning, walking, changing, verifying
     theReflectionFlag.state = 0;
@@ -66,6 +69,7 @@ flagState::flagState() {
 //    theReflectionFlag.color.set(0, 255, 0);
     
     //has a state been names yet, if not, show list of selections
+    theReflectionFlag.started = false;
     theReflectionFlag.ended = false;
     theReflectionFlag.selected = false;
     
@@ -74,6 +78,20 @@ flagState::flagState() {
     theReflectionFlag.stateMessage = "";
     
     theReflectionFlag.floor = 0;
+    
+    
+    //skip intro button
+    ofImage removeFlagImage;
+    removeFlagImage.loadImage("images/ui/glyphicons_207_remove_2.png");
+    ofPoint pos;
+    pos.set(0,0);
+    ofPoint size;
+    size.set(25,40);
+    ofColor color;
+    color.set(170, 170, 170, 120);
+    ofPoint offSet;
+    offSet.set(3,10);
+    theReflectionFlag.removeFlagButton.setup(pos, size, color, removeFlagImage, offSet);
     
 //    printf(" flagState setup ended \n");
     
@@ -86,7 +104,8 @@ flagState::flagState() {
 
 //------------------------------------------------------------------
 void flagState::updateStart(ofTouchEventArgs &touch) {
-    
+
+    theReflectionFlag.started = true;
     theReflectionFlag.selected = false;
     theReflectionFlag.ended = false;
     theReflectionFlag.size.x = 0;
@@ -167,6 +186,8 @@ void flagState::createButtons() {
     thisColor.set(140, 4, 168, 120);
     verifying.setup(pos, size, offSet, thisString, thisColor);
 
+    taskBox.set (theReflectionFlag.startPos.x, ofGetHeight()-250, 100, 200);
+    
 }
 
 //------------------------------------------------------------------
@@ -177,6 +198,7 @@ void flagState::selectingButton() {
         theReflectionFlag.stateMessage = "Identifying";
         theReflectionFlag.state = 1;
         theReflectionFlag.selected = true;
+        theReflectionFlag.removeFlagButton.selected = false;
         makeMarker();
     }
 
@@ -185,6 +207,7 @@ void flagState::selectingButton() {
         theReflectionFlag.stateMessage = "Planning";
         theReflectionFlag.state = 2;
         theReflectionFlag.selected = true;
+        theReflectionFlag.removeFlagButton.selected = false;
         makeMarker();
     }
 
@@ -193,6 +216,7 @@ void flagState::selectingButton() {
         theReflectionFlag.stateMessage = "Doing";
         theReflectionFlag.state = 3;
         theReflectionFlag.selected = true;
+        theReflectionFlag.removeFlagButton.selected = false;
         makeMarker();
     }
 
@@ -201,6 +225,7 @@ void flagState::selectingButton() {
         theReflectionFlag.stateMessage = "Changing";
         theReflectionFlag.state = 4;
         theReflectionFlag.selected = true;
+        theReflectionFlag.removeFlagButton.selected = false;
         makeMarker();
     }
 
@@ -209,6 +234,7 @@ void flagState::selectingButton() {
         theReflectionFlag.stateMessage = "Verifying";
         theReflectionFlag.state = 4;
         theReflectionFlag.selected = true;
+        theReflectionFlag.removeFlagButton.selected = false;
         makeMarker();
     }
 
@@ -221,14 +247,14 @@ void flagState::makeMarker() {
 
     //set position of the text
     
-    theReflectionFlag.textPos.x = theReflectionFlag.startPos.x+5;
-    theReflectionFlag.textPos.y = theReflectionFlag.startPos.y-7;
+    theReflectionFlag.textPos.x = theReflectionFlag.startPos.x+15;
+    theReflectionFlag.textPos.y = theReflectionFlag.startPos.y-15;
 
     //adjust the size of the box frame
     theReflectionFlag.tabPos = theReflectionFlag.startPos;
-    theReflectionFlag.tabPos.y-=25;
-    theReflectionFlag.tabSize.x = 96;
-    theReflectionFlag.tabSize.y = 25;
+    theReflectionFlag.tabPos.y-=40;
+    theReflectionFlag.tabSize.x = 130;
+    theReflectionFlag.tabSize.y = 40;
     
     theReflectionFlag.tabPostPos = theReflectionFlag.startPos;
 
@@ -237,20 +263,29 @@ void flagState::makeMarker() {
     
     theReflectionFlag.size.y = 100;
     
+    ofPoint updateRemoveFlagButton;
+    updateRemoveFlagButton.set(theReflectionFlag.tabPos.x+105, theReflectionFlag.tabPos.y);
+    theReflectionFlag.removeFlagButton.update(updateRemoveFlagButton);
+    
 }
 
 //------------------------------------------------------------------
 void flagState::adjustMarker(int floor) {
     
 //    theReflectionFlag.startPos.y-=25;
-    theReflectionFlag.tabPos.y-=25*floor;
-    theReflectionFlag.textPos.y-=25*floor;
+    theReflectionFlag.tabPos.y-=40*floor;
+    theReflectionFlag.textPos.y-=40*floor;
     
-    theReflectionFlag.tabPostPos.y -= 25*floor;
-    theReflectionFlag.tabPostSize.y += 25*floor;
+    theReflectionFlag.tabPostPos.y -= 40*floor;
+    theReflectionFlag.tabPostSize.y += 40*floor;
+    
+    ofPoint updateRemoveFlagButton;
+    updateRemoveFlagButton.set(theReflectionFlag.tabPos.x+105, theReflectionFlag.tabPos.y);
+    theReflectionFlag.removeFlagButton.update(updateRemoveFlagButton);
     
     theReflectionFlag.floor = floor;
-        
+    
+    
 }
 
 //------------------------------------------------------------------
@@ -270,7 +305,7 @@ void flagState::draw(ofTrueTypeFont& basicFont) {
     else if (theReflectionFlag.ended && !theReflectionFlag.selected) {
 
         ofSetColor(255,255,255);
-        ofRect(theReflectionFlag.startPos.x, ofGetHeight()-250, 100, 200);
+        ofRect(taskBox);
         
         identifying.draw(basicFont);
         planning.draw(basicFont);
@@ -287,7 +322,7 @@ void flagState::draw(ofTrueTypeFont& basicFont) {
         ofDisableAlphaBlending();
 
     } else {
-
+        
         ofSetColor(theReflectionFlag.color, 120);
 
         ofEnableAlphaBlending();
@@ -305,7 +340,59 @@ void flagState::draw(ofTrueTypeFont& basicFont) {
     }
 }
 
-
+//------------------------------------------------------------------
+void flagState::drawRemove(ofTrueTypeFont& basicFont) {
+    
+    
+    if (!theReflectionFlag.ended && !theReflectionFlag.selected) {
+        
+        ofSetColor(0,255,0, 120);
+        ofEnableAlphaBlending();
+        //main box
+        ofRect(theReflectionFlag.startPos.x, theReflectionFlag.startPos.y, theReflectionFlag.size.x, theReflectionFlag.size.y);
+        
+        ofDisableAlphaBlending();
+    }
+    
+    else if (theReflectionFlag.ended && !theReflectionFlag.selected) {
+        
+        ofSetColor(255,255,255);
+        ofRect(theReflectionFlag.startPos.x, ofGetHeight()-250, 100, 200);
+        
+        identifying.draw(basicFont);
+        planning.draw(basicFont);
+        walking.draw(basicFont);
+        changing.draw(basicFont);
+        verifying.draw(basicFont);
+        
+        ofSetColor(0,255,0, 120);
+        
+        ofEnableAlphaBlending();
+        //main box
+        ofRect(theReflectionFlag.startPos.x, theReflectionFlag.startPos.y, theReflectionFlag.size.x, theReflectionFlag.size.y);
+        
+        ofDisableAlphaBlending();
+        
+    } else {
+        
+        theReflectionFlag.removeFlagButton.drawWithImage();
+        
+        ofSetColor(theReflectionFlag.color, 120);
+        
+        ofEnableAlphaBlending();
+        //main box
+        ofRect(theReflectionFlag.startPos.x+10, theReflectionFlag.startPos.y, theReflectionFlag.size.x-10, theReflectionFlag.size.y);
+        //tab
+        ofRect(theReflectionFlag.tabPos.x, theReflectionFlag.tabPos.y, theReflectionFlag.tabSize.x, theReflectionFlag.tabSize.y);
+        //post
+        ofRect(theReflectionFlag.tabPostPos.x, theReflectionFlag.tabPostPos.y, theReflectionFlag.tabPostSize.x, theReflectionFlag.tabPostSize.y);
+        
+        ofSetColor(0,0,0);
+        basicFont.drawString(theReflectionFlag.stateMessage, theReflectionFlag.textPos.x, theReflectionFlag.textPos.y);
+        
+        ofDisableAlphaBlending();
+    }
+}
 
 //------------------------------------------------------------------
 void flagState::touchingDown(ofTouchEventArgs &touch) {
@@ -318,6 +405,10 @@ void flagState::touchingDown(ofTouchEventArgs &touch) {
         verifying.touchingDown(touch);
     }
 
+
+    theReflectionFlag.removeFlagButton.touchingDown(touch);
+
+    
 }
 
 //------------------------------------------------------------------
@@ -331,6 +422,8 @@ void flagState::touchingMove(ofTouchEventArgs &touch) {
         verifying.touchingMove(touch);
     }
 
+    theReflectionFlag.removeFlagButton.touchingMove(touch);
+
 }
 
 //------------------------------------------------------------------
@@ -343,5 +436,8 @@ void flagState::touchingUp(ofTouchEventArgs &touch) {
         changing.touchingUp(touch);
         verifying.touchingUp(touch);
     }
+    
+    theReflectionFlag.started = false;
+    theReflectionFlag.removeFlagButton.touchingUp(touch);
 
 }

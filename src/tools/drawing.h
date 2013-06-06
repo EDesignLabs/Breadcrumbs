@@ -16,8 +16,6 @@ typedef struct {
     
     ofPoint pos;
     int     timeStamp;
-    ofColor color;
-	float   lineWidth;
     
 }	touchPoint;
 
@@ -32,6 +30,9 @@ class drawing {
         void draw();
 		void draw(int currentPos);
         void reset();
+
+        ofColor color;
+        float   lineWidth;
 
         vector <touchPoint> thePoints;
     

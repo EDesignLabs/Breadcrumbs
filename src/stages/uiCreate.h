@@ -14,8 +14,6 @@
 #include "button.h"
 
 #include "drawing.h"
-#include "image.h"
-#include "text.h"
 
 
 class uiCreate {
@@ -43,8 +41,6 @@ class uiCreate {
     
         //how initial spots are drawn
         drawing thisDrawing;
-
-        image thisImage;
 
         char eventString[255];
         char timeString[255];

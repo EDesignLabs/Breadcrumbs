@@ -90,11 +90,21 @@ void button::setup(ofPoint pos, ofPoint size, ofColor thisColor, ofImage theImag
 
 
 //------------------------------------------------------------------
-void button::update(ofPoint newPosition) {
+void button::update(float newPosition) {
     
-    thisRectangle.setPosition(newPosition.x, pos.y);
+    thisRectangle.setPosition(newPosition, pos.y);
 //    printf(" newPosition.x is: %d \n", newPosition.x);
 
+}
+
+
+//------------------------------------------------------------------
+void button::update(ofPoint newPosition) {
+    
+    pos.set(newPosition.x, newPosition.y);
+    thisRectangle.setPosition(newPosition.x, newPosition.y);
+    //    printf(" newPosition.x is: %d \n", newPosition.x);
+    
 }
 
 
@@ -246,14 +256,30 @@ void button::drawNoColorWithImageToggle() {
     
 }
 
+//------------------------------------------------------------------
+void button::drawWithImage() {
+    
+    ofEnableAlphaBlending();
+    if (touching) ofSetColor(255, 0, 0,250);
+    else ofSetColor(thisColor);
+    ofRect(thisRectangle);
+    
+    theImage.draw(pos.x+offSet.x, pos.y+offSet.y);
+    
+    ofDisableAlphaBlending();
+    
+}
+
+
 
 //------------------------------------------------------------------
 void button::touchingDown(ofTouchEventArgs &touch) {
 
-    if (thisRectangle.inside(touch.x, touch.y)){
-        touching = true;
+    if (touch.id == 0) {
+        if (thisRectangle.inside(touch.x, touch.y)){
+            touching = true;
+        }
     }
-    
 }
 
 //------------------------------------------------------------------
@@ -265,16 +291,18 @@ void button::touchingMove(ofTouchEventArgs &touch) {
 //------------------------------------------------------------------
 void button::touchingUp(ofTouchEventArgs &touch) {
     
-    if (thisRectangle.inside(touch.x, touch.y) && touching) {
-        //this is specific locations of selections made when lifting finger
-        touching = false;
-        selected = true;
-        toggle = !toggle;
-    }
+    if (touch.id == 0) {
 
-    //this is only checking if you lift your finger
-    touching = false;
-    
+        if (thisRectangle.inside(touch.x, touch.y) && touching) {
+            //this is specific locations of selections made when lifting finger
+            touching = false;
+            selected = true;
+            toggle = !toggle;
+        }
+
+        //this is only checking if you lift your finger
+        touching = false;
+    }
 }
 
 //------------------------------------------------------------------

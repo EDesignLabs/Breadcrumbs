@@ -14,8 +14,6 @@
 #include "button.h"
 #include "drawing.h"
 #include "flagState.h"
-#include "image.h"
-#include "text.h"
 
 
 class uiReflect {

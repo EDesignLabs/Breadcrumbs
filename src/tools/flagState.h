@@ -32,6 +32,7 @@ typedef struct {
     int     floor;
     
     //has a state been names yet, if not, show list of selections
+    bool    started;
     bool    ended;
     bool    selected;
     
@@ -39,6 +40,8 @@ typedef struct {
     int     state;
     string  stateMessage;
 	
+    button  removeFlagButton;
+    
 }	reflectionFlag;
 
 
@@ -59,7 +62,8 @@ class flagState {
         void adjustMarker(int floor);
     
         void draw(ofTrueTypeFont& basicFont);
-
+        void drawRemove(ofTrueTypeFont& basicFont);
+    
         void touchingDown(ofTouchEventArgs &touch);
         void touchingMove(ofTouchEventArgs &touch);
         void touchingUp(ofTouchEventArgs &touch);
@@ -71,6 +75,8 @@ class flagState {
         button  walking;
         button  changing;
         button  verifying;
+    
+        ofRectangle    taskBox;
     
         reflectionFlag theReflectionFlag;
         

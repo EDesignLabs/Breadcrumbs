@@ -172,7 +172,7 @@ void uiPresent::playData() {
         
         //        printf(" scrubLocation.x is: %f \n", scrubLocation->x);
         
-        currentPos->update(*scrubLocation);
+        currentPos->update(scrubLocation->x);
         
         previousTime = ofGetElapsedTimeMillis();
         
@@ -398,13 +398,13 @@ void uiPresent::saveXML(string iPhoneDocumentsDirectory, string xmlFileOne, stri
                     XMLOne.setValue("TIMESTAMP:INT", drawThese[i].thePoints[h].timeStamp, tagNum);
 
                     tagNum = XMLOne.addTag("COLOR");
-                    XMLOne.setValue("COLOR:RED", drawThese[i].thePoints[h].color.r, tagNum);
-                    XMLOne.setValue("COLOR:GREEN", drawThese[i].thePoints[h].color.g, tagNum);
-                    XMLOne.setValue("COLOR:BLUE", drawThese[i].thePoints[h].color.b, tagNum);
-                    XMLOne.setValue("COLOR:ALPHA", drawThese[i].thePoints[h].color.a, tagNum);
+                    XMLOne.setValue("COLOR:RED", drawThese[i].color.r, tagNum);
+                    XMLOne.setValue("COLOR:GREEN", drawThese[i].color.g, tagNum);
+                    XMLOne.setValue("COLOR:BLUE", drawThese[i].color.b, tagNum);
+                    XMLOne.setValue("COLOR:ALPHA", drawThese[i].color.a, tagNum);
 
                     tagNum = XMLOne.addTag("LINEWIDTH");
-                    XMLOne.setValue("LINEWIDTH:FLOAT", drawThese[i].thePoints[h].lineWidth, tagNum);
+                    XMLOne.setValue("LINEWIDTH:FLOAT", drawThese[i].lineWidth, tagNum);
 
                     XMLOne.popTag();
 
@@ -517,7 +517,7 @@ void uiPresent::update() {
     if (scrubBox->touching) {
         playPauseButton->toggle = false;
         scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
-        currentPos->update(*scrubLocation);
+        currentPos->update(scrubLocation->x);
     }
  
     if (markerButton->selected) {
@@ -550,8 +550,8 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
 
     //drawing from create
     for (int i = 0; i < drawThese.size(); i++) {
-        ofSetColor(drawThese[i].thePoints[0].color);
-        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        ofSetColor(drawThese[i].color);
+        ofSetLineWidth(drawThese[i].lineWidth);
         drawThese[i].draw(scrubPos.x);
     }
     
@@ -572,8 +572,8 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
     //What is from marker
 
     for (int i = 0; i < markerThese.size(); i++) {
-        ofSetColor(markerThese[i].thePoints[0].color);
-        ofSetLineWidth(markerThese[i].thePoints[0].lineWidth);
+        ofSetColor(markerThese[i].color);
+        ofSetLineWidth(markerThese[i].lineWidth);
         markerThese[i].draw();
     }
 
@@ -611,8 +611,8 @@ void uiPresent::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
     
     //drawing from create
     for (int i = 0; i < drawThese.size(); i++) {
-        ofSetColor(drawThese[i].thePoints[0].color);
-        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        ofSetColor(drawThese[i].color);
+        ofSetLineWidth(drawThese[i].lineWidth);
         drawThese[i].draw(scrubPos.x);
     }
 
@@ -633,8 +633,8 @@ void uiPresent::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
     //What is from marker
     
     for (int i = 0; i < markerThese.size(); i++) {
-        ofSetColor(markerThese[i].thePoints[0].color);
-        ofSetLineWidth(markerThese[i].thePoints[0].lineWidth);
+        ofSetColor(markerThese[i].color);
+        ofSetLineWidth(markerThese[i].lineWidth);
         markerThese[i].draw();
     }
     

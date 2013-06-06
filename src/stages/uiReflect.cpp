@@ -166,7 +166,7 @@ void uiReflect::playData() {
         
 //        printf(" scrubLocation.x is: %f \n", scrubLocation->x);
         
-        currentPos->update(*scrubLocation);
+        currentPos->update(scrubLocation->x);
                 
         previousTime = ofGetElapsedTimeMillis();
    
@@ -192,7 +192,7 @@ void uiReflect::update() {
     if (scrubBox->touching) {
         playPauseButton->toggle = false;
         scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
-        currentPos->update(*scrubLocation);
+        currentPos->update(scrubLocation->x);
     }
     
     if (theFlagState.theReflectionFlag.ended) {
@@ -203,9 +203,19 @@ void uiReflect::update() {
             checkFlags();
             theFlagStates.push_back(theFlagState);
             theFlagState.reset();
+            printf(" picked my flag!");
         }
         
     }
+    
+    for (int i = 0; i < theFlagStates.size(); i++){
+        if (theFlagStates[i].theReflectionFlag.removeFlagButton.selected) {
+            printf("removeFlagButtonSelection for: %d \n", i);
+            theFlagStates.erase( theFlagStates.begin()+i );
+        }
+    }
+
+    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
     
 }
 
@@ -232,9 +242,9 @@ void uiReflect::checkFlags() {
             float dist = theFlagStates[i].theReflectionFlag.startPos.x - theFlagState.theReflectionFlag.startPos.x;
             
             dist = abs(dist);
-            printf("dist = %f \n", dist);
+//            printf("dist = %f \n", dist);
             
-            if (dist < 96) {
+            if (dist < 130) {
                 floor[theFlagStates[i].theReflectionFlag.floor] = true;
             }
         
@@ -246,7 +256,7 @@ void uiReflect::checkFlags() {
 //        }
         
         while (chosen == false) {
-            printf("chosen run: %d \n", counter);
+//            printf("chosen run: %d \n", counter);
             //check through each floor.
             //if true, go to next.
             //if false, assign the floor to current flag
@@ -276,8 +286,8 @@ void uiReflect::draw(ofTrueTypeFont& basicFont) {
 //    ofSetLineWidth(2.0);
 //    ofSetColor(0, 0, 0);
     for (int i = 0; i < drawThese.size(); i++) {
-        ofSetColor(drawThese[i].thePoints[0].color);
-        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        ofSetColor(drawThese[i].color);
+        ofSetLineWidth(drawThese[i].lineWidth);
         drawThese[i].draw(scrubPos.x);
     } 
     
@@ -291,10 +301,10 @@ void uiReflect::draw(ofTrueTypeFont& basicFont) {
     
     if (flagButton->toggle) {
         for (int i = 0; i < theFlagStates.size(); i++) {
-            theFlagStates[i].draw(basicFont);
+            theFlagStates[i].drawRemove(basicFont);
         }
         
-        theFlagState.draw(basicFont);
+        theFlagState.drawRemove(basicFont);
     }
 
     
@@ -312,8 +322,8 @@ void uiReflect::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
     //    ofSetLineWidth(2.0);
     //    ofSetColor(0, 0, 0);
     for (int i = 0; i < drawThese.size(); i++) {
-        ofSetColor(drawThese[i].thePoints[0].color);
-        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        ofSetColor(drawThese[i].color);
+        ofSetLineWidth(drawThese[i].lineWidth);
         drawThese[i].draw(scrubPos.x);
     }
     
@@ -332,10 +342,10 @@ void uiReflect::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
     
     if (flagButton->toggle) {
         for (int i = 0; i < theFlagStates.size(); i++) {
-            theFlagStates[i].draw(basicFont);
+            theFlagStates[i].drawRemove(basicFont);
         }
         
-        theFlagState.draw(basicFont);
+        theFlagState.drawRemove(basicFont);
     }
     
     
@@ -356,9 +366,17 @@ void uiReflect::touchingDown(ofTouchEventArgs &touch) {
         if (scrubBox->touching) {
             scrubLocation->set(touch.x, touch.y);
             theFlagState.updateStart(touch);
+        } else if (theFlagState.theReflectionFlag.ended && !theFlagState.taskBox.inside(touch.x, touch.y)) {
+            theFlagState.theReflectionFlag.ended = false;
         }
     
         theFlagState.touchingDown(touch);
+    
+        if (flagButton->toggle) {
+            for (int i = 0; i < theFlagStates.size(); i++) {
+                theFlagStates[i].touchingDown(touch);
+            }
+        }
     
 }
 
@@ -369,13 +387,20 @@ void uiReflect::touchingMove(ofTouchEventArgs &touch) {
         flagButton->touchingMove(touch);
         scrubBox->touchingMove(touch);
 
-        if (scrubBox->touching && touch.x >= scrubBox->pos.x) {
+        if (scrubBox->touching && touch.x >= scrubBox->pos.x && touch.y > scrubBox->pos.y) {
             scrubLocation->set(touch.x, touch.y);
             theFlagState.update(touch);
         }
     
         theFlagState.touchingMove(touch);
     
+
+        if (flagButton->toggle) {
+            for (int i = 0; i < theFlagStates.size(); i++) {
+                theFlagStates[i].touchingMove(touch);
+            }
+        }
+
 }
 
 //------------------------------------------------------------------
@@ -384,13 +409,20 @@ void uiReflect::touchingUp(ofTouchEventArgs &touch) {
         playPauseButton->touchingUp(touch);
         flagButton->touchingUp(touch);
         scrubBox->touchingUp(touch);
-
-        if (scrubBox->thisRectangle.inside(touch.x, touch.y)) {
+    
+        if (scrubBox->thisRectangle.inside(touch.x, touch.y) && theFlagState.theReflectionFlag.started) {
             scrubLocation->set(touch.x, touch.y);
             theFlagState.updateEnd(touch);
         }
 
         theFlagState.touchingUp(touch);
+
+        if (flagButton->toggle) {
+            for (int i = 0; i < theFlagStates.size(); i++) {
+                theFlagStates[i].touchingUp(touch);
+            }
+        }
+
 }
 
 

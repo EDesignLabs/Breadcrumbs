@@ -15,7 +15,6 @@
 //------------------------------------------------------------------
 uiCreate::~uiCreate() {
     
-    thisImage.reset();
     exit();
 
     //uiCreate elements
@@ -33,9 +32,7 @@ uiCreate::~uiCreate() {
 
 //------------------------------------------------------------------
 uiCreate::uiCreate(string theText) {
-    
-    thisImage.setup();
-    
+        
     //load uiCreate images
     pencil = new ofImage;
     erase = new ofImage;
@@ -121,8 +118,8 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 //What is created
 
     for (int i = 0; i < drawThese.size(); i++) {
-        ofSetColor(drawThese[i].thePoints[0].color);
-        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        ofSetColor(drawThese[i].color);
+        ofSetLineWidth(drawThese[i].lineWidth);
         drawThese[i].draw();
     }
     
@@ -184,8 +181,8 @@ void uiCreate::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
     //What is created
     
     for (int i = 0; i < drawThese.size(); i++) {
-        ofSetColor(drawThese[i].thePoints[0].color);
-        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        ofSetColor(drawThese[i].color);
+        ofSetLineWidth(drawThese[i].lineWidth);
         drawThese[i].draw();
     }
     

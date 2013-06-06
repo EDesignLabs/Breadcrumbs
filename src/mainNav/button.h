@@ -16,6 +16,7 @@ public:
     void setup(ofPoint pos, ofPoint size, ofColor thisColor);
     void setup(ofPoint pos, ofPoint size, ofColor thisColor, ofImage theImage, ofPoint offset);
     void setup(ofPoint pos, ofPoint size, ofColor thisColor, ofImage theImageOne, ofImage theImageTwo, ofPoint offset);
+    void update(float newPosition);
     void update(ofPoint newPosition);
     void draw();
     void drawToggle();
@@ -25,6 +26,7 @@ public:
     void drawNoColor();
     void drawNoColorWithImage();
     void drawNoColorWithImageToggle();
+    void drawWithImage();
     
     //tracking touch events
     void touchingDown(ofTouchEventArgs &touch);

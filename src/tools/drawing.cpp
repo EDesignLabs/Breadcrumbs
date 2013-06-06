@@ -50,8 +50,8 @@ void drawing::update(ofTouchEventArgs &touch, ofColor color, float lineWidth) {
     newLocation.pos.x = touch.x;
     newLocation.pos.y = touch.y;
     
-    newLocation.color = color;
-    newLocation.lineWidth = lineWidth;
+    this->color = color;
+    this->lineWidth = lineWidth;
     
     newLocation.timeStamp = ofGetElapsedTimeMillis();
     
@@ -65,8 +65,8 @@ void drawing::update(ofPoint &pos, ofColor color, float lineWidth) {
     touchPoint newLocation;
     newLocation.pos = pos;
     
-    newLocation.color = color;
-    newLocation.lineWidth = lineWidth;
+    this->color = color;
+    this->lineWidth = lineWidth;
     
     newLocation.timeStamp = ofGetElapsedTimeMillis();
     
@@ -81,8 +81,8 @@ void drawing::update(ofPoint &pos, int timeStamp, ofColor color, float lineWidth
     touchPoint newLocation;
     newLocation.pos = pos;
     
-    newLocation.color = color;
-    newLocation.lineWidth = lineWidth;
+    this->color = color;
+    this->lineWidth = lineWidth;
     
     newLocation.timeStamp = timeStamp;
     
