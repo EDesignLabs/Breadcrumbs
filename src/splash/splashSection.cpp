@@ -11,7 +11,7 @@
 //------------------------------------------------------------------
 splashSection::~splashSection() {
 
-    printf(" splashSection deconstructor \n");
+//    printf(" splashSection deconstructor \n");
     
 }
 
@@ -25,7 +25,7 @@ splashSection::splashSection() {
 //------------------------------------------------------------------
 void splashSection::setup(ofImage stage, int pageStart, int pageEnd, bool turnOn, bool turnOff, int currentAlpha) {
 
-    printf(" splashSection setup started \n");
+//    printf(" splashSection setup started \n");
 
     splashPage theSplashPage;
     
@@ -40,7 +40,7 @@ void splashSection::setup(ofImage stage, int pageStart, int pageEnd, bool turnOn
     
     updated = false;
 
-    printf(" splashSection setup ended \n");
+//    printf(" splashSection setup ended \n");
 
 }
 
@@ -66,8 +66,8 @@ void splashSection::slideTimer() {
         for (int i = 0; i < section.size(); i++) {
             section[i].pageStart += currentTime;
             section[i].pageEnd   += currentTime;
-            printf("section[i] pageStart, %d \n", section[i].pageStart);
-            printf("section[i] pageEnd, %d \n", section[i].pageEnd);
+//            printf("section[i] pageStart, %d \n", section[i].pageStart);
+//            printf("section[i] pageEnd, %d \n", section[i].pageEnd);
 
         }
         
@@ -84,7 +84,7 @@ void splashSection::updatePage(splashPage &thePage) {
         if (currentTime >= thePage.pageStart  && currentTime < thePage.pageEnd) {
             if(thePage.alphaValue < 255 && thePage.turnOn == true) {
                 thePage.alphaValue += 5;
-                printf("current time >= thepage.pagestart \n");
+//                printf("current time >= thepage.pagestart \n");
             }
         }
     }
@@ -93,7 +93,7 @@ void splashSection::updatePage(splashPage &thePage) {
         if (currentTime > thePage.pageEnd) {
             if (thePage.alphaValue > 0) {
                 thePage.alphaValue -= 5;
-                printf("current time > thepage.pageEnd \n");
+//                printf("current time > thepage.pageEnd \n");
             }
         }
     }
@@ -103,7 +103,7 @@ void splashSection::updatePage(splashPage &thePage) {
 void splashSection::draw() {
 
     for (int i = 0; i < section.size(); i++) {
-        printf("section[i] alpha value, %d \n", section[i].alphaValue);
+//        printf("section[i] alpha value, %d \n", section[i].alphaValue);
         ofSetColor(255, 255, 255, section[i].alphaValue);
         section[i].stage.draw(pos);
     }

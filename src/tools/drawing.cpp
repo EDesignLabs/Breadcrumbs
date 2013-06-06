@@ -75,7 +75,6 @@ void drawing::update(ofPoint &pos, ofColor color, float lineWidth) {
 }
 
 
-
 //------------------------------------------------------------------
 void drawing::update(ofPoint &pos, int timeStamp, ofColor color, float lineWidth) {
     

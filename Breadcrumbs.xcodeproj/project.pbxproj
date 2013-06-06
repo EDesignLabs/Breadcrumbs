@@ -51,6 +51,8 @@
 		ECDA3AD11714D4DD000036C2 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACB1714D4DD000036C2 /* tinyxmlerror.cpp */; };
 		ECDA3AD21714D4DD000036C2 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACC1714D4DD000036C2 /* tinyxmlparser.cpp */; };
 		ECDA3AD31714D4DD000036C2 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACE1714D4DD000036C2 /* ofxXmlSettings.cpp */; };
+		ECEE463817604B5900A167DD /* saveMathThree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEE463417604B5900A167DD /* saveMathThree.cpp */; };
+		ECEE463917604B5900A167DD /* saveMathTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEE463617604B5900A167DD /* saveMathTwo.cpp */; };
 		ECFFE939175CFAA500980F00 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = ECFFE92E175CFAA500980F00 /* .gitignore */; };
 		ECFFE93A175CFAA500980F00 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ECFFE92F175CFAA500980F00 /* README.md */; };
 		ECFFE93B175CFAA500980F00 /* ofPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFE932175CFAA500980F00 /* ofPanGestureRecognizer.m */; };
@@ -144,6 +146,10 @@
 		ECDA3ACC1714D4DD000036C2 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		ECDA3ACE1714D4DD000036C2 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		ECDA3ACF1714D4DD000036C2 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		ECEE463417604B5900A167DD /* saveMathThree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saveMathThree.cpp; sourceTree = "<group>"; };
+		ECEE463517604B5900A167DD /* saveMathThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveMathThree.h; sourceTree = "<group>"; };
+		ECEE463617604B5900A167DD /* saveMathTwo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saveMathTwo.cpp; sourceTree = "<group>"; };
+		ECEE463717604B5900A167DD /* saveMathTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveMathTwo.h; sourceTree = "<group>"; };
 		ECFFE92E175CFAA500980F00 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		ECFFE92F175CFAA500980F00 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		ECFFE931175CFAA500980F00 /* ofPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPanGestureRecognizer.h; sourceTree = "<group>"; };
@@ -324,6 +330,10 @@
 				EC8D7728174E7389006F428F /* problemMathThree.h */,
 				EC0D8D1B175E7F5F00EEAEC3 /* saveMathOne.cpp */,
 				EC0D8D1C175E7F5F00EEAEC3 /* saveMathOne.h */,
+				ECEE463617604B5900A167DD /* saveMathTwo.cpp */,
+				ECEE463717604B5900A167DD /* saveMathTwo.h */,
+				ECEE463417604B5900A167DD /* saveMathThree.cpp */,
+				ECEE463517604B5900A167DD /* saveMathThree.h */,
 			);
 			path = problems;
 			sourceTree = "<group>";
@@ -563,6 +573,8 @@
 				ECFFE942175CFAC800980F00 /* splashNav.cpp in Sources */,
 				ECC7379B175D07A800C7DE79 /* splashSection.cpp in Sources */,
 				EC0D8D1D175E7F5F00EEAEC3 /* saveMathOne.cpp in Sources */,
+				ECEE463817604B5900A167DD /* saveMathThree.cpp in Sources */,
+				ECEE463917604B5900A167DD /* saveMathTwo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

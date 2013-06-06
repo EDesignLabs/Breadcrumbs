@@ -15,7 +15,7 @@
 //------------------------------------------------------------------
 text::~text() {
     
-    printf(" text reset ended \n");
+//    printf(" text reset ended \n");
     
 }
 
@@ -27,13 +27,13 @@ text::~text() {
 //------------------------------------------------------------------
 text::text() {
     
-    printf(" text setup started \n");
+//    printf(" text setup started \n");
     
     verdana16.loadFont("verdana.ttf", 16, true, true);
     verdana16.setLineHeight(24.0f);
     verdana16.setLetterSpacing(0.96);
     
-    printf(" text setup ended \n");
+//    printf(" text setup ended \n");
 
 }
 

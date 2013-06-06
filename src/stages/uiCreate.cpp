@@ -171,6 +171,73 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
     
 }
 
+//------------------------------------------------------------------
+void uiCreate::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
+    
+    //    sprintf (timeString, "time: %0.2i:%0.2i:%0.2i \nelapsed time %i", ofGetHours(), ofGetMinutes(), ofGetSeconds(), ofGetElapsedTimeMillis());
+	
+    ofSetHexColor(0x000000);
+    //	basicFont.drawString(timeString, 10,ofGetHeight()-90);
+    //	basicFont.drawString(eventString, 10,ofGetHeight()-20);
+    
+    //-----------------------------------------------
+    //What is created
+    
+    for (int i = 0; i < drawThese.size(); i++) {
+        ofSetColor(drawThese[i].thePoints[0].color);
+        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        drawThese[i].draw();
+    }
+    
+    
+    //-----------------------------------------------
+    //Tools
+    
+    
+    //    ofSetLineWidth(2.0);
+    
+    if (*pencilSelected) {
+        ofSetColor(0, 0, 0);
+        ofSetLineWidth(2.0);
+        if (currentDrawing.size()>0) {
+            for (int i = 1; i < currentDrawing.size(); i++) {
+                ofLine(currentDrawing[i-1].x, currentDrawing[i-1].y, currentDrawing[i].x, currentDrawing[i].y);
+            }
+        }
+    }
+    
+    if (*eraseSelected) {
+        ofSetColor(255, 255, 255);
+        ofSetLineWidth(300.0);
+        if (currentDrawing.size()>0) {
+            for (int i = 1; i < currentDrawing.size(); i++) {
+                ofLine(currentDrawing[i-1].x, currentDrawing[i-1].y, currentDrawing[i].x, currentDrawing[i].y);
+            }
+        }
+    }
+    
+    ofSetLineWidth(2.0);
+    
+    //-----------------------------------------------
+    //Tool Button UI
+    
+    
+    pencilButton.drawToggle();
+    eraseButton.drawToggle();
+    
+    ofSetHexColor(0xFFFFFF);
+    
+    ofEnableAlphaBlending();
+    pencil->draw(10, pencilButton.pos.y+10);
+    erase->draw(10, eraseButton.pos.y+10);
+    ofDisableAlphaBlending();
+    
+    ofEnableAlphaBlending();
+    ofSetColor(255, 255, 255);
+    questionImage.draw(175, ofGetHeight()/3+50);
+    ofDisableAlphaBlending();
+    
+}
 
 ////////////////////////////////////////////////////////////////////
 //      TOUCH                                                     //

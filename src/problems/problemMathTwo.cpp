@@ -50,7 +50,7 @@ problemMathTwo::problemMathTwo() {
     
     size.set(questionButtonImage.getWidth()+20, questionButtonImage.getHeight()+20);
     pos.set(ofGetWidth()-45, 0);
-    offSet.set(15, 32);
+    offSet.set(105, 32);
     color.set(170, 170, 170);
     questionButton.setup(pos, size, color);
     
@@ -58,17 +58,17 @@ problemMathTwo::problemMathTwo() {
     posTwo.set(46, 0);
     size.set(311, 46);
     color.set(200, 52, 70, 255);
-    createButton.setup(posTwo, size, offSet, "1. Create", color);
+    createButton.setup(posTwo, size, offSet, "Journey", color);
     
     ofPoint posThree;
     posThree.set(357, 0);
     color.set(68, 116, 176, 255);
-    reflectButton.setup(posThree, size, offSet, "2. Reflect", color);
+    reflectButton.setup(posThree, size, offSet, "Breadcrumbs", color);
     
     ofPoint posFour;
     posThree.set(668, 0);
     color.set(230, 224, 47, 255);
-    presentButton.setup(posThree, size, offSet, "3. Present", color);
+    presentButton.setup(posThree, size, offSet, "Storyteller", color);
     
     navStateCreate = true;
     navStateReflect = false;
@@ -82,7 +82,7 @@ problemMathTwo::problemMathTwo() {
     
     feedbackBrickPos.set(50, 46);
     
-    printf(" problemMathTwo Setup ended \n ");
+//    printf(" problemMathTwo Setup ended \n ");
 
 }
 
@@ -92,7 +92,7 @@ problemMathTwo::problemMathTwo() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------        
-void problemMathTwo::update() {
+void problemMathTwo::update(string iPhoneDocumentsDirectory) {
     
     
 //-----------------------------------------------
@@ -126,6 +126,15 @@ void problemMathTwo::update() {
 
         //set value of drawing
         present->setPoints(create->drawThese, reflect->theFlagStates);
+
+        string xmlFileOne;
+        string xmlFileTwo;
+        xmlFileOne = "myCreateProbTwo.xml";
+        xmlFileTwo = "myReflectProbTwo.xml";
+        
+        //save XML file for later
+        present->xmlSetupThang(iPhoneDocumentsDirectory, xmlFileOne, xmlFileTwo);
+        present->saveXML(iPhoneDocumentsDirectory, xmlFileOne,xmlFileTwo);
 
     }
     

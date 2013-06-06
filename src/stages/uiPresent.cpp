@@ -136,9 +136,9 @@ void uiPresent::setPoints(vector <drawing> theDrawings, vector<flagState> theFla
         scrubFeedback[i].y += ofGetHeight()-25;
     }
     
-    printf(" endTime is: %d \n", endTime);
-    printf(" scrubfeedback[0].x is: %f \n", scrubFeedback[0].x);
-    printf(" scrubfeedback[0].y is: %f \n", scrubFeedback[0].y);
+//    printf(" endTime is: %d \n", endTime);
+//    printf(" scrubfeedback[0].x is: %f \n", scrubFeedback[0].x);
+//    printf(" scrubfeedback[0].y is: %f \n", scrubFeedback[0].y);
 
 }
 
@@ -228,19 +228,19 @@ void uiPresent::xmlSetupThang(string iPhoneDocumentsDirectory, string xmlFileOne
 	int green	= XMLOne.getValue("DRAWING:TOUCHPOINT:COLOR:GREEN", 255);
 	int blue	= XMLOne.getValue("DRAWING:TOUCHPOINT:COLOR:BLUE", 255);
 
-    printf("XMLOne Red: %d \n", red);
-    printf("XMLOne Green: %d \n", green);
-    printf("XMLOne Blue: %d \n", blue);
+//    printf("XMLOne Red: %d \n", red);
+//    printf("XMLOne Green: %d \n", green);
+//    printf("XMLOne Blue: %d \n", blue);
 
     red		= XMLTwo.getValue("REFLECTIONFLAG:COLOR:RED", 20);
 	green	= XMLTwo.getValue("REFLECTIONFLAG:COLOR:GREEN", 20);
 	blue	= XMLTwo.getValue("REFLECTIONFLAG:COLOR:BLUE", 20);
     
-    printf("XMLTwo Red: %d \n", red);
-    printf("XMLTwo Green: %d \n", green);
-    printf("XMLTwo Blue: %d \n", blue);
+//    printf("XMLTwo Red: %d \n", red);
+//    printf("XMLTwo Green: %d \n", green);
+//    printf("XMLTwo Blue: %d \n", blue);
 
-    printf("ran XMLSetupThang \n");
+//    printf("ran XMLSetupThang \n");
     
 }
 
@@ -265,7 +265,7 @@ void uiPresent::getXML(string XMLFileOne, string XMLFileTwo) {
 
             //we see how many points we have stored in <TOUCHPOINT> tags
             int numTouchPointTags = XMLOne.getNumTags("TOUCHPOINT");
-            printf("numTouchPointTags %d \n", numTouchPointTags);
+//            printf("numTouchPointTags %d \n", numTouchPointTags);
             
             if(numTouchPointTags > 0){
 
@@ -284,8 +284,8 @@ void uiPresent::getXML(string XMLFileOne, string XMLFileTwo) {
                     color.b     = XMLOne.getValue("TOUCHPOINT:COLOR:BLUE", 0, h);
                     lineWidth   = XMLOne.getValue("TOUCHPOINT:LINEWIDTH:FLOAT", 0, h);
                     
-                    printf("drawing pos.x: %f \n", pos.x);
-                    printf("drawing pos.y: %f \n", pos.y);
+//                    printf("drawing pos.x: %f \n", pos.x);
+//                    printf("drawing pos.y: %f \n", pos.y);
                     
                     thisDrawing.update(pos, timeStamp, color, lineWidth);
 
@@ -299,7 +299,7 @@ void uiPresent::getXML(string XMLFileOne, string XMLFileTwo) {
             
         }
     
-        printf("ran GETXML Drawing \n");
+//        printf("ran GETXML Drawing \n");
 
         
     }
@@ -307,7 +307,7 @@ void uiPresent::getXML(string XMLFileOne, string XMLFileTwo) {
         
     //Where we grab the data
     int numReflectionTags = XMLTwo.getNumTags("REFLECTIONFLAG:STARTPOS");
-    printf("numReflectionTags %d \n", numReflectionTags);
+//    printf("numReflectionTags %d \n", numReflectionTags);
     
 	//if there is at least one <STROKE> tag we can read the list of points
 	//and then try and draw it as a line on the screen
@@ -346,13 +346,13 @@ void uiPresent::getXML(string XMLFileOne, string XMLFileTwo) {
             theFlagState.theReflectionFlag.state               = XMLTwo.getValue("REFLECTIONFLAG:STATE:INT", 0, i);
             theFlagState.theReflectionFlag.stateMessage        = XMLTwo.getValue("REFLECTIONFLAG:STATEMESSAGE:STRING", "Nothing", i);
             
-            printf("theFlagState startPos.x: %f \n", theFlagState.theReflectionFlag.startPos.x);
-            printf("theFlagState startPos.y: %f \n", theFlagState.theReflectionFlag.startPos.y);
+//            printf("theFlagState startPos.x: %f \n", theFlagState.theReflectionFlag.startPos.x);
+//            printf("theFlagState startPos.y: %f \n", theFlagState.theReflectionFlag.startPos.y);
 
             theFlagStates.push_back(theFlagState);
             
         }
-        printf("ran GETXML ReflectionFlag \n");
+//        printf("ran GETXML ReflectionFlag \n");
     }
 
 
@@ -375,7 +375,6 @@ void uiPresent::saveXML(string iPhoneDocumentsDirectory, string xmlFileOne, stri
  
     //drawing from create
     for (int i = 0; i < drawThese.size(); i++) {
-        
         
         lastTagNumberDrawing	= XMLOne.addTag("DRAWING");
 
@@ -417,7 +416,7 @@ void uiPresent::saveXML(string iPhoneDocumentsDirectory, string xmlFileOne, stri
         }
 
         XMLOne.saveFile( iPhoneDocumentsDirectory + xmlFileOne );
-        printf(" saved to app documents folder \n ");
+//        printf(" saved to app documents folder \n ");
         
     }
 
@@ -538,8 +537,8 @@ void uiPresent::update() {
 //------------------------------------------------------------------
 void uiPresent::draw(ofTrueTypeFont& basicFont) {
     
-    basicFont.drawString(messageOne, ofGetWidth()/2, 250);
-    basicFont.drawString(messageTwo, ofGetWidth()/2, 280);
+//    basicFont.drawString(messageOne, ofGetWidth()/2, 250);
+//    basicFont.drawString(messageTwo, ofGetWidth()/2, 280);
     
     playPauseButton->drawNoColorWithImageToggle();
     markerButton->drawNoColorWithImage();
@@ -556,6 +555,7 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
         drawThese[i].draw(scrubPos.x);
     }
     
+    ofSetColor(0, 0, 0);
     ofSetLineWidth(1.0);
     if (scrubFeedback.size() > 0) {
         for (int i = 1; i < scrubFeedback.size(); i++) {
@@ -596,6 +596,72 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
     //    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
 }
 
+//------------------------------------------------------------------
+void uiPresent::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
+    
+//    basicFont.drawString(messageOne, ofGetWidth()/2, 250);
+//    basicFont.drawString(messageTwo, ofGetWidth()/2, 280);
+    
+    playPauseButton->drawNoColorWithImageToggle();
+    markerButton->drawNoColorWithImage();
+    scrubBox->drawNoColor();
+    currentPos->draw();
+    
+    //    ofSetLineWidth(2.0);
+    
+    //drawing from create
+    for (int i = 0; i < drawThese.size(); i++) {
+        ofSetColor(drawThese[i].thePoints[0].color);
+        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        drawThese[i].draw(scrubPos.x);
+    }
+
+    ofSetColor(0, 0, 0);
+    ofSetLineWidth(1.0);
+    if (scrubFeedback.size() > 0) {
+        for (int i = 1; i < scrubFeedback.size(); i++) {
+            ofLine(scrubFeedback[i-1].x, scrubFeedback[i-1].y, scrubFeedback[i].x, scrubFeedback[i].y);
+        }
+    }
+    
+    for (int i = 0; i < theFlagStates.size(); i++) {
+        theFlagStates[i].draw(basicFont);
+    }
+    
+    
+    //-----------------------------------------------
+    //What is from marker
+    
+    for (int i = 0; i < markerThese.size(); i++) {
+        ofSetColor(markerThese[i].thePoints[0].color);
+        ofSetLineWidth(markerThese[i].thePoints[0].lineWidth);
+        markerThese[i].draw();
+    }
+    
+    //-----------------------------------------------
+    //Marker feedback
+    ofSetColor(255, 220, 0);
+    
+    if (*markerButtonSelected) {
+        
+        ofSetLineWidth(6.0);
+        if (currentDrawing.size()>0) {
+            for (int i = 1; i < currentDrawing.size(); i++) {
+                ofLine(currentDrawing[i-1].x, currentDrawing[i-1].y, currentDrawing[i].x, currentDrawing[i].y);
+            }
+        }
+        
+    }
+    
+    ofEnableAlphaBlending();
+    ofSetColor(255, 255, 255);
+    questionImage.draw(175, ofGetHeight()/3+50);
+    ofDisableAlphaBlending();
+    
+    ofSetLineWidth(1.0);
+    //    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
+}
+
 
 ////////////////////////////////////////////////////////////////////
 //      TOUCH                                                     //
@@ -626,7 +692,7 @@ void uiPresent::touchingDown(ofTouchEventArgs &touch) {
             if (theFlagStates[i].theReflectionFlag.presentCheck.inside(scrubLocation->x, scrubLocation->y)){
         
                 markerColor.set(theFlagStates[i].theReflectionFlag.color);
-                printf(" found a color that matches! \n ");
+//                printf(" found a color that matches! \n ");
                 break;
             } else {
                 markerColor.set(0,255,0);

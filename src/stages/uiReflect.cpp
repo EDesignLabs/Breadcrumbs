@@ -301,6 +301,46 @@ void uiReflect::draw(ofTrueTypeFont& basicFont) {
 //    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
 }
 
+//------------------------------------------------------------------
+void uiReflect::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
+    
+    playPauseButton->drawNoColorWithImageToggle();
+    flagButton->drawNoColorWithImage();
+    scrubBox->drawNoColor();
+    currentPos->draw();
+    
+    //    ofSetLineWidth(2.0);
+    //    ofSetColor(0, 0, 0);
+    for (int i = 0; i < drawThese.size(); i++) {
+        ofSetColor(drawThese[i].thePoints[0].color);
+        ofSetLineWidth(drawThese[i].thePoints[0].lineWidth);
+        drawThese[i].draw(scrubPos.x);
+    }
+    
+    ofSetColor(0, 0, 0);
+    ofSetLineWidth(1.0);
+    if (scrubFeedback.size() > 0) {
+        for (int i = 1; i < scrubFeedback.size(); i++) {
+            ofLine(scrubFeedback[i-1].x, scrubFeedback[i-1].y, scrubFeedback[i].x, scrubFeedback[i].y);
+        }
+    }
+    
+    ofEnableAlphaBlending();
+    ofSetColor(255, 255, 255);
+    questionImage.draw(175, ofGetHeight()/3+50);
+    ofDisableAlphaBlending();
+    
+    if (flagButton->toggle) {
+        for (int i = 0; i < theFlagStates.size(); i++) {
+            theFlagStates[i].draw(basicFont);
+        }
+        
+        theFlagState.draw(basicFont);
+    }
+    
+    
+    //    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
+}
 
 ////////////////////////////////////////////////////////////////////
 //      TOUCH                                                     //

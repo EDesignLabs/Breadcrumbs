@@ -11,7 +11,7 @@
 //------------------------------------------------------------------
 void nav::setup() {
 
-    printf(" NAV setup started \n");
+//    printf(" NAV setup started \n");
     
     ofPoint pos;
     ofPoint size;
@@ -56,6 +56,17 @@ void nav::setup() {
     ofPoint posFive;
     posFive.set(768, 0);
     myWorkButton.setup(posFive, size, offSet, "Recent Work", color);
+    
+    posFive.set(796, 80);
+    size.set(200, 200);
+    color.set(255, 200, 200, 120);
+    myWorkBirds.setup(posFive, size, offSet, "BIRDS!", color);
+
+    posFive.set(796, 308);
+    myWorkBreadcrumb.setup(posFive, size, offSet, "Find the path", color);
+
+    posFive.set(796, 536);
+    myWorkCandy.setup(posFive, size, offSet, "Candy", color);
 
     splash = new splashNav;
     
@@ -64,9 +75,11 @@ void nav::setup() {
     navStateExerciseOne = false;
     navStateExerciseTwo = false;
     navStateExerciseThree = false;
-    navStateSavedMath = false;
+    navStateSavedMathOne = false;
+    navStateSavedMathTwo = false;
+    navStateSavedMathThree = false;
     
-    printf(" NAV setup ended \n");
+//    printf(" NAV setup ended \n");
     
 }
 		 
@@ -91,7 +104,9 @@ void nav::update(int section, string iPhoneDocumentsDirectory) {
         navStateExerciseOne = true;
         navStateExerciseTwo = false;
         navStateExerciseThree = false;
-        navStateSavedMath = false;
+        navStateSavedMathOne = false;
+        navStateSavedMathTwo = false;
+        navStateSavedMathThree = false;
         birdsButton.selected=false;
     }
 
@@ -101,7 +116,9 @@ void nav::update(int section, string iPhoneDocumentsDirectory) {
         navStateExerciseOne = false;
         navStateExerciseTwo = true;
         navStateExerciseThree = false;
-        navStateSavedMath = false;
+        navStateSavedMathOne = false;
+        navStateSavedMathTwo = false;
+        navStateSavedMathThree = false;
         breadcrumbsButton.selected=false;
     }
 
@@ -111,21 +128,48 @@ void nav::update(int section, string iPhoneDocumentsDirectory) {
         navStateExerciseOne = false;
         navStateExerciseTwo = false;
         navStateExerciseThree = true;
-        navStateSavedMath = false;
+        navStateSavedMathOne = false;
+        navStateSavedMathTwo = false;
+        navStateSavedMathThree = false;
         candyButton.selected=false;
     }
 
-    if (myWorkButton.selected) {
+    if (myWorkBirds.selected) {
         savedMathOne = new saveMathOne(iPhoneDocumentsDirectory);
         navStateToc = false;
         navStateExerciseOne = false;
         navStateExerciseTwo = false;
         navStateExerciseThree = false;
-        navStateSavedMath = true;
-        myWorkButton.selected=false;
+        navStateSavedMathOne = true;
+        navStateSavedMathTwo = false;
+        navStateSavedMathThree = false;
+        myWorkBirds.selected=false;
     }
 
-    
+    if (myWorkBreadcrumb.selected) {
+        savedMathTwo = new saveMathTwo(iPhoneDocumentsDirectory);
+        navStateToc = false;
+        navStateExerciseOne = false;
+        navStateExerciseTwo = false;
+        navStateExerciseThree = false;
+        navStateSavedMathOne = false;
+        navStateSavedMathTwo = true;
+        navStateSavedMathThree = false;
+        myWorkBreadcrumb.selected=false;
+    }
+
+    if (myWorkCandy.selected) {
+        savedMathThree = new saveMathThree(iPhoneDocumentsDirectory);
+        navStateToc = false;
+        navStateExerciseOne = false;
+        navStateExerciseTwo = false;
+        navStateExerciseThree = false;
+        navStateSavedMathOne = false;
+        navStateSavedMathTwo = false;
+        navStateSavedMathThree = true;
+        myWorkCandy.selected=false;
+    }
+
     if (homeButton.selected) {
         
         if (navStateExerciseOne) {
@@ -149,10 +193,24 @@ void nav::update(int section, string iPhoneDocumentsDirectory) {
             homeButton.selected=false;
         }
 
-        if (navStateSavedMath) {
-            navStateSavedMath = false;
+        if (navStateSavedMathOne) {
+            navStateSavedMathOne = false;
             navStateToc = true;
             delete savedMathOne;
+            homeButton.selected=false;
+        }
+
+        if (navStateSavedMathTwo) {
+            navStateSavedMathTwo = false;
+            navStateToc = true;
+            delete savedMathTwo;
+            homeButton.selected=false;
+        }
+
+        if (navStateSavedMathThree) {
+            navStateSavedMathThree = false;
+            navStateToc = true;
+            delete savedMathThree;
             homeButton.selected=false;
         }
 
@@ -162,9 +220,11 @@ void nav::update(int section, string iPhoneDocumentsDirectory) {
     //based on what state is active, update information is passed
     if (navStateSplash) splash->update(section);
     if (navStateExerciseOne) mathExercisesOne->update(iPhoneDocumentsDirectory);
-    if (navStateExerciseTwo) mathExercisesTwo->update();
-    if (navStateExerciseThree) mathExercisesThree->update();
-    if (navStateSavedMath) savedMathOne->update();
+    if (navStateExerciseTwo) mathExercisesTwo->update(iPhoneDocumentsDirectory);
+    if (navStateExerciseThree) mathExercisesThree->update(iPhoneDocumentsDirectory);
+    if (navStateSavedMathOne) savedMathOne->update();
+    if (navStateSavedMathTwo) savedMathTwo->update();
+    if (navStateSavedMathThree) savedMathThree->update();
     
 //    printf(" NAV udpate ended \n");
     
@@ -191,6 +251,9 @@ void nav::draw(ofTrueTypeFont& basicFont) {
         breadcrumbsButton.drawTextColor(basicFont, breadcrumbs, textColor);
         candyButton.drawTextColor(basicFont, candy, textColor);
         myWorkButton.draw(basicFont, myWork);
+        myWorkBirds.draw(basicFont);
+        myWorkBreadcrumb.draw(basicFont);
+        myWorkCandy.draw(basicFont);
     }
 
     if (navStateExerciseOne) {
@@ -220,7 +283,7 @@ void nav::draw(ofTrueTypeFont& basicFont) {
         ofDisableAlphaBlending();
     }
 
-    if (navStateSavedMath) {
+    if (navStateSavedMathOne) {
         savedMathOne->draw(basicFont);
         homeButton.draw(basicFont);
         
@@ -228,7 +291,24 @@ void nav::draw(ofTrueTypeFont& basicFont) {
         home.draw(10, 10);
         ofDisableAlphaBlending();
     }
-
+    
+    if (navStateSavedMathTwo) {
+        savedMathTwo->draw(basicFont);
+        homeButton.draw(basicFont);
+        
+        ofEnableAlphaBlending();
+        home.draw(10, 10);
+        ofDisableAlphaBlending();
+    }
+    
+    if (navStateSavedMathThree) {
+        savedMathThree->draw(basicFont);
+        homeButton.draw(basicFont);
+        
+        ofEnableAlphaBlending();
+        home.draw(10, 10);
+        ofDisableAlphaBlending();
+    }
 }
 
 //------------------------------------------------------------------
@@ -240,7 +320,9 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
         birdsButton.touchingDown(touch);
         breadcrumbsButton.touchingDown(touch);
         candyButton.touchingDown(touch);
-        myWorkButton.touchingDown(touch);
+        myWorkBirds.touchingDown(touch);
+        myWorkBreadcrumb.touchingDown(touch);
+        myWorkCandy.touchingDown(touch);
     }
     
     if (navStateExerciseOne) {
@@ -258,8 +340,18 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
         homeButton.touchingDown(touch);
     }
 
-    if (navStateSavedMath) {
+    if (navStateSavedMathOne) {
         savedMathOne->touchingDown(touch);
+        homeButton.touchingDown(touch);
+    }
+
+    if (navStateSavedMathTwo) {
+        savedMathTwo->touchingDown(touch);
+        homeButton.touchingDown(touch);
+    }
+
+    if (navStateSavedMathThree) {
+        savedMathThree->touchingDown(touch);
         homeButton.touchingDown(touch);
     }
 
@@ -274,7 +366,9 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
         birdsButton.touchingMove(touch);
         breadcrumbsButton.touchingMove(touch);
         candyButton.touchingMove(touch);
-        myWorkButton.touchingMove(touch);
+        myWorkBirds.touchingMove(touch);
+        myWorkBreadcrumb.touchingMove(touch);
+        myWorkCandy.touchingMove(touch);
     }
     
     if (navStateExerciseOne) {
@@ -292,8 +386,18 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
         homeButton.touchingMove(touch);
     }
 
-    if (navStateSavedMath) {
+    if (navStateSavedMathOne) {
         savedMathOne->touchingMove(touch);
+        homeButton.touchingMove(touch);
+    }
+
+    if (navStateSavedMathTwo) {
+        savedMathTwo->touchingMove(touch);
+        homeButton.touchingMove(touch);
+    }
+
+    if (navStateSavedMathThree) {
+        savedMathThree->touchingMove(touch);
         homeButton.touchingMove(touch);
     }
 
@@ -308,7 +412,9 @@ void nav::touchingUp(ofTouchEventArgs &touch) {
         birdsButton.touchingUp(touch);
         breadcrumbsButton.touchingUp(touch);
         candyButton.touchingUp(touch);
-        myWorkButton.touchingUp(touch);
+        myWorkBirds.touchingUp(touch);
+        myWorkBreadcrumb.touchingUp(touch);
+        myWorkCandy.touchingUp(touch);
     }
     
     if (navStateExerciseOne) {
@@ -326,8 +432,18 @@ void nav::touchingUp(ofTouchEventArgs &touch) {
         homeButton.touchingUp(touch);
     }
 
-    if (navStateSavedMath) {
+    if (navStateSavedMathOne) {
         savedMathOne->touchingUp(touch);
+        homeButton.touchingUp(touch);
+    }
+
+    if (navStateSavedMathTwo) {
+        savedMathTwo->touchingUp(touch);
+        homeButton.touchingUp(touch);
+    }
+
+    if (navStateSavedMathThree) {
+        savedMathThree->touchingUp(touch);
         homeButton.touchingUp(touch);
     }
 

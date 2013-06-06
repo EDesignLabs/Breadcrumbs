@@ -16,7 +16,7 @@ void image::reset() {
     
     delete theImage;
     
-    printf(" image reset ended \n");
+//    printf(" image reset ended \n");
     
 }
 
@@ -32,12 +32,12 @@ void image::setup() {
     
     theImage->loadImage("images/dimes.jpg");
     
-    printf(" image setup started \n");
+//    printf(" image setup started \n");
 
 //-----------------------------------------------
 //sample section
 
-    printf(" image setup ended \n");
+//    printf(" image setup ended \n");
 
 }
 

@@ -24,7 +24,7 @@ class problemMathThree {
         problemMathThree();
         ~problemMathThree();
     
-        void update();
+        void update(string iPhoneDocumentsDirectory);
 		void draw(ofTrueTypeFont& basicFont);
 
         void next();

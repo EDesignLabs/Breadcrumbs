@@ -1,32 +1,36 @@
 /*
- *  problemMathTwo.h
+ *  saveMathTwo.h
  *
- *  Created by Ryan Raffa on 4/25/13.
+ *  Created by Ryan Raffa on 6/6/13.
  *
  */
 
-#ifndef _problemMathTwo
-#define _problemMathTwo
+#ifndef _saveMathTwo
+#define _saveMathTwo
 
 
 #include "ofMain.h"
 
 #include "button.h"
-
 #include "uiCreate.h"
 #include "uiReflect.h"
 #include "uiPresent.h"
 
-class problemMathTwo {
+#include "ofxXmlSettings.h"
+
+
+class saveMathTwo {
 	
 	public:
         
-        problemMathTwo();
-        ~problemMathTwo();
+        saveMathTwo(string iPhoneDocumentsDirectory);
+        ~saveMathTwo();
     
-        void update(string iPhoneDocumentsDirectory);
+        void update();
 		void draw(ofTrueTypeFont& basicFont);
 
+        void xmlSetupThang();
+    
         void next();
         void switchScene();
         void updateWhichScene();
@@ -38,7 +42,7 @@ class problemMathTwo {
         void doubleTap(ofTouchEventArgs &touch);
 
 
-//-----------------------------------------------    
+//-----------------------------------------------
 //Create, Reflect, Present
     
         uiCreate*   create;
@@ -46,28 +50,21 @@ class problemMathTwo {
         uiPresent*  present;
     
         string      theText;
-//        ofImage     grid;
     
 //-----------------------------------------------
 //UI State
     
-        button             createButton;
-        button             reflectButton;
-        button             presentButton;
-        button             questionButton;
-        ofImage            questionButtonImage;
-        
-        bool               navStateCreate;
-        bool               navStateReflect;
+        button             presentButton;        
         bool               navStatePresent;
-        bool               navStateQuestion;
     
     
 //-----------------------------------------------
-//Feedback (quick and dirty)
-    
-        ofPoint            feedbackBrickPos;
-        float              distX;
+//Used for saving the performance
+   
+        ofxXmlSettings      XMLOne;
+        ofxXmlSettings      XMLTwo;
+        string              message;
+
     
 };
 

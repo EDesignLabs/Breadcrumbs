@@ -15,9 +15,10 @@
 #include "problemMathOne.h"
 #include "problemMathTwo.h"
 #include "problemMathThree.h"
-#include "problemMathFour.h"
 
 #include "saveMathOne.h"
+#include "saveMathTwo.h"
+#include "saveMathThree.h"
 
 #include "button.h"
 
@@ -37,7 +38,12 @@ class nav {
         button             birdsButton;
         button             breadcrumbsButton;
         button             candyButton;
+    
         button             myWorkButton;
+        button             myWorkBirds;
+        button             myWorkBreadcrumb;
+        button             myWorkCandy;
+    
         button             homeButton;
         ofImage            home;
         button             skipIntroButton;
@@ -53,6 +59,8 @@ class nav {
         problemMathTwo*         mathExercisesTwo;
         problemMathThree*       mathExercisesThree;
         saveMathOne*            savedMathOne;
+        saveMathTwo*            savedMathTwo;
+        saveMathThree*          savedMathThree;
     
         bool    navStateToc;
         bool    navStateSplash;
@@ -60,8 +68,9 @@ class nav {
         bool    navStateExerciseOne;
         bool    navStateExerciseTwo;
         bool    navStateExerciseThree;
-        bool    navStateSavedMath;
-        
+        bool    navStateSavedMathOne;
+        bool    navStateSavedMathTwo;
+        bool    navStateSavedMathThree;
 };
 
 #endif

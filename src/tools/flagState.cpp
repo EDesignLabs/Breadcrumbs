@@ -21,7 +21,7 @@ flagState::~flagState() {
 //------------------------------------------------------------------
 void flagState::reset() {
     
-    printf(" flagState setup started \n");
+//    printf(" flagState setup started \n");
     
     //-----------------------------------------------
     //set up the reflection flag
@@ -42,7 +42,7 @@ void flagState::reset() {
     
     theReflectionFlag.floor = 0;
     
-    printf(" flagState setup ended \n");
+//    printf(" flagState setup ended \n");
     
 }
 
@@ -54,7 +54,7 @@ void flagState::reset() {
 //------------------------------------------------------------------
 flagState::flagState() {
     
-    printf(" flagState setup started \n");
+//    printf(" flagState setup started \n");
     
 //-----------------------------------------------
 //set up the reflection flag
@@ -75,9 +75,7 @@ flagState::flagState() {
     
     theReflectionFlag.floor = 0;
     
-    printf(" flagState setup ended \n");
-
-    
+//    printf(" flagState setup ended \n");
     
 }
 
@@ -107,7 +105,6 @@ void flagState::update(ofTouchEventArgs &touch) {
     
     theReflectionFlag.size.x = theReflectionFlag.endPos.x - theReflectionFlag.startPos.x;
     theReflectionFlag.size.y = ofGetHeight()-50;
-
 
 }
 

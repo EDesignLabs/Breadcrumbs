@@ -40,27 +40,50 @@ splashNav::~splashNav() {
         delete splashSix;
     }
 
-    
-    printf(" splashNav deconstructor \n");
-    
+    delete     storyAction;
+    delete     storyZeroActive;
+    delete     storyOneActive;
+    delete     storyTwoActive;
+    delete     storyThreeActive;
+    delete     storyFourActive;
+    delete     storyFiveActive;
+    delete     storySixActive;
+
+//    printf(" splashNav deconstructor \n");    
     
 }
 
 //------------------------------------------------------------------
 splashNav::splashNav() {
 
-    printf(" splashNav setup started \n");
+//    printf(" splashNav setup started \n");
     
     ofPoint pos;
     ofPoint size;
     ofPoint offSet;
     ofColor color;
     
-    section = 0;
+    section = -1;
     
-    makeSectionZero();
+    storyAction = new ofPoint;
+    storyZeroActive = new ofPoint;
+    storyOneActive = new ofPoint;
+    storyTwoActive = new ofPoint;
+    storyThreeActive = new ofPoint;
+    storyFourActive = new ofPoint;
+    storyFiveActive = new ofPoint;
+    storySixActive = new ofPoint;
+
+    storyAction->set(ofGetWidth()/2-75, ofGetHeight()-30);
+    storyZeroActive->set(ofGetWidth()/2-75, ofGetHeight()-30);
+    storyOneActive->set(ofGetWidth()/2-50, ofGetHeight()-30);
+    storyTwoActive->set(ofGetWidth()/2-25, ofGetHeight()-30);
+    storyThreeActive->set(ofGetWidth()/2, ofGetHeight()-30);
+    storyFourActive->set(ofGetWidth()/2+25, ofGetHeight()-30);
+    storyFiveActive->set(ofGetWidth()/2+50, ofGetHeight()-30);
+    storySixActive->set(ofGetWidth()/2+75, ofGetHeight()-30);
     
-    printf(" splashNav setup ended \n");
+//    printf(" splashNav setup ended \n");
     
 }
 		 
@@ -71,47 +94,112 @@ void splashNav::update(int section) {
 
         if (section < 7) {
          
-            this->section = section;
-            
-            if (this->section == 1) {
-                makeSectionOne();
-            }
-            
-            if (this->section == 2) {
-                makeSectionTwo();
-            }
-            
-            if (this->section == 3) {
-                makeSectionThree();
-            }
-            
-            if (this->section == 4) {
-                makeSectionFour();
-            }
-            
-            if (this->section == 5) {
-                makeSectionFive();
-            }
-            
-            if (this->section == 6) {
-                makeSectionSix();
-            }
+                if (section == 0) {
+                    makeSectionZero();
+                }
+                
+                if (section == 1) {
+                    makeSectionOne();
+                }
+                
+                if (section == 2) {
+                    makeSectionTwo();
+                }
+                
+                if (section == 3) {
+                    makeSectionThree();
+                }
+                
+                if (section == 4) {
+                    makeSectionFour();
+                }
+                
+                if (section == 5) {
+                    makeSectionFive();
+                }
+                
+                if (section == 6) {
+                    makeSectionSix();
+                }
 
+                if (this->section == 0) {
+                    delete splashZero;
+                }
+                                
+                if (this->section == 1) {
+                    delete splashOne;
+                }
+                
+                if (this->section == 2) {
+                    delete splashTwo;
+                }
+                
+                if (this->section == 3) {
+                    delete splashThree;
+                }
+                
+                if (this->section == 4) {
+                    delete splashFour;
+                }
+                
+                if (this->section == 5) {
+                    delete splashFive;
+                }
+
+                if (this->section == 6) {
+                    delete splashSix;
+                }
+
+                this->section = section;
+            
         }
     }
     
-    if (this->section == 0) splashZero->update();
-    if (this->section == 1) splashOne->update();
-    if (this->section == 2) splashTwo->update();
-    if (this->section == 3) splashThree->update();
-    if (this->section == 4) splashFour->update();
-    if (this->section == 5) splashFive->update();
-    if (this->section == 6) splashSix->update();
+    if (this->section == 0) {
+        getThere(*storyAction, *storyZeroActive);
+        splashZero->update();
+    }
+    if (this->section == 1) {
+        getThere(*storyAction, *storyOneActive);
+        splashOne->update();
+    }
+    if (this->section == 2) {
+        getThere(*storyAction, *storyTwoActive);
+        splashTwo->update();
+    }
+    if (this->section == 3) {
+        getThere(*storyAction, *storyThreeActive);
+        splashThree->update();
+    }
+    if (this->section == 4) {
+        getThere(*storyAction, *storyFourActive);
+        splashFour->update();
+    }
+    if (this->section == 5) {
+        getThere(*storyAction, *storyFiveActive);
+        splashFive->update();
+    }
+    if (this->section == 6) {
+        getThere(*storyAction, *storySixActive);
+        splashSix->update();
+    }
     
-    printf("section value: %d \n", this->section);
+//    printf("section value: %d \n", this->section);
 
 }
 
+//------------------------------------------------------------------
+void splashNav::getThere(ofPoint& current, ofPoint& ideal) {
+
+    ofPoint dist;
+    
+    dist.x = ideal.x - current.x;
+	dist.y = ideal.y - current.y;
+	
+	current.x += dist.x/5.0;
+	current.y += dist.y/5.0;
+    
+}
 
 //------------------------------------------------------------------
 void splashNav::draw() {
@@ -124,6 +212,21 @@ void splashNav::draw() {
         if (this->section == 4) splashFour->draw();
         if (this->section == 5) splashFive->draw();
         if (this->section == 6) splashSix->draw();
+    
+        ofSetColor(190, 190, 190, 255);
+        ofEnableSmoothing();
+        ofNoFill();
+        ofCircle(storyZeroActive->x, storyZeroActive->y, 8.0);
+        ofCircle(storyOneActive->x, storyOneActive->y, 8.0);
+        ofCircle(storyTwoActive->x, storyTwoActive->y, 8.0);
+        ofCircle(storyThreeActive->x, storyThreeActive->y, 8.0);
+        ofCircle(storyFourActive->x, storyFourActive->y, 8.0);
+        ofCircle(storyFiveActive->x, storyFiveActive->y, 8.0);
+        ofCircle(storySixActive->x, storySixActive->y, 8.0);
+        ofFill();
+        ofCircle(storyAction->x, storyAction->y, 8.0);
+        ofDisableSmoothing();
+    
     ofDisableAlphaBlending();
 }
 
@@ -164,8 +267,6 @@ void splashNav::makeSectionOne() {
     theImage.loadImage("images/splash/1-4.png");
     splashOne->setup(theImage, 4000, 5500, true, false, 0);
     
-    delete splashZero;
-    
 }
 
 //------------------------------------------------------------------
@@ -201,8 +302,6 @@ void splashNav::makeSectionTwo() {
     theImage.loadImage("images/splash/2-8.png");
     splashTwo->setup(theImage, 18000, 22000, true, false, 0);
  
-    delete splashOne;
-    
 }
 
 //------------------------------------------------------------------
@@ -226,8 +325,6 @@ void splashNav::makeSectionThree() {
     theImage.loadImage("images/splash/3-4.png");
     splashThree->setup(theImage, 4000, 10000, true, false, 0);
  
-    delete splashTwo;
-    
 }
 
 //------------------------------------------------------------------
@@ -248,8 +345,6 @@ void splashNav::makeSectionFour() {
     theImage.loadImage("images/splash/4-3.png");
     splashFour->setup(theImage, 2000, 10000, true, false, 0);
  
-    delete splashThree;
-    
 }
 
 //------------------------------------------------------------------
@@ -278,8 +373,6 @@ void splashNav::makeSectionFive() {
 
     theImage.loadImage("images/splash/5-6.png");
     splashFive->setup(theImage, 6000, 10000, true, false, 0);
-    
-    delete splashFour;
     
 }
 
@@ -340,8 +433,9 @@ void splashNav::makeSectionSix() {
     theImage.loadImage("images/splash/6-16.png");
     splashSix->setup(theImage, 16000, 20000, true, false, 0);
 
-    delete splashFive;
 }
+
+
 
 //------------------------------------------------------------------
 void splashNav::touchingDown(ofTouchEventArgs &touch) {

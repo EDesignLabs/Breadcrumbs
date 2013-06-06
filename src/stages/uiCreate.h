@@ -27,7 +27,8 @@ class uiCreate {
     
 		void update();
 		void draw(ofTrueTypeFont& basicFont);
-
+		void draw(ofTrueTypeFont& basicFont, ofImage& questionImage);
+    
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);
         void touchingMove(ofTouchEventArgs &touch);

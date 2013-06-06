@@ -1,11 +1,11 @@
 /*
- *  saveMathOne.cpp
+ *  saveMathThree.cpp
  *
- *  Created by Ryan Raffa on 6/4/13.
+ *  Created by Ryan Raffa on 6/6/13.
  *
  */
 
-#include "saveMathOne.h"
+#include "saveMathThree.h"
 
 
 ////////////////////////////////////////////////////////////////////
@@ -13,7 +13,7 @@
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-saveMathOne::~saveMathOne() {
+saveMathThree::~saveMathThree() {
     
     delete create;
     delete reflect;
@@ -28,10 +28,10 @@ saveMathOne::~saveMathOne() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-saveMathOne::saveMathOne(string iPhoneDocumentsDirectory) {
+saveMathThree::saveMathThree(string iPhoneDocumentsDirectory) {
     
     
-    theText = "Four women live in different cities. One of the cities is San Francisco.\nDetermine which city each woman lives in.\n1. The woman from Charleston (South Carolina), the woman from Gainesville (Florida), and Riana are not related.\n2. Wendy and the woman from Provo are cousins.\n3. Neither Phyllis nor Wendy is from the West Coast.\n4. Ann is from a coastal city.";
+    theText = "A car dealer has 22 vehicles on his lot. If 8 of the vehicles are vans\nand 6 of the vehicles are red, and 10 vehicles are neither vans nor red,\nhow many red vans does he have on his lot?";
     
     //-----------------------------------------------
     //setup math problem one
@@ -49,20 +49,18 @@ saveMathOne::saveMathOne(string iPhoneDocumentsDirectory) {
     size.set(ofGetWidth(), 46);
     offSet.set(ofGetWidth()/2 - 15, 32);
     color.set(230, 224, 47, 255);
-    presentButton.setup(pos, size, offSet, "Present", color);
+    presentButton.setup(pos, size, offSet, "Storyteller", color);
     
     navStatePresent = true;
     
-    grid.loadImage("images/grid.png");
-    
     string XMLFileOne;
     string XMLFileTwo;
-    XMLFileOne = "myCreateProbOne.xml";
-    XMLFileTwo = "myReflectProbOne.xml";
+    XMLFileOne = "myCreateProbThree.xml";
+    XMLFileTwo = "myReflectProbThree.xml";
     present->xmlSetupThang(iPhoneDocumentsDirectory, XMLFileOne, XMLFileTwo);
     present->getXML(XMLFileOne, XMLFileTwo);
         
-//    printf(" saveMathOne Setup ended \n ");
+//    printf(" saveMathThree Setup ended \n ");
 
 }
 
@@ -72,7 +70,7 @@ saveMathOne::saveMathOne(string iPhoneDocumentsDirectory) {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------        
-void saveMathOne::update() {
+void saveMathThree::update() {
     
     
 //-----------------------------------------------
@@ -90,7 +88,7 @@ void saveMathOne::update() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void saveMathOne::draw(ofTrueTypeFont& basicFont) {
+void saveMathThree::draw(ofTrueTypeFont& basicFont) {
 
 //-----------------------------------------------
 //actual state
@@ -102,11 +100,6 @@ void saveMathOne::draw(ofTrueTypeFont& basicFont) {
 
     ofSetColor(0, 0, 0);
     basicFont.drawString(theText, 10, 100);
-
-    ofEnableAlphaBlending();
-    ofSetColor(255, 255, 255);
-    grid.draw(175, ofGetHeight()/3+50);
-    ofDisableAlphaBlending();
 
     
 //-----------------------------------------------
@@ -122,28 +115,28 @@ void saveMathOne::draw(ofTrueTypeFont& basicFont) {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void saveMathOne::touchingDown(ofTouchEventArgs &touch) {
+void saveMathThree::touchingDown(ofTouchEventArgs &touch) {
 
     if (navStatePresent) present->touchingDown(touch);
     
 }
 
 //------------------------------------------------------------------
-void saveMathOne::touchingMove(ofTouchEventArgs &touch) {
+void saveMathThree::touchingMove(ofTouchEventArgs &touch) {
     
     if (navStatePresent) present->touchingMove(touch);
     
 }
 
 //------------------------------------------------------------------
-void saveMathOne::touchingUp(ofTouchEventArgs &touch) {
+void saveMathThree::touchingUp(ofTouchEventArgs &touch) {
     
     if (navStatePresent) present->touchingUp(touch);
     
 }
 
 //------------------------------------------------------------------
-void saveMathOne::doubleTap(ofTouchEventArgs &touch) {
+void saveMathThree::doubleTap(ofTouchEventArgs &touch) {
 
     if (navStatePresent) present->doubleTap(touch);
     

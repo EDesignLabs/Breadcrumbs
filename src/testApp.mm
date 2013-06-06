@@ -23,7 +23,7 @@ void testApp::setup(){
 
     verdana16.loadFont(fontName, 16, true, true, true);
     verdana16.setLineHeight(24.0f);
-    verdana16.setLetterSpacing(0.96);
+    verdana16.setLetterSpacing(0.98);
 
     verdana22.loadFont(fontName, 22, true, true, true);
     verdana22.setLineHeight(24.0f);
@@ -117,6 +117,6 @@ void testApp::gotMemoryWarning(){
 
 //--------------------------------------------------------------
 void testApp::deviceOrientationChanged(int newOrientation){
-    sprintf(eventString, "alert - orientation change to %i", newOrientation);
+//    sprintf(eventString, "alert - orientation change to %i", newOrientation);
 }
 

@@ -27,13 +27,15 @@ class splashNav {
         void makeSectionFour();
         void makeSectionFive();
         void makeSectionSix();
-    
+
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);
         void touchingMove(ofTouchEventArgs &touch);
         void touchingUp(ofTouchEventArgs &touch);
         void doubleTap(ofTouchEventArgs &touch);
 
+        void getThere(ofPoint& current, ofPoint& ideal);
+    
         splashSection*  splashZero;
         splashSection*  splashOne;
         splashSection*  splashTwo;
@@ -43,7 +45,16 @@ class splashNav {
         splashSection*  splashSix;
     
         int section;
-        
+
+        ofPoint*     storyAction;
+        ofPoint*     storyZeroActive;
+        ofPoint*     storyOneActive;
+        ofPoint*     storyTwoActive;
+        ofPoint*     storyThreeActive;
+        ofPoint*     storyFourActive;
+        ofPoint*     storyFiveActive;
+        ofPoint*     storySixActive;
+
     
 };
 

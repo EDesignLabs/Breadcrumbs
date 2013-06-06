@@ -28,6 +28,7 @@ class uiReflect {
         void setPoints(vector <drawing> theDrawings);
 		void update();
 		void draw(ofTrueTypeFont& basicFont);
+		void draw(ofTrueTypeFont& basicFont, ofImage& questionImage);
     
         void checkFlags();
 

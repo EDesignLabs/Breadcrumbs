@@ -50,7 +50,7 @@ problemMathOne::problemMathOne() {
     
     size.set(questionButtonImage.getWidth()+20, questionButtonImage.getHeight()+20);
     pos.set(ofGetWidth()-45, 0);
-    offSet.set(15, 32);
+    offSet.set(105, 32);
     color.set(170, 170, 170);
     questionButton.setup(pos, size, color);
     
@@ -58,17 +58,17 @@ problemMathOne::problemMathOne() {
     posTwo.set(46, 0);
     size.set(311, 46);
     color.set(200, 52, 70, 255);
-    createButton.setup(posTwo, size, offSet, "1. Create", color);
+    createButton.setup(posTwo, size, offSet, "Journey", color);
     
     ofPoint posThree;
     posThree.set(357, 0);
     color.set(68, 116, 176, 255);
-    reflectButton.setup(posThree, size, offSet, "2. Reflect", color);
+    reflectButton.setup(posThree, size, offSet, "Breadcrumbs", color);
     
     ofPoint posFour;
     posThree.set(668, 0);
     color.set(230, 224, 47, 255);
-    presentButton.setup(posThree, size, offSet, "3. Present", color);
+    presentButton.setup(posThree, size, offSet, "Storyteller", color);
     
     navStateCreate = true;
     navStateReflect = false;
@@ -82,7 +82,7 @@ problemMathOne::problemMathOne() {
     
     feedbackBrickPos.set(50, 46);
     
-    printf(" problemMathOne Setup ended \n ");
+//    printf(" problemMathOne Setup ended \n ");
 
 }
 
@@ -197,20 +197,15 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //-----------------------------------------------
 //actual state
     
-    if (navStateCreate) create->draw(basicFont);
-    if (navStateReflect) reflect->draw(basicFont);
-    if (navStatePresent) present->draw(basicFont);
+    if (navStateCreate) create->draw(basicFont, grid);
+    if (navStateReflect) reflect->draw(basicFont, grid);
+    if (navStatePresent) present->draw(basicFont, grid);
     
 //-----------------------------------------------
 //The Question
 
     ofSetColor(0, 0, 0);
     basicFont.drawString(theText, 10, 100);
-
-    ofEnableAlphaBlending();
-    ofSetColor(255, 255, 255);
-    grid.draw(175, ofGetHeight()/3+50);
-    ofDisableAlphaBlending();
 
     
 //-----------------------------------------------
