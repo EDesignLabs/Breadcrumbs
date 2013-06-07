@@ -35,9 +35,12 @@ class splashSection {
 
         void setup(ofImage stage, int pageStart, int pageEnd, bool turnOn, bool turnOff, int currentAlpha);
 		void update();
-		void slideTimer();
+		void updateWithDimmer(int newSize, int whichOne);
+        void slideTimer();
         void updatePage(splashPage &thePage);
         void draw();
+        void draw(int whichOne, ofColor whichColor);
+        void dimmer(splashPage &thePage);
     
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);
@@ -54,6 +57,9 @@ class splashSection {
         float     lastPageChange;
     
         bool      updated;
+    
+        //for dimmer
+        bool      switcher;
     
 };
 

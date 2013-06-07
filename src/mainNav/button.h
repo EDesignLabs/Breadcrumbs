@@ -19,8 +19,10 @@ public:
     void update(float newPosition);
     void update(ofPoint newPosition);
     void draw();
+    void drawOnTop();
     void drawToggle();
     void draw(ofTrueTypeFont& basicFont);
+    void draw(ofImage& basicImage);
     void draw(ofTrueTypeFont& basicFont, ofImage& basicImage);
     void drawTextColor(ofTrueTypeFont& basicFont, ofImage& basicImage, ofColor textColor);
     void drawNoColor();

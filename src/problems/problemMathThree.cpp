@@ -33,7 +33,7 @@ problemMathThree::~problemMathThree() {
 problemMathThree::problemMathThree() {
         
  
-    theText = "A car dealer has 22 vehicles on his lot. If 8 of the vehicles are vans\nand 6 of the vehicles are red, and 10 vehicles are neither vans nor red,\nhow many red vans does he have on his lot?";
+    theText = "A candy shop in the forest has 22 types of candy. If 8 of the types of candy are bon-bons\nand 6 of the candies are flavored strawberry, and 10 of the candies are neither bon-bons\nnor strawberry, how many strawberry bon-bons does he have on his lot?";
     
 //-----------------------------------------------    
 //setup math problem one
@@ -210,7 +210,7 @@ void problemMathThree::draw(ofTrueTypeFont& basicFont) {
 //The Question
 
     ofSetColor(0, 0, 0);
-    basicFont.drawString(theText, 10, 100);
+    basicFont.drawString(theText, 20, 90);
     
 //-----------------------------------------------
 //Feedback

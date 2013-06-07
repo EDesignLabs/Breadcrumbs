@@ -47,6 +47,7 @@ class nav {
         button             homeButton;
         ofImage            home;
         button             skipIntroButton;
+        button             skipIntroTwoButton;
         ofImage            skipIntro;
     
         ofImage birds;

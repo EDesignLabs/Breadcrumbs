@@ -39,7 +39,7 @@ void splashSection::setup(ofImage stage, int pageStart, int pageEnd, bool turnOn
     section.push_back(theSplashPage);
     
     updated = false;
-
+    switcher = false;
 //    printf(" splashSection setup ended \n");
 
 }
@@ -53,6 +53,20 @@ void splashSection::update() {
     for (int i = 0; i < section.size(); i++) {
         updatePage(section[i]);
     }
+    
+}
+
+//------------------------------------------------------------------
+void splashSection::updateWithDimmer(int newSize, int whichOne) {
+    
+    slideTimer();
+    
+    for (int i = 0; i < newSize; i++) {
+        updatePage(section[i]);
+    }
+    
+    dimmer(section[whichOne]);
+    
     
 }
 
@@ -97,7 +111,32 @@ void splashSection::updatePage(splashPage &thePage) {
             }
         }
     }
+
 }
+
+//------------------------------------------------------------------
+void splashSection::dimmer(splashPage &thePage) {
+    
+    
+    if (currentTime > thePage.pageStart) {
+        if (!switcher) {
+            if ( thePage.alphaValue > 150 ) {
+                thePage.alphaValue-=5;
+            } else {
+                switcher = true;
+            }
+        }
+        
+        if (switcher) {
+            if ( thePage.alphaValue < 250 ) {
+                thePage.alphaValue+=5;
+            } else {
+                switcher = false;
+            }
+        }
+    }
+}
+
 
 //------------------------------------------------------------------
 void splashSection::draw() {
@@ -106,6 +145,16 @@ void splashSection::draw() {
 //        printf("section[i] alpha value, %d \n", section[i].alphaValue);
         ofSetColor(255, 255, 255, section[i].alphaValue);
         section[i].stage.draw(pos);
+    }
+}
+
+//------------------------------------------------------------------
+void splashSection::draw(int whichOne, ofColor whichColor) {
+    
+    for (int i = 0; i < section.size(); i++) {
+        //        printf("section[i] alpha value, %d \n", section[i].alphaValue);
+        ofSetColor(whichColor, section[whichOne].alphaValue);
+        section[whichOne].stage.draw(pos);
     }
 }
 

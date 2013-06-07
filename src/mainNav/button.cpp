@@ -121,6 +121,18 @@ void button::draw() {
 }
 
 //------------------------------------------------------------------
+void button::drawOnTop() {
+    
+    ofEnableAlphaBlending();
+    if (touching) {
+        ofSetColor(255, 0, 0,250);
+        ofRect(thisRectangle);
+    }
+    ofDisableAlphaBlending();
+    
+}
+
+//------------------------------------------------------------------
 void button::drawToggle() {
     
     ofEnableAlphaBlending();
@@ -147,6 +159,19 @@ void button::draw(ofTrueTypeFont& basicFont) {
     ofNoFill();
     ofRect(thisRectangle);
     ofFill();
+    ofDisableAlphaBlending();
+}
+
+//------------------------------------------------------------------
+void button::draw(ofImage& basicImage) {
+    
+    ofEnableAlphaBlending();
+    if (touching) ofSetColor(255, 0, 0,250);
+    else ofSetColor(thisColor);
+    ofRect(thisRectangle);
+    
+    basicImage.draw(pos.x, pos.y);
+        
     ofDisableAlphaBlending();
 }
 

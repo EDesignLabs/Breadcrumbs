@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "splashSection.h"
+#include "button.h"
 
 class splashNav {
 	
@@ -27,7 +28,8 @@ class splashNav {
         void makeSectionFour();
         void makeSectionFive();
         void makeSectionSix();
-
+        void makeSectionSeven();
+    
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);
         void touchingMove(ofTouchEventArgs &touch);
@@ -43,6 +45,7 @@ class splashNav {
         splashSection*  splashFour;
         splashSection*  splashFive;
         splashSection*  splashSix;
+        splashSection*  splashSeven;
     
         int section;
 
@@ -54,7 +57,7 @@ class splashNav {
         ofPoint*     storyFourActive;
         ofPoint*     storyFiveActive;
         ofPoint*     storySixActive;
-
+        ofPoint*     storySevenActive;
     
 };
 

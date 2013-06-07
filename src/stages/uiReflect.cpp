@@ -130,9 +130,9 @@ void uiReflect::setPoints(vector <drawing> theDrawings) {
         scrubFeedback[i].y += ofGetHeight()-25;
     }
     
-    printf(" endTime is: %d \n", endTime);
-    printf(" scrubfeedback[0].x is: %f \n", scrubFeedback[0].x);
-    printf(" scrubfeedback[0].y is: %f \n", scrubFeedback[0].y);
+//    printf(" endTime is: %d \n", endTime);
+//    printf(" scrubfeedback[0].x is: %f \n", scrubFeedback[0].x);
+//    printf(" scrubfeedback[0].y is: %f \n", scrubFeedback[0].y);
     
 }
 
@@ -203,19 +203,19 @@ void uiReflect::update() {
             checkFlags();
             theFlagStates.push_back(theFlagState);
             theFlagState.reset();
-            printf(" picked my flag!");
+//            printf(" picked my flag!");
         }
         
     }
     
     for (int i = 0; i < theFlagStates.size(); i++){
         if (theFlagStates[i].theReflectionFlag.removeFlagButton.selected) {
-            printf("removeFlagButtonSelection for: %d \n", i);
+//            printf("removeFlagButtonSelection for: %d \n", i);
             theFlagStates.erase( theFlagStates.begin()+i );
         }
     }
 
-    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
+//    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
     
 }
 
@@ -233,7 +233,7 @@ void uiReflect::checkFlags() {
     bool    chosen = 0;
     int     counter = 0;
 
-    printf("theFlagStates.size = %ld \n", theFlagStates.size());
+//    printf("theFlagStates.size = %ld \n", theFlagStates.size());
 
     //first get all the floors that are taken
     if (theFlagStates.size() >= 1) {

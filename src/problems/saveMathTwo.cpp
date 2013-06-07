@@ -31,7 +31,7 @@ saveMathTwo::~saveMathTwo() {
 saveMathTwo::saveMathTwo(string iPhoneDocumentsDirectory) {
     
     
-    theText = "A certain state is considering changing the arrangement of letters and numbers on its license plates.\nThe two options the state is considering are:\n\nOption 1: three letters followed by a four-digit number with repetition of both letters and digits allowed\nOption 2: four letters followed by a three-digit number without repetition of either letters or digits\n[Zero may be chosen as the first digit of the number in either option.]\n\nWhich option will enable the state to issue more license plates? How many more\ndifferent license plates will that option yield?";
+    theText = "George and Diana's parents led them 1 mile into the woods. George dropped a breadcrumb\nat the front door of their cottage and then every 20ft. until they reached their destination.\nHow many breadcrumbs did George drop?\n\nDraw a diagram to help you solve the problem.";
     
     //-----------------------------------------------
     //setup math problem one
@@ -99,7 +99,7 @@ void saveMathTwo::draw(ofTrueTypeFont& basicFont) {
 //The Question
 
     ofSetColor(0, 0, 0);
-    basicFont.drawString(theText, 10, 100);
+    basicFont.drawString(theText, 20, 90);
 
     
 //-----------------------------------------------

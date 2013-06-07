@@ -34,10 +34,13 @@ void nav::setup() {
     //skip intro button
     skipIntro.loadImage("images/ui/glyphicons_207_remove_2.png");
     pos.set(ofGetWidth()-(skipIntro.getWidth()+20), 0);
-    skipIntroButton.setup(pos, size, color);    
-
+    skipIntroButton.setup(pos, size, color);
+    
+    pos.set(338, 510);
+    size.set(336, 174);
     color.set(255, 255, 255, 255);
-
+    skipIntroTwoButton.setup(pos, size, color);
+    
     ofPoint posTwo;
     posTwo.set(0, 0);
     size.set(256, 768);
@@ -97,7 +100,14 @@ void nav::update(int section, string iPhoneDocumentsDirectory) {
         delete splash;
         skipIntroButton.selected=false;
     }
-    
+
+    if (skipIntroTwoButton.selected) {
+        navStateSplash = false;
+        navStateToc = true;
+        delete splash;
+        skipIntroTwoButton.selected=false;
+    }
+
     if (birdsButton.selected) {
         mathExercisesOne = new problemMathOne();
         navStateToc = false;
@@ -237,7 +247,9 @@ void nav::draw(ofTrueTypeFont& basicFont) {
     if (navStateSplash) {
         splash->draw();
         skipIntroButton.draw(basicFont);
-        
+
+//        if (splash->section ==7) skipIntroTwoButton.drawOnTop();
+
         ofEnableAlphaBlending();
         skipIntro.draw(ofGetWidth()-(skipIntro.getWidth()+10), 15);
         ofDisableAlphaBlending();
@@ -315,6 +327,7 @@ void nav::draw(ofTrueTypeFont& basicFont) {
 void nav::touchingDown(ofTouchEventArgs &touch) {
     
     if (navStateSplash) skipIntroButton.touchingDown(touch);
+    if (navStateSplash && splash->section==7) skipIntroTwoButton.touchingDown(touch);
     
     if (navStateToc) {
         birdsButton.touchingDown(touch);
@@ -361,6 +374,7 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
 void nav::touchingMove(ofTouchEventArgs &touch) {
     
     if (navStateSplash) skipIntroButton.touchingMove(touch);
+    if (navStateSplash && splash->section==7) skipIntroTwoButton.touchingMove(touch);
     
     if (navStateToc) {
         birdsButton.touchingMove(touch);
@@ -407,6 +421,7 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
 void nav::touchingUp(ofTouchEventArgs &touch) {
 
     if (navStateSplash) skipIntroButton.touchingUp(touch);
+    if (navStateSplash && splash->section==7) skipIntroTwoButton.touchingUp(touch);
     
     if (navStateToc) {
         birdsButton.touchingUp(touch);

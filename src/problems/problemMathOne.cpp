@@ -33,7 +33,7 @@ problemMathOne::~problemMathOne() {
 problemMathOne::problemMathOne() {
         
  
-    theText = "Four women live in different cities. One of the cities is San Francisco.\nDetermine which city each woman lives in.\n1. The woman from Charleston (South Carolina), the woman from Gainesville (Florida), and Riana are not related.\n2. Wendy and the woman from Provo are cousins.\n3. Neither Phyllis nor Wendy is from the West Coast.\n4. Ann is from a coastal city.";
+    theText = "Four birds live in different parts of the forest. Determine which part of the forest each bird lives in.\n1. Amelia does not live near the water.\n2. Wendy has fear of heights.\n3. Phylis likes to watch the sunrise across the lake.\n4. Amelia and Phylis always go to Ann's to watch TV.";
     
 //-----------------------------------------------    
 //setup math problem one
@@ -75,7 +75,7 @@ problemMathOne::problemMathOne() {
     navStatePresent = false;
     navStateQuestion = false;
     
-    grid.loadImage("images/grid.png");
+    grid.loadImage("images/gridTwo.png");
     
 //-----------------------------------------------
 //poor man's feedback
@@ -205,7 +205,7 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //The Question
 
     ofSetColor(0, 0, 0);
-    basicFont.drawString(theText, 10, 100);
+    basicFont.drawString(theText, 20, 90);
 
     
 //-----------------------------------------------
