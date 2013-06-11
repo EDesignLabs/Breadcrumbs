@@ -21,6 +21,8 @@ problemMathTwo::~problemMathTwo() {
     delete reflect;
     delete present;
 
+    delete savingFeedback;
+
 }
 
 
@@ -42,6 +44,8 @@ problemMathTwo::problemMathTwo() {
     reflect = new uiReflect;
     present = new uiPresent;
     
+    savingFeedback = new button;
+
     ofPoint pos;
     ofPoint size;
     ofPoint offSet;
@@ -65,10 +69,21 @@ problemMathTwo::problemMathTwo() {
     color.set(68, 116, 176, 255);
     reflectButton.setup(posThree, size, offSet, "Breadcrumbs", color);
     
-    ofPoint posFour;
     posThree.set(668, 0);
     color.set(230, 224, 47, 255);
     presentButton.setup(posThree, size, offSet, "Storyteller", color);
+    
+    
+    ofPoint posFour;
+    size.set(200, 200);
+    posFour.set(ofGetWidth()/2-(size.x/2), ofGetHeight()/2-(size.x/2));
+    color.set(0, 0, 0);
+    offSet.set(70, 100);
+    savingFeedback->setup(posFour, size, offSet, "Saving...", color);
+    saving = false;
+    counter = 0;
+    savingFontColor.set(255, 255, 255);
+
     
     navStateCreate = true;
     navStateReflect = false;
@@ -122,20 +137,31 @@ void problemMathTwo::update(string iPhoneDocumentsDirectory) {
         navStateReflect = false;
         navStateQuestion = false;
         navStatePresent = true;
-        presentButton.selected=false;
-
+        
         //set value of drawing
         present->setPoints(create->drawThese, reflect->theFlagStates);
-
-        string xmlFileOne;
-        string xmlFileTwo;
-        xmlFileOne = "myCreateProbTwo.xml";
-        xmlFileTwo = "myReflectProbTwo.xml";
         
-        //save XML file for later
-        present->xmlSetupThang(iPhoneDocumentsDirectory, xmlFileOne, xmlFileTwo);
-        present->saveXML(iPhoneDocumentsDirectory, xmlFileOne,xmlFileTwo);
-
+        saving = true;
+        counter++;
+//        printf("counter: %d \n", counter);
+//        printf("saving: %d \n", saving);
+        
+        if (counter > 1) {
+//            printf("counter greater than 1 \n");
+//            printf("counter inside: %d \n", counter);
+            string xmlFileOne;
+            string xmlFileTwo;
+            xmlFileOne = "myCreateProbTwo.xml";
+            xmlFileTwo = "myReflectProbTwo.xml";
+            
+            //save XML file for later
+            present->xmlSetupThang(iPhoneDocumentsDirectory, xmlFileOne, xmlFileTwo);
+            present->saveXML(iPhoneDocumentsDirectory, xmlFileOne,xmlFileTwo);
+            
+            presentButton.selected=false;
+            saving = false;
+            counter = 0;
+        }
     }
     
     if (questionButton.selected) {        
@@ -231,6 +257,11 @@ void problemMathTwo::draw(ofTrueTypeFont& basicFont) {
     ofEnableAlphaBlending();
     questionButtonImage.draw(ofGetWidth()-35, 10);
     ofDisableAlphaBlending();
+    
+    if (saving) {
+//        printf("saving in draw \n");        
+        savingFeedback->drawTextColor(basicFont, savingFontColor);
+    }
     
 }
 

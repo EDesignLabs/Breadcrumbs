@@ -62,7 +62,16 @@ class problemMathThree {
         bool               navStatePresent;
         bool               navStateQuestion;
     
+
+//-----------------------------------------------
+//Saving feedback
     
+    bool               saving;
+    button*            savingFeedback;
+    int                counter;
+    ofColor            savingFontColor;
+    
+
 //-----------------------------------------------
 //Feedback (quick and dirty)
     

@@ -30,7 +30,7 @@ class problemMathOne {
         void next();
         void switchScene();
         void updateWhichScene();
-
+    
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);
         void touchingMove(ofTouchEventArgs &touch);
@@ -60,6 +60,14 @@ class problemMathOne {
         bool               navStateReflect;
         bool               navStatePresent;
         bool               navStateQuestion;
+
+//-----------------------------------------------
+//Saving feedback
+    
+        bool               saving;
+        button*            savingFeedback;
+        int                counter;
+        ofColor            savingFontColor;
     
 //-----------------------------------------------
 //Feedback (quick and dirty)

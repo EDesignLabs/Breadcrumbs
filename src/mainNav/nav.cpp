@@ -82,6 +82,16 @@ void nav::setup() {
     navStateSavedMathTwo = false;
     navStateSavedMathThree = false;
     
+    
+    ofPoint posSix;
+    size.set(200, 200);
+    posSix.set(ofGetWidth()/2-(size.x/2), ofGetHeight()/2-(size.x/2));
+    color.set(230, 230, 230, 245);
+    offSet.set(65, 100);
+    loadingFeedback.setup(posSix, size, offSet, "Loading...", color);
+    loading = false;
+    counter = 0;
+    
 //    printf(" NAV setup ended \n");
     
 }
@@ -145,39 +155,79 @@ void nav::update(int section, string iPhoneDocumentsDirectory) {
     }
 
     if (myWorkBirds.selected) {
-        savedMathOne = new saveMathOne(iPhoneDocumentsDirectory);
-        navStateToc = false;
-        navStateExerciseOne = false;
-        navStateExerciseTwo = false;
-        navStateExerciseThree = false;
-        navStateSavedMathOne = true;
-        navStateSavedMathTwo = false;
-        navStateSavedMathThree = false;
-        myWorkBirds.selected=false;
+        
+        loading = true;
+        counter++;
+        printf("counter: %d \n", counter);
+        printf("saving: %d \n", loading);
+        
+        if (counter > 1) {
+        
+            savedMathOne = new saveMathOne(iPhoneDocumentsDirectory);
+            navStateToc = false;
+            navStateExerciseOne = false;
+            navStateExerciseTwo = false;
+            navStateExerciseThree = false;
+            navStateSavedMathOne = true;
+            navStateSavedMathTwo = false;
+            navStateSavedMathThree = false;
+            myWorkBirds.selected=false;
+            
+            loading = false;
+            counter = 0;
+
+        }
     }
 
     if (myWorkBreadcrumb.selected) {
-        savedMathTwo = new saveMathTwo(iPhoneDocumentsDirectory);
-        navStateToc = false;
-        navStateExerciseOne = false;
-        navStateExerciseTwo = false;
-        navStateExerciseThree = false;
-        navStateSavedMathOne = false;
-        navStateSavedMathTwo = true;
-        navStateSavedMathThree = false;
-        myWorkBreadcrumb.selected=false;
+        
+        loading = true;
+        counter++;
+        printf("counter: %d \n", counter);
+        printf("saving: %d \n", loading);
+        
+        if (counter > 1) {
+
+            savedMathTwo = new saveMathTwo(iPhoneDocumentsDirectory);
+            navStateToc = false;
+            navStateExerciseOne = false;
+            navStateExerciseTwo = false;
+            navStateExerciseThree = false;
+            navStateSavedMathOne = false;
+            navStateSavedMathTwo = true;
+            navStateSavedMathThree = false;
+            myWorkBreadcrumb.selected=false;
+
+            loading = false;
+            counter = 0;
+            
+        }
+
     }
 
     if (myWorkCandy.selected) {
-        savedMathThree = new saveMathThree(iPhoneDocumentsDirectory);
-        navStateToc = false;
-        navStateExerciseOne = false;
-        navStateExerciseTwo = false;
-        navStateExerciseThree = false;
-        navStateSavedMathOne = false;
-        navStateSavedMathTwo = false;
-        navStateSavedMathThree = true;
-        myWorkCandy.selected=false;
+        
+        loading = true;
+        counter++;
+        printf("counter: %d \n", counter);
+        printf("saving: %d \n", loading);
+        
+        if (counter > 1) {
+            savedMathThree = new saveMathThree(iPhoneDocumentsDirectory);
+            navStateToc = false;
+            navStateExerciseOne = false;
+            navStateExerciseTwo = false;
+            navStateExerciseThree = false;
+            navStateSavedMathOne = false;
+            navStateSavedMathTwo = false;
+            navStateSavedMathThree = true;
+            myWorkCandy.selected=false;
+            
+            loading = false;
+            counter = 0;
+            
+        }
+
     }
 
     if (homeButton.selected) {
@@ -259,9 +309,9 @@ void nav::draw(ofTrueTypeFont& basicFont) {
     if (navStateToc) {
         ofColor textColor;
         textColor.set(255, 255, 255);
-        birdsButton.drawTextColor(basicFont, birds, textColor);
-        breadcrumbsButton.drawTextColor(basicFont, breadcrumbs, textColor);
-        candyButton.drawTextColor(basicFont, candy, textColor);
+        birdsButton.drawTextColorImage(basicFont, birds, textColor);
+        breadcrumbsButton.drawTextColorImage(basicFont, breadcrumbs, textColor);
+        candyButton.drawTextColorImage(basicFont, candy, textColor);
         myWorkButton.draw(basicFont, myWork);
         myWorkBirds.draw(basicFont);
         myWorkBreadcrumb.draw(basicFont);
@@ -321,6 +371,14 @@ void nav::draw(ofTrueTypeFont& basicFont) {
         home.draw(10, 10);
         ofDisableAlphaBlending();
     }
+    
+    
+    if (loading) {
+        printf("loading in draw \n");
+        loadingFeedback.draw(basicFont);
+    }
+
+    
 }
 
 //------------------------------------------------------------------

@@ -51,7 +51,10 @@ class uiReflect {
         ofPoint*         scrubLocation;
         ofPoint          scrubPos;
         vector <ofPoint> scrubFeedback;
-    
+        int              scrubWidth;
+
+        button*          rightSide;
+
     
 //-----------------------------------------------
 //for flagging process

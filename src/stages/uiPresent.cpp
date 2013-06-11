@@ -19,6 +19,7 @@ uiPresent::~uiPresent() {
     delete scrubBox;
     delete scrubLocation;
     delete currentPos;
+    delete rightSide;
     
     delete markerButtonSelected;
     delete playPauseButton;
@@ -38,6 +39,7 @@ uiPresent::uiPresent() {
     
     scrubBox = new button;
     currentPos = new button;
+    rightSide = new button;
     
     //set initial values for state
     markerButtonSelected = new bool;
@@ -51,14 +53,15 @@ uiPresent::uiPresent() {
     float scrubHeight;
     scrubHeight = 50;
     
+    scrubWidth = ofGetWidth()-130;
     
     //main scrub box
     pos.set(100, ofGetHeight()-scrubHeight);
-    size.set(ofGetWidth()-pos.x, scrubHeight);
+    size.set(scrubWidth-pos.x, scrubHeight);
     color.set(170, 170, 170);
     scrubBox->setup(pos, size, color);
     
-    
+        
     //position indicator
     size.set(10, scrubHeight);
     color.set(0, 0, 170);
@@ -68,6 +71,10 @@ uiPresent::uiPresent() {
     scrubLocation->set(pos);
     scrubPos.set(0, 0);
     
+    pos.set(scrubWidth, ofGetHeight()-scrubHeight);
+    size.set(130, scrubHeight);
+    color.set(170, 170, 170);
+    rightSide->setup(pos, size, color);
     
     //playback and flag
     playPauseButton = new button;
@@ -125,7 +132,7 @@ void uiPresent::setPoints(vector <drawing> theDrawings, vector<flagState> theFla
     mapTempPos.y = 10;
     for (int i = 0; i < theDrawings.size(); i++){
         for (int h = 0; h < drawThese[i].thePoints.size(); h++){
-            mapTempPos.x = ofMap(drawThese[i].thePoints[h].timeStamp, startTime, endTime, 100, ofGetWidth());
+            mapTempPos.x = ofMap(drawThese[i].thePoints[h].timeStamp, startTime, endTime, 100, scrubWidth);
             mapTempPos.y *= -1;
             
             scrubFeedback.push_back(mapTempPos);
@@ -168,7 +175,7 @@ void uiPresent::playData() {
         //        printf(" scrubPos is: %f \n", scrubPos.x);
         
         //this advances the currentPos scrubBox indicator
-        scrubLocation->x = ofMap(scrubPos.x, startTime, endTime, 100, ofGetWidth());
+        scrubLocation->x = ofMap(scrubPos.x, startTime, endTime, 100, scrubWidth);
         
         //        printf(" scrubLocation.x is: %f \n", scrubLocation->x);
         
@@ -179,7 +186,7 @@ void uiPresent::playData() {
     } else {
         
         currentTime = previousTime = ofGetElapsedTimeMillis();
-        scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
+        scrubPos.x = ofMap(scrubLocation->x, 100, scrubWidth, startTime, endTime);
         
     }
     
@@ -516,7 +523,7 @@ void uiPresent::update() {
     
     if (scrubBox->touching) {
         playPauseButton->toggle = false;
-        scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
+        scrubPos.x = ofMap(scrubLocation->x, 100, scrubWidth, startTime, endTime);
         currentPos->update(scrubLocation->x);
     }
  
@@ -542,6 +549,7 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
     
     playPauseButton->drawNoColorWithImageToggle();
     markerButton->drawNoColorWithImage();
+    rightSide->drawNoColor();
     scrubBox->drawNoColor();
     currentPos->draw();
     
@@ -596,6 +604,8 @@ void uiPresent::draw(ofTrueTypeFont& basicFont) {
     //    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
 }
 
+
+
 //------------------------------------------------------------------
 void uiPresent::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
     
@@ -604,6 +614,7 @@ void uiPresent::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
     
     playPauseButton->drawNoColorWithImageToggle();
     markerButton->drawNoColorWithImage();
+    rightSide->drawNoColor();
     scrubBox->drawNoColor();
     currentPos->draw();
     
@@ -713,11 +724,11 @@ void uiPresent::touchingMove(ofTouchEventArgs &touch) {
     playPauseButton->touchingMove(touch);
     markerButton->touchingMove(touch);
     scrubBox->touchingMove(touch);
-    
-    if (scrubBox->touching && touch.x >= scrubBox->pos.x) {
+        
+    if (scrubBox->touching && touch.x >= scrubBox->pos.x && touch.x < scrubWidth && touch.y > scrubBox->pos.y) {
         scrubLocation->set(touch.x, touch.y);
     }
-    
+
     
     if (*markerButtonSelected) {
         ofPoint currentPos;

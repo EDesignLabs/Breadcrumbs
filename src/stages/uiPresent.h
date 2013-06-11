@@ -76,6 +76,9 @@ public:
     ofPoint*         scrubLocation;
     ofPoint          scrubPos;
     vector <ofPoint> scrubFeedback;
+    int              scrubWidth;
+    
+    button*          rightSide;
     
     
 //-----------------------------------------------

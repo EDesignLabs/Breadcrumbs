@@ -19,7 +19,7 @@ uiReflect::~uiReflect() {
     delete scrubBox;
     delete scrubLocation;
     delete currentPos;
-    
+    delete rightSide;    
     
     delete playPauseButton;
     delete flagButton;
@@ -38,6 +38,7 @@ uiReflect::uiReflect() {
 
     scrubBox = new button;
     currentPos = new button;
+    rightSide = new button;
     
     ofPoint pos;
     ofPoint size;
@@ -46,10 +47,11 @@ uiReflect::uiReflect() {
     float scrubHeight;
     scrubHeight = 50;
     
+    scrubWidth = ofGetWidth()-130;
     
     //main scrub box
     pos.set(100, ofGetHeight()-scrubHeight);
-    size.set(ofGetWidth()-pos.x, scrubHeight);
+    size.set(scrubWidth-pos.x, scrubHeight);
     color.set(170, 170, 170);
     scrubBox->setup(pos, size, color);
 
@@ -63,6 +65,10 @@ uiReflect::uiReflect() {
     scrubLocation->set(pos);
     scrubPos.set(0, 0);
     
+    pos.set(scrubWidth, ofGetHeight()-scrubHeight);
+    size.set(130, scrubHeight);
+    color.set(170, 170, 170);
+    rightSide->setup(pos, size, color);
     
     //playback and flag
     playPauseButton = new button;
@@ -119,7 +125,7 @@ void uiReflect::setPoints(vector <drawing> theDrawings) {
     mapTempPos.y = 10;
     for (int i = 0; i < theDrawings.size(); i++){
         for (int h = 0; h < drawThese[i].thePoints.size(); h++){
-            mapTempPos.x = ofMap(drawThese[i].thePoints[h].timeStamp, startTime, endTime, 100, ofGetWidth());
+            mapTempPos.x = ofMap(drawThese[i].thePoints[h].timeStamp, startTime, endTime, 100, scrubWidth);
             mapTempPos.y *= -1;
             
             scrubFeedback.push_back(mapTempPos);
@@ -162,7 +168,7 @@ void uiReflect::playData() {
 //        printf(" scrubPos is: %f \n", scrubPos.x);
         
     //this advances the currentPos scrubBox indicator
-        scrubLocation->x = ofMap(scrubPos.x, startTime, endTime, 100, ofGetWidth());
+        scrubLocation->x = ofMap(scrubPos.x, startTime, endTime, 100, scrubWidth);
         
 //        printf(" scrubLocation.x is: %f \n", scrubLocation->x);
         
@@ -173,7 +179,7 @@ void uiReflect::playData() {
     } else {
         
         currentTime = previousTime = ofGetElapsedTimeMillis();
-        scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
+        scrubPos.x = ofMap(scrubLocation->x, 100, scrubWidth, startTime, endTime);
 
     }
     
@@ -191,7 +197,7 @@ void uiReflect::update() {
     
     if (scrubBox->touching) {
         playPauseButton->toggle = false;
-        scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
+        scrubPos.x = ofMap(scrubLocation->x, 100, scrubWidth, startTime, endTime);
         currentPos->update(scrubLocation->x);
     }
     
@@ -278,6 +284,7 @@ void uiReflect::checkFlags() {
 //------------------------------------------------------------------
 void uiReflect::draw(ofTrueTypeFont& basicFont) {
 
+    rightSide->drawNoColor();
     playPauseButton->drawNoColorWithImageToggle();
     flagButton->drawNoColorWithImage();
     scrubBox->drawNoColor();
@@ -316,6 +323,7 @@ void uiReflect::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
     
     playPauseButton->drawNoColorWithImageToggle();
     flagButton->drawNoColorWithImage();
+    rightSide->drawNoColor();
     scrubBox->drawNoColor();
     currentPos->draw();
     
@@ -387,7 +395,7 @@ void uiReflect::touchingMove(ofTouchEventArgs &touch) {
         flagButton->touchingMove(touch);
         scrubBox->touchingMove(touch);
 
-        if (scrubBox->touching && touch.x >= scrubBox->pos.x && touch.y > scrubBox->pos.y) {
+        if (scrubBox->touching && touch.x >= scrubBox->pos.x && touch.x < scrubWidth && touch.y > scrubBox->pos.y) {
             scrubLocation->set(touch.x, touch.y);
             theFlagState.update(touch);
         }

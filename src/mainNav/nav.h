@@ -72,6 +72,15 @@ class nav {
         bool    navStateSavedMathOne;
         bool    navStateSavedMathTwo;
         bool    navStateSavedMathThree;
+    
+    
+//-----------------------------------------------
+//Loading feedback
+    
+    bool               loading;
+    button             loadingFeedback;
+    int                counter;
+
 };
 
 #endif

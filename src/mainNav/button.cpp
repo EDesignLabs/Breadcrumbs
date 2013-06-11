@@ -196,7 +196,27 @@ void button::draw(ofTrueTypeFont& basicFont, ofImage& basicImage) {
 }
 
 //------------------------------------------------------------------
-void button::drawTextColor(ofTrueTypeFont& basicFont, ofImage& basicImage, ofColor textColor) {
+void button::drawTextColor(ofTrueTypeFont& basicFont, ofColor textColor) {
+    
+    ofEnableAlphaBlending();
+    if (touching) ofSetColor(255, 0, 0,250);
+    else ofSetColor(thisColor);
+    ofRect(thisRectangle);
+    
+    ofSetColor(textColor);
+    basicFont.drawString(thisString, thisRectangle.x+offSet.x, thisRectangle.y+offSet.y);
+    
+    ofSetColor(0, 0, 0);
+    ofNoFill();
+    ofRect(thisRectangle);
+    ofFill();
+    
+    ofDisableAlphaBlending();
+}
+
+
+//------------------------------------------------------------------
+void button::drawTextColorImage(ofTrueTypeFont& basicFont, ofImage& basicImage, ofColor textColor) {
     
     ofEnableAlphaBlending();
     if (touching) ofSetColor(255, 0, 0,250);
