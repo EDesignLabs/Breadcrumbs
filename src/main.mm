@@ -3,7 +3,11 @@
 
 int main(){
     
-    ofAppiPhoneWindow *window = new ofAppiPhoneWindow();
+    ofAppiOSWindow *window = new ofAppiOSWindow();
+    
+    window->enableHardwareOrientation();
+    window->enableOrientationAnimation();
+
     window->enableDepthBuffer();
     window->enableRetina();
     window->enableAntiAliasing(4);

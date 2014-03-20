@@ -15,6 +15,10 @@
 #include "drawing.h"
 #include "flagState.h"
 
+#include "ofxXmlSettings.h"
+#include "xmlParty.h"
+
+#include "ofxRetinaTrueTypeFont.h"
 
 class uiReflect {
 	
@@ -25,11 +29,11 @@ class uiReflect {
     
         void setPoints(vector <drawing> theDrawings);
 		void update();
-		void draw(ofTrueTypeFont& basicFont);
-		void draw(ofTrueTypeFont& basicFont, ofImage& questionImage);
+		void draw(ofxRetinaTrueTypeFont& quicksandBold60, ofxRetinaTrueTypeFont& quicksandBold36, ofxRetinaTrueTypeFont& quicksandBook36, bool loadedImage, ofImage& grid);
     
         void checkFlags();
-
+        void checkSavedFlags();
+    
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);
         void touchingMove(ofTouchEventArgs &touch);
@@ -44,15 +48,20 @@ class uiReflect {
     
         int              startTime;
         int              endTime;
+
     
 //-----------------------------------------------
 //uiReflect
-        button*          scrubBox;
-        ofPoint*         scrubLocation;
+        button           scrubBox;
+        ofPoint          scrubLocation;
         ofPoint          scrubPos;
         vector <ofPoint> scrubFeedback;
         int              scrubWidth;
+        int              scrubHeight;
 
+        float            _srubBoxPosEnd;
+    
+        button*          leftSide;
         button*          rightSide;
 
     
@@ -65,7 +74,9 @@ class uiReflect {
 //for playback and leaving reflections
         button*         playPauseButton;
         button*         flagButton;
-    
+        button*         questionButton;
+        ofImage*        FAQ;
+
 //-----------------------------------------------
 //shows where pointer last left
         button*          currentPos;

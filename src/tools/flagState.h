@@ -12,12 +12,16 @@
 #include "ofMain.h"
 #include "button.h"
 
+#include "ofxRetinaTrueTypeFont.h"
 
 typedef struct {
     
     ofPoint startPos;
     ofPoint endPos;
     ofPoint size;
+    
+    int     startTime;
+    int     endTime;
     
     ofPoint textPos;
     ofPoint tabPos;
@@ -52,17 +56,19 @@ class flagState {
         flagState();
         ~flagState();
     
-        void updateStart(ofTouchEventArgs &touch);
-        void update(ofTouchEventArgs &touch);
-        void updateEnd(ofTouchEventArgs &touch);
+        void updateStart(ofTouchEventArgs &touch, int startTime, int endTime, int startPos, int endPos);
+        void update(ofTouchEventArgs &touch, int startTime, int endTime, int startPos, int endPos);
+        void updateEnd(ofTouchEventArgs &touch, int startTime, int endTime, float srubBoxPosBegin, float srubBoxPosEnd);
 
+        void newStartEndTime(int& startTime, int& endTime, float& startPos, float& endPos);
+        void adjustTime();
         void createButtons();
         void selectingButton();
         void makeMarker();
         void adjustMarker(int floor);
     
-        void draw(ofTrueTypeFont& basicFont);
-        void drawRemove(ofTrueTypeFont& basicFont);
+        void draw(ofxRetinaTrueTypeFont& basicFont);
+        void drawRemove(ofxRetinaTrueTypeFont& basicFont);
     
         void touchingDown(ofTouchEventArgs &touch);
         void touchingMove(ofTouchEventArgs &touch);

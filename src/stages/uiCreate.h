@@ -12,20 +12,20 @@
 #include "ofMain.h"
 
 #include "button.h"
-
 #include "drawing.h"
 
+#include "ofxXmlSettings.h"
+#include "xmlParty.h"
 
 class uiCreate {
 	
 	public:
     
-        uiCreate(string theText);
+        uiCreate();
         ~uiCreate();
     
-		void update();
-		void draw(ofTrueTypeFont& basicFont);
-		void draw(ofTrueTypeFont& basicFont, ofImage& questionImage);
+		void update(ofPoint _currentLocation, ofPoint speed, bool panning);
+		void draw(bool loadedImage, ofImage& grid);
     
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);
@@ -36,28 +36,54 @@ class uiCreate {
 
         vector <ofPoint> currentDrawing;
         
-        //This is the drawing that is tracked and then pushed on the stack
+//-----------------------------------------------
+//This is the drawing that is tracked and then pushed on the stack
+
         vector <drawing> drawThese;
     
-        //how initial spots are drawn
-        drawing thisDrawing;
+//-----------------------------------------------
+//how initial spots are drawn
 
-        char eventString[255];
-        char timeString[255];
-    
-        //for text
-        string theText;
-    
-        //uiCreate
-        ofImage*    pencil;
-        ofImage*    erase;
+        drawing         thisDrawing;
 
-        button      pencilButton;
-        button      eraseButton;
+        char            eventString[255];
+        char            timeString[255];
     
-        bool*       pencilSelected;
-        bool*       eraseSelected;
-        
+//-----------------------------------------------
+//for text
+        string          theText;
+    
+    
+//-----------------------------------------------
+//for flagging process
+//no data is stored here
+    
+        vector<flagState> theFlagStates;
+
+//-----------------------------------------------
+//uiCreate
+    
+        button*         moveButton;
+        button*         pencilButton;
+        button*         eraseButton;
+        button*         questionButton;
+    
+        bool*           moveSelected;
+        bool*           pencilSelected;
+        bool*           eraseSelected;
+    
+        ofPoint         pointOfDeparture;
+        ofPoint         amountMoved;
+    
+        ofPoint         currentLocation;
+        ofPoint         newLocation;
+    
+//-----------------------------------------------
+//FAQ
+
+        ofImage*        FAQ;
+    
+
 };
 
 #endif

@@ -17,6 +17,9 @@ typedef struct {
     ofPoint pos;
     int     timeStamp;
     
+    ofPoint whereAreWe;
+    bool    drawMe;
+    
 }	touchPoint;
 
 class drawing {
@@ -24,13 +27,19 @@ class drawing {
 	public:
     
         void setup();
-        void update(ofTouchEventArgs &touch, ofColor color, float lineWidth);
-        void update(ofPoint &pos, ofColor color, float lineWidth);
-        void update(ofPoint &pos, int timeStamp, ofColor color, float lineWidth);
+    void update(ofTouchEventArgs &touch, ofColor color, float lineWidth);
+    void update(ofTouchEventArgs &touch, ofColor color, float lineWidth, bool drawMe, ofPoint whereAreWe);
+        void update(ofPoint &pos, ofColor color, float lineWidth, bool drawMe, ofPoint whereAreWe);
+        void update(ofPoint &pos, int timeStamp, ofColor color, float lineWidth, bool drawMe, ofPoint whereAreWe);
         void draw();
-		void draw(int currentPos);
+		void draw(int currentTime);
         void reset();
+        void drawMini(ofPoint newLocation);
+        void drawMini(ofPoint newLocation, int currentPos);
+    
+        ofPoint returnMoveMe(int currentTime);
 
+    
         ofColor color;
         float   lineWidth;
 

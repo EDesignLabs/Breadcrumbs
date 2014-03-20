@@ -16,13 +16,14 @@
 uiReflect::~uiReflect() {
     
     //uiReflect elements
-    delete scrubBox;
-    delete scrubLocation;
     delete currentPos;
+    delete leftSide;
     delete rightSide;    
     
     delete playPauseButton;
     delete flagButton;
+    delete questionButton;
+    delete FAQ;
 
 }
 
@@ -34,64 +35,93 @@ uiReflect::~uiReflect() {
 //------------------------------------------------------------------
 uiReflect::uiReflect() {
     
-    //set initial values for state
-
-    scrubBox = new button;
+    //-----------------------------------------------
+    //scrubBox
     currentPos = new button;
+    leftSide = new button;
     rightSide = new button;
     
     ofPoint pos;
     ofPoint size;
     ofColor color;
     
-    float scrubHeight;
     scrubHeight = 50;
     
-    scrubWidth = ofGetWidth()-130;
+    scrubWidth = ofGetWidth()-(2*185);
     
+    //-----------------------------------------------
     //main scrub box
-    pos.set(100, ofGetHeight()-scrubHeight);
-    size.set(scrubWidth-pos.x, scrubHeight);
-    color.set(170, 170, 170);
-    scrubBox->setup(pos, size, color);
+    pos.set(185, ofGetHeight()-scrubHeight);
+    size.set(scrubWidth, scrubHeight);
+    color.set(230, 230, 230, 245);
+    scrubBox.setup(pos, size, color);
 
+    _srubBoxPosEnd = scrubBox.pos.x + scrubBox.thisRectangle.getWidth();
     
     //position indicator
-    size.set(10, scrubHeight);
-    color.set(0, 0, 170);
+    size.set(3, scrubHeight);
+    color.set(91, 138, 205);
     currentPos->setup(pos, size, color);
     
-    scrubLocation = new ofPoint;
-    scrubLocation->set(pos);
+    scrubLocation.set(pos);
     scrubPos.set(0, 0);
     
-    pos.set(scrubWidth, ofGetHeight()-scrubHeight);
-    size.set(130, scrubHeight);
-    color.set(170, 170, 170);
+    pos.set(0, ofGetHeight()-scrubHeight);
+    size.set(scrubBox.pos.x, scrubHeight);
+    color.set(230, 230, 230, 245);
+    leftSide->setup(pos, size, color);
+    
+    pos.set(_srubBoxPosEnd, ofGetHeight()-scrubHeight);
+    size.set(185, scrubHeight);
+    color.set(230, 230, 230, 245);
     rightSide->setup(pos, size, color);
     
+    
+    //-----------------------------------------------
     //playback and flag
     playPauseButton = new button;
     flagButton = new button;
+    questionButton = new button;
 
-    color.set(170, 170, 170);
+    color.set(200, 200, 200, 200);
     
     ofPoint offSet;
-    offSet.set(17, 15);
+    offSet.set(0,0);
     ofImage play;
-    play.loadImage("images/ui/glyphicons_173_play.png");
     ofImage pause;
-    pause.loadImage("images/ui/glyphicons_174_pause.png");
     ofImage flag;
-    flag.loadImage("images/ui/glyphicons_266_flag.png");
-
-    pos.set(0, ofGetHeight()-scrubHeight);
-    size.set(50, 50);
+    ofImage flagTwo;
+    
+    play.loadImage("images/ui/Play_Low.png");
+    pause.loadImage("images/ui/Pause_Low.png");
+    flag.loadImage("images/ui/Flag_Low.png");
+    flagTwo.loadImage("images/ui/Flag_Low_bw.png");
+    
+    pos.set(15, 683);
+    size.set(play.getWidth(), play.getHeight());
     playPauseButton->setup(pos, size, color, pause, play, offSet);
-
-    offSet.set(16, 12);
-    pos.set(50, ofGetHeight()-scrubHeight);
+    
+    pos.set(100, 683);
     flagButton->setup(pos, size, color, flag, offSet);
+    flagButton->setup(pos, size, color, flag, flagTwo, offSet);
+    flagButton->toggle = true;
+    
+    //-----------------------------------------------
+    //for question button
+    
+    ofImage    questionImageOne;
+    ofImage    questionImageTwo;
+    questionImageOne.loadImage("images/ui/FAQ_Low.png");
+    questionImageTwo.loadImage("images/ui/FAQ_Low_bw.png");
+
+    FAQ = new ofImage;
+    FAQ->loadImage("images/faq/FAQ2_Low.png");
+    
+    size.set(questionImageOne.getWidth(), questionImageOne.getHeight());
+    pos.set(ofGetWidth()-85, 15);
+    offSet.set(0, 0);
+    color.set(230, 230, 230, 245);
+    questionButton->setup(pos, size, color, questionImageOne, questionImageTwo, offSet);
     
 }
 
@@ -101,46 +131,9 @@ uiReflect::uiReflect() {
 //      SET POINTS                                                //
 ////////////////////////////////////////////////////////////////////
 
-//------------------------------------------------------------------
-void uiReflect::setPoints(vector <drawing> theDrawings) {
-    
-    drawThese.clear();
-    scrubFeedback.clear();
-    
-    for (int i=0; i < theDrawings.size(); i++) {
-        //this is the vector of drawing
-        drawThese.push_back(theDrawings[i]);
-    }
-    
-    endTime = 0;
-    endTime = drawThese[0].thePoints[0].timeStamp;
-    //final elapsed time of final point
-    startTime = drawThese[0].thePoints[0].timeStamp;
-    int drawTheseAmount = drawThese.size()-1;
-    int thePointsAmount = drawThese[drawTheseAmount].thePoints.size()-1;
-    endTime = drawThese[drawTheseAmount].thePoints[thePointsAmount].timeStamp;
-    
-    
-    ofPoint mapTempPos;
-    mapTempPos.y = 10;
-    for (int i = 0; i < theDrawings.size(); i++){
-        for (int h = 0; h < drawThese[i].thePoints.size(); h++){
-            mapTempPos.x = ofMap(drawThese[i].thePoints[h].timeStamp, startTime, endTime, 100, scrubWidth);
-            mapTempPos.y *= -1;
-            
-            scrubFeedback.push_back(mapTempPos);
-        }
-    }
-    
-    for (int i = 0; i < scrubFeedback.size(); i++){
-        scrubFeedback[i].y += ofGetHeight()-25;
-    }
-    
-//    printf(" endTime is: %d \n", endTime);
-//    printf(" scrubfeedback[0].x is: %f \n", scrubFeedback[0].x);
-//    printf(" scrubfeedback[0].y is: %f \n", scrubFeedback[0].y);
-    
-}
+//Set Points used to be here
+//Use Set Points from xmlParty.h
+
 
 
 ////////////////////////////////////////////////////////////////////
@@ -155,9 +148,8 @@ void uiReflect::playData() {
         int diff;
         currentTime = ofGetElapsedTimeMillis();
         diff =  currentTime - previousTime;
-        
-//        printf(" diff is: %d \n", diff);
-    
+            
+        //-----------------------------------------------
         //this advances the drawing
         if (scrubPos.x <= endTime) {
             scrubPos.x += diff;
@@ -165,21 +157,18 @@ void uiReflect::playData() {
             scrubPos.x = startTime;
         }
 
-//        printf(" scrubPos is: %f \n", scrubPos.x);
         
-    //this advances the currentPos scrubBox indicator
-        scrubLocation->x = ofMap(scrubPos.x, startTime, endTime, 100, scrubWidth);
-        
-//        printf(" scrubLocation.x is: %f \n", scrubLocation->x);
-        
-        currentPos->update(scrubLocation->x);
-                
+        //-----------------------------------------------
+        //this advances the currentPos scrubBox indicator
+
+        scrubLocation.x = ofMap(scrubPos.x, startTime, endTime, scrubBox.pos.x, _srubBoxPosEnd);
+        currentPos->update(scrubLocation.x);
         previousTime = ofGetElapsedTimeMillis();
    
     } else {
         
         currentTime = previousTime = ofGetElapsedTimeMillis();
-        scrubPos.x = ofMap(scrubLocation->x, 100, scrubWidth, startTime, endTime);
+        scrubPos.x = ofMap(scrubLocation.x, scrubBox.pos.x, _srubBoxPosEnd, startTime, endTime);
 
     }
     
@@ -195,10 +184,13 @@ void uiReflect::update() {
     
     playData();
     
-    if (scrubBox->touching) {
+    //-----------------------------------------------
+    //Check the scrubBox
+
+    if (scrubBox.touching) {
         playPauseButton->toggle = false;
-        scrubPos.x = ofMap(scrubLocation->x, 100, scrubWidth, startTime, endTime);
-        currentPos->update(scrubLocation->x);
+        scrubPos.x = ofMap(scrubLocation.x, scrubBox.pos.x, _srubBoxPosEnd, startTime, endTime);
+        currentPos->update(scrubLocation.x);
     }
     
     if (theFlagState.theReflectionFlag.ended) {
@@ -209,27 +201,25 @@ void uiReflect::update() {
             checkFlags();
             theFlagStates.push_back(theFlagState);
             theFlagState.reset();
-//            printf(" picked my flag!");
         }
-        
     }
     
     for (int i = 0; i < theFlagStates.size(); i++){
         if (theFlagStates[i].theReflectionFlag.removeFlagButton.selected) {
-//            printf("removeFlagButtonSelection for: %d \n", i);
             theFlagStates.erase( theFlagStates.begin()+i );
         }
     }
 
-//    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
-    
 }
 
+
+////////////////////////////////////////////////////////////////////
+//      CHECKED FLAGS                                             //
+////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
 void uiReflect::checkFlags() {
 
-                   // theFlagState.adjustMarker();
     bool    floor [100];
     
     for (int i = 0; i<100; i++) {
@@ -239,30 +229,22 @@ void uiReflect::checkFlags() {
     bool    chosen = 0;
     int     counter = 0;
 
-//    printf("theFlagStates.size = %ld \n", theFlagStates.size());
-
+    //-----------------------------------------------
     //first get all the floors that are taken
+
     if (theFlagStates.size() >= 1) {
         for (int i = 0; i<theFlagStates.size(); i++) {
             
             float dist = theFlagStates[i].theReflectionFlag.startPos.x - theFlagState.theReflectionFlag.startPos.x;
             
             dist = abs(dist);
-//            printf("dist = %f \n", dist);
             
-            if (dist < 130) {
+            if (dist < 140) {
                 floor[theFlagStates[i].theReflectionFlag.floor] = true;
             }
-        
         }
     
-//        for (int i = 0; i < 20; i++) {
-//            printf("floor: %d, ", i);
-//            printf("true/false: %d \n ", floor[i]);
-//        }
-        
         while (chosen == false) {
-//            printf("chosen run: %d \n", counter);
             //check through each floor.
             //if true, go to next.
             //if false, assign the floor to current flag
@@ -278,25 +260,78 @@ void uiReflect::checkFlags() {
 
 
 ////////////////////////////////////////////////////////////////////
+//      CHECKED SAVED FLAGS                                       //
+////////////////////////////////////////////////////////////////////
+
+//Checked Saved Flags used to be here
+//Use Checked Save Flags from xmlParty.h
+
+
+
+////////////////////////////////////////////////////////////////////
 //      DRAW                                                      //
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void uiReflect::draw(ofTrueTypeFont& basicFont) {
-
-    rightSide->drawNoColor();
-    playPauseButton->drawNoColorWithImageToggle();
-    flagButton->drawNoColorWithImage();
-    scrubBox->drawNoColor();
-    currentPos->draw();
+void uiReflect::draw(ofxRetinaTrueTypeFont& quicksandBold60, ofxRetinaTrueTypeFont& quicksandBold36, ofxRetinaTrueTypeFont& quicksandBook36, bool loadedImage, ofImage& grid) {
     
-//    ofSetLineWidth(2.0);
-//    ofSetColor(0, 0, 0);
+
+    //-----------------------------------------------
+    //calculating translate
+    
+    ofPushMatrix();
+    ofPoint moveMe, start;
+    moveMe.set(0, 0);
+    start.set(0, 0);
+    
+    int drawingTheseOnes = drawThese.size();
+    drawingTheseOnes--;
+    
+    for (int i = drawingTheseOnes; i >= 0; i--) {
+        
+        moveMe = drawThese[i].returnMoveMe(scrubPos.x);
+        
+        if (moveMe != start) {
+//            printf(" MoveMeMain X: %f \n", moveMe.x);
+//            printf(" MoveMeMain Y: %f \n", moveMe.y);
+            break;
+        }
+        
+    }
+    
+    ofTranslate(moveMe.x, moveMe.y);
+    
+    
+    //-----------------------------------------------
+    //actual drawing
+    
     for (int i = 0; i < drawThese.size(); i++) {
         ofSetColor(drawThese[i].color);
         ofSetLineWidth(drawThese[i].lineWidth);
         drawThese[i].draw(scrubPos.x);
-    } 
+    }
+    
+    ofPopMatrix();
+    
+    //-----------------------------------------------
+    //Scrub Box Feedback
+    
+    leftSide->drawNoColorTransparency();
+    rightSide->drawNoColorTransparency();
+    scrubBox.drawNoColorTransparency();
+    currentPos->draw();
+
+    //-----------------------------------------------
+    //Tool Button UI
+    
+    playPauseButton->drawTwoImages();
+    flagButton->drawTwoImages();
+    
+    //-----------------------------------------------
+    //Boundaries of the scrubBox
+    ofSetColor(0, 0, 0);
+    ofRect(scrubBox.pos.x-1, scrubBox.pos.y, 3, scrubHeight);
+    ofRect(rightSide->pos.x, rightSide->pos.y, 3, scrubHeight);
     
     ofSetColor(0, 0, 0);
     ofSetLineWidth(1.0);
@@ -305,59 +340,58 @@ void uiReflect::draw(ofTrueTypeFont& basicFont) {
             ofLine(scrubFeedback[i-1].x, scrubFeedback[i-1].y, scrubFeedback[i].x, scrubFeedback[i].y);
         }
     }
+    
+    
+    //-----------------------------------------------
+    //grid
+    
+    if (loadedImage) {
+        ofEnableAlphaBlending();
+        ofSetColor(255, 255, 255);
+        grid.draw(175, 300);
+        ofDisableAlphaBlending();        
+    }
+
+    
+    //-----------------------------------------------
+    //flags
     
     if (flagButton->toggle) {
         for (int i = 0; i < theFlagStates.size(); i++) {
-            theFlagStates[i].drawRemove(basicFont);
+            theFlagStates[i].drawRemove(quicksandBold36);
         }
         
-        theFlagState.drawRemove(basicFont);
-    }
-
-    
-//    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
-}
-
-//------------------------------------------------------------------
-void uiReflect::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
-    
-    playPauseButton->drawNoColorWithImageToggle();
-    flagButton->drawNoColorWithImage();
-    rightSide->drawNoColor();
-    scrubBox->drawNoColor();
-    currentPos->draw();
-    
-    //    ofSetLineWidth(2.0);
-    //    ofSetColor(0, 0, 0);
-    for (int i = 0; i < drawThese.size(); i++) {
-        ofSetColor(drawThese[i].color);
-        ofSetLineWidth(drawThese[i].lineWidth);
-        drawThese[i].draw(scrubPos.x);
-    }
-    
-    ofSetColor(0, 0, 0);
-    ofSetLineWidth(1.0);
-    if (scrubFeedback.size() > 0) {
-        for (int i = 1; i < scrubFeedback.size(); i++) {
-            ofLine(scrubFeedback[i-1].x, scrubFeedback[i-1].y, scrubFeedback[i].x, scrubFeedback[i].y);
+        theFlagState.drawRemove(quicksandBold36);
+        
+    } else {
+        
+        for (int i = 0; i < theFlagStates.size(); i++) {
+            theFlagStates[i].draw(quicksandBold36);
         }
     }
     
-    ofEnableAlphaBlending();
-    ofSetColor(255, 255, 255);
-    questionImage.draw(175, ofGetHeight()/3+50);
+    
+    //-----------------------------------------------
+    //FAQ
+
+    ofSetColor(255,255,255);
+    if (questionButton->toggle) {
+        ofEnableAlphaBlending();
+        ofSetColor(70, 70, 70, 180);
+        ofRect(0, 0, ofGetWidth(), ofGetHeight());
+        ofSetColor(255, 255, 255, 255);
+        FAQ->draw(0, 0);
+        ofDisableAlphaBlending();
+    }
+
+    //-----------------------------------------------
+    //question mark
+    ofSetColor(230, 230, 230, 245);
+    ofRect(923, 0, 101, 50);
+    questionButton->drawTwoImages();
     ofDisableAlphaBlending();
+
     
-    if (flagButton->toggle) {
-        for (int i = 0; i < theFlagStates.size(); i++) {
-            theFlagStates[i].drawRemove(basicFont);
-        }
-        
-        theFlagState.drawRemove(basicFont);
-    }
-    
-    
-    //    printf("theFlagStates.size(): %lu \n", theFlagStates.size());
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -367,70 +401,100 @@ void uiReflect::draw(ofTrueTypeFont& basicFont, ofImage& questionImage) {
 //------------------------------------------------------------------
 void uiReflect::touchingDown(ofTouchEventArgs &touch) {
 
-        playPauseButton->touchingDown(touch);
-        flagButton->touchingDown(touch);
-        scrubBox->touchingDown(touch);
+//        printf("started UI Reflect touching down \n");
 
-        if (scrubBox->touching) {
-            scrubLocation->set(touch.x, touch.y);
-            theFlagState.updateStart(touch);
+        playPauseButton->touchingDown(touch);
+//        flagButton->touchingDown(touch);
+        scrubBox.touchingDown(touch);
+        questionButton->touchingDown(touch);
+        
+        if (scrubBox.touching) {
+            scrubLocation.set(touch.x, touch.y);
+            theFlagState.updateStart(touch, startTime, endTime, scrubBox.pos.x, _srubBoxPosEnd);
         } else if (theFlagState.theReflectionFlag.ended && !theFlagState.taskBox.inside(touch.x, touch.y)) {
             theFlagState.theReflectionFlag.ended = false;
         }
     
         theFlagState.touchingDown(touch);
     
-        if (flagButton->toggle) {
+        if (flagButton->toggle && !theFlagState.theReflectionFlag.ended) {
             for (int i = 0; i < theFlagStates.size(); i++) {
                 theFlagStates[i].touchingDown(touch);
             }
         }
+
+//        printf("ended UI Reflect touching down \n");
     
 }
 
 //------------------------------------------------------------------
 void uiReflect::touchingMove(ofTouchEventArgs &touch) {
 
+//        printf("started UI Reflect touching move \n");
+    
         playPauseButton->touchingMove(touch);
-        flagButton->touchingMove(touch);
-        scrubBox->touchingMove(touch);
-
-        if (scrubBox->touching && touch.x >= scrubBox->pos.x && touch.x < scrubWidth && touch.y > scrubBox->pos.y) {
-            scrubLocation->set(touch.x, touch.y);
-            theFlagState.update(touch);
+//        flagButton->touchingMove(touch);
+        scrubBox.touchingMove(touch);
+        questionButton->touchingMove(touch);
+    
+        if (scrubBox.touching && touch.x >= scrubBox.pos.x && touch.x < _srubBoxPosEnd && touch.y > scrubBox.pos.y) {
+            scrubLocation.set(touch.x, touch.y);
+            theFlagState.update(touch, startTime, endTime, scrubBox.pos.x, _srubBoxPosEnd);
         }
     
         theFlagState.touchingMove(touch);
     
 
-        if (flagButton->toggle) {
+        if (flagButton->toggle && !theFlagState.theReflectionFlag.ended) {
             for (int i = 0; i < theFlagStates.size(); i++) {
                 theFlagStates[i].touchingMove(touch);
             }
         }
+    
+//        printf("ended UI Reflect touching move \n");
 
 }
 
 //------------------------------------------------------------------
 void uiReflect::touchingUp(ofTouchEventArgs &touch) {
 
-        playPauseButton->touchingUp(touch);
-        flagButton->touchingUp(touch);
-        scrubBox->touchingUp(touch);
     
-        if (scrubBox->thisRectangle.inside(touch.x, touch.y) && theFlagState.theReflectionFlag.started) {
-            scrubLocation->set(touch.x, touch.y);
-            theFlagState.updateEnd(touch);
+//        printf("started UI Reflect touching up \n");
+    
+        //first check to see if we are inside the scrubBox
+        if (scrubBox.thisRectangle.inside(touch.x, touch.y) && theFlagState.theReflectionFlag.started) {
+            scrubLocation.set(touch.x, touch.y);
+            theFlagState.updateEnd(touch, startTime, endTime, scrubBox.pos.x, _srubBoxPosEnd);
+        }
+        
+        else if (rightSide->thisRectangle.inside(touch.x, touch.y) && theFlagState.theReflectionFlag.started) {
+            scrubLocation.set(touch.x, touch.y);
+            theFlagState.updateEnd(touch, startTime, endTime, scrubBox.pos.x, _srubBoxPosEnd);
+        }
+        
+        else if (leftSide->thisRectangle.inside(touch.x, touch.y) && theFlagState.theReflectionFlag.started) {
+            scrubLocation.set(touch.x, touch.y);
+            theFlagState.updateEnd(touch, startTime, endTime, scrubBox.pos.x, _srubBoxPosEnd);
         }
 
+        //then we release the scrubBox
+        playPauseButton->touchingUp(touch);
+//        flagButton->touchingUp(touch);
+        scrubBox.touchingUp(touch);
+        questionButton->touchingUp(touch);
+    
+
+    
         theFlagState.touchingUp(touch);
 
-        if (flagButton->toggle) {
+        if (flagButton->toggle && !theFlagState.theReflectionFlag.ended) {
             for (int i = 0; i < theFlagStates.size(); i++) {
                 theFlagStates[i].touchingUp(touch);
             }
         }
 
+//        printf("ended UI Reflect touching move \n");
+    
 }
 
 

@@ -103,7 +103,7 @@ flagState::flagState() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void flagState::updateStart(ofTouchEventArgs &touch) {
+void flagState::updateStart(ofTouchEventArgs &touch, int startTime, int endTime, int startPos, int endPos) {
 
     theReflectionFlag.started = true;
     theReflectionFlag.selected = false;
@@ -114,25 +114,42 @@ void flagState::updateStart(ofTouchEventArgs &touch) {
     theReflectionFlag.startPos.x = touch.x;
     theReflectionFlag.startPos.y = ofGetHeight()-50;
     
+    theReflectionFlag.startTime = ofMap(theReflectionFlag.startPos.x, startPos, endPos, startTime, endTime);
+    
 }
 
 //------------------------------------------------------------------
-void flagState::update(ofTouchEventArgs &touch) {
+void flagState::update(ofTouchEventArgs &touch, int startTime, int endTime, int startPos, int endPos) {
     
     theReflectionFlag.endPos.x = touch.x;
     theReflectionFlag.endPos.y = ofGetHeight()-50;
     
     theReflectionFlag.size.x = theReflectionFlag.endPos.x - theReflectionFlag.startPos.x;
     theReflectionFlag.size.y = ofGetHeight()-50;
+    
+    theReflectionFlag.endTime = ofMap(theReflectionFlag.endPos.x, startPos, endPos, startTime, endTime);
+
 
 }
 
 //------------------------------------------------------------------
-void flagState::updateEnd(ofTouchEventArgs &touch) {
+void flagState::updateEnd(ofTouchEventArgs &touch, int startTime, int endTime, float srubBoxPosBegin, float srubBoxPosEnd) {
     
-    theReflectionFlag.endPos.x = touch.x;
+    if (touch.x < srubBoxPosBegin) {
+        theReflectionFlag.endPos.x = srubBoxPosBegin;
+    } else if (touch.x > srubBoxPosEnd) {
+        theReflectionFlag.endPos.x = srubBoxPosEnd;
+    } else {
+        theReflectionFlag.endPos.x = touch.x;
+    }
+    
     theReflectionFlag.endPos.y = ofGetHeight()-50;
 
+    adjustTime();
+    
+    theReflectionFlag.startTime = ofMap(theReflectionFlag.startPos.x, srubBoxPosBegin, srubBoxPosEnd, startTime, endTime);
+    theReflectionFlag.endTime = ofMap(theReflectionFlag.endPos.x, srubBoxPosBegin, srubBoxPosEnd, startTime, endTime);
+    
     createButtons();
     
     theReflectionFlag.ended = true;
@@ -141,8 +158,16 @@ void flagState::updateEnd(ofTouchEventArgs &touch) {
 
 
 //------------------------------------------------------------------
-void flagState::createButtons() {
+void flagState::newStartEndTime(int& startTime, int& endTime, float& startPos, float& endPos) {
     
+    theReflectionFlag.startPos.x = ofMap(theReflectionFlag.startTime, startTime, endTime, startPos, endPos);
+    theReflectionFlag.endPos.x = ofMap(theReflectionFlag.endTime, startTime, endTime, startPos, endPos);
+
+}
+
+
+//------------------------------------------------------------------
+void flagState::adjustTime() {
     
     if (theReflectionFlag.startPos.x > theReflectionFlag.endPos.x) {
         float temp = theReflectionFlag.startPos.x;
@@ -150,8 +175,12 @@ void flagState::createButtons() {
         theReflectionFlag.startPos.x = temp2;
         theReflectionFlag.endPos.x = temp;
         theReflectionFlag.size.x = abs(theReflectionFlag.size.x);
-        theReflectionFlag.textPos.x = theReflectionFlag.endPos.x+5;
+        theReflectionFlag.textPos.x = theReflectionFlag.endPos.x+15;
     }
+}
+
+//------------------------------------------------------------------
+void flagState::createButtons() {
     
     ofPoint pos;
     ofPoint size;
@@ -160,8 +189,8 @@ void flagState::createButtons() {
     ofColor thisColor;
     
     pos.set(theReflectionFlag.startPos.x, ofGetHeight()-250);
-    size.set(100, 40);
-    offSet.set(6,25);
+    size.set(140, 40);
+    offSet.set(15,25);
     thisString = "Identifying";
     thisColor.set(250, 7, 0, 120);
     identifying.setup(pos, size, offSet, thisString, thisColor);   
@@ -186,7 +215,7 @@ void flagState::createButtons() {
     thisColor.set(140, 4, 168, 120);
     verifying.setup(pos, size, offSet, thisString, thisColor);
 
-    taskBox.set (theReflectionFlag.startPos.x, ofGetHeight()-250, 100, 200);
+    taskBox.set (theReflectionFlag.startPos.x, ofGetHeight()-250, 140, 200);
     
 }
 
@@ -238,8 +267,6 @@ void flagState::selectingButton() {
         makeMarker();
     }
 
-    theReflectionFlag.presentCheck.set(theReflectionFlag.startPos.x, theReflectionFlag.startPos.y, theReflectionFlag.size.x, theReflectionFlag.size.y);
-    
 }
 
 //------------------------------------------------------------------
@@ -253,7 +280,7 @@ void flagState::makeMarker() {
     //adjust the size of the box frame
     theReflectionFlag.tabPos = theReflectionFlag.startPos;
     theReflectionFlag.tabPos.y-=40;
-    theReflectionFlag.tabSize.x = 130;
+    theReflectionFlag.tabSize.x = 140;
     theReflectionFlag.tabSize.y = 40;
     
     theReflectionFlag.tabPostPos = theReflectionFlag.startPos;
@@ -261,11 +288,14 @@ void flagState::makeMarker() {
     theReflectionFlag.tabPostSize.x = 10;
     theReflectionFlag.tabPostSize.y = 50;
     
-    theReflectionFlag.size.y = 100;
+    theReflectionFlag.size.y = 140;
     
     ofPoint updateRemoveFlagButton;
-    updateRemoveFlagButton.set(theReflectionFlag.tabPos.x+105, theReflectionFlag.tabPos.y);
+    updateRemoveFlagButton.set(theReflectionFlag.tabPos.x+115, theReflectionFlag.tabPos.y);
     theReflectionFlag.removeFlagButton.update(updateRemoveFlagButton);
+    
+    
+    theReflectionFlag.presentCheck.set(theReflectionFlag.startPos.x, theReflectionFlag.startPos.y, theReflectionFlag.size.x, theReflectionFlag.size.y);
     
 }
 
@@ -280,7 +310,7 @@ void flagState::adjustMarker(int floor) {
     theReflectionFlag.tabPostSize.y += 40*floor;
     
     ofPoint updateRemoveFlagButton;
-    updateRemoveFlagButton.set(theReflectionFlag.tabPos.x+105, theReflectionFlag.tabPos.y);
+    updateRemoveFlagButton.set(theReflectionFlag.tabPos.x+115, theReflectionFlag.tabPos.y);
     theReflectionFlag.removeFlagButton.update(updateRemoveFlagButton);
     
     theReflectionFlag.floor = floor;
@@ -289,7 +319,7 @@ void flagState::adjustMarker(int floor) {
 }
 
 //------------------------------------------------------------------
-void flagState::draw(ofTrueTypeFont& basicFont) {
+void flagState::draw(ofxRetinaTrueTypeFont& basicFont) {
     
     
     if (!theReflectionFlag.ended && !theReflectionFlag.selected) {
@@ -323,7 +353,7 @@ void flagState::draw(ofTrueTypeFont& basicFont) {
 
     } else {
         
-        ofSetColor(theReflectionFlag.color, 120);
+        ofSetColor(theReflectionFlag.color, 150);
 
         ofEnableAlphaBlending();
         //main box
@@ -341,7 +371,7 @@ void flagState::draw(ofTrueTypeFont& basicFont) {
 }
 
 //------------------------------------------------------------------
-void flagState::drawRemove(ofTrueTypeFont& basicFont) {
+void flagState::drawRemove(ofxRetinaTrueTypeFont& basicFont) {
     
     
     if (!theReflectionFlag.ended && !theReflectionFlag.selected) {
@@ -357,7 +387,7 @@ void flagState::drawRemove(ofTrueTypeFont& basicFont) {
     else if (theReflectionFlag.ended && !theReflectionFlag.selected) {
         
         ofSetColor(255,255,255);
-        ofRect(theReflectionFlag.startPos.x, ofGetHeight()-250, 100, 200);
+        ofRect(theReflectionFlag.startPos.x, ofGetHeight()-250, 140, 200);
         
         identifying.draw(basicFont);
         planning.draw(basicFont);
@@ -397,6 +427,8 @@ void flagState::drawRemove(ofTrueTypeFont& basicFont) {
 //------------------------------------------------------------------
 void flagState::touchingDown(ofTouchEventArgs &touch) {
 
+//    printf("started flag state touching down \n");
+    
     if (theReflectionFlag.ended && !theReflectionFlag.selected) {
         identifying.touchingDown(touch);
         planning.touchingDown(touch);
@@ -408,11 +440,14 @@ void flagState::touchingDown(ofTouchEventArgs &touch) {
 
     theReflectionFlag.removeFlagButton.touchingDown(touch);
 
+//    printf("ended flag state touching down \n");
     
 }
 
 //------------------------------------------------------------------
 void flagState::touchingMove(ofTouchEventArgs &touch) {
+    
+//    printf("started flag state touching move \n");
     
     if (theReflectionFlag.ended && !theReflectionFlag.selected) {
         identifying.touchingMove(touch);
@@ -423,11 +458,15 @@ void flagState::touchingMove(ofTouchEventArgs &touch) {
     }
 
     theReflectionFlag.removeFlagButton.touchingMove(touch);
+    
+//    printf("ended flag state touching move \n");
 
 }
 
 //------------------------------------------------------------------
 void flagState::touchingUp(ofTouchEventArgs &touch) {
+    
+//    printf("started flag state touching up \n");
     
     if (theReflectionFlag.ended && !theReflectionFlag.selected) {
         identifying.touchingUp(touch);
@@ -439,5 +478,7 @@ void flagState::touchingUp(ofTouchEventArgs &touch) {
     
     theReflectionFlag.started = false;
     theReflectionFlag.removeFlagButton.touchingUp(touch);
+    
+//    printf("ended flag state touching up \n");
 
 }

@@ -22,35 +22,35 @@
 		E41D400C13B39D2100A75A5D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D400713B39D2100A75A5D /* CoreMedia.framework */; };
 		E41D400D13B39D2100A75A5D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D400813B39D2100A75A5D /* CoreVideo.framework */; };
 		E41D400E13B39D2100A75A5D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D400913B39D2100A75A5D /* MapKit.framework */; };
-		E41D421413B3A95300A75A5D /* libofxiPhone_iphoneos_Debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D410213B3A0D800A75A5D /* libofxiPhone_iphoneos_Debug.a */; };
+		E41D421413B3A95300A75A5D /* libofxiOS_iphoneos_Debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D410213B3A0D800A75A5D /* libofxiOS_iphoneos_Debug.a */; };
 		E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A823A312561BE3002F86A2 /* CoreGraphics.framework */; };
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		E4D8936F11527B74007E1F53 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* testApp.mm */; };
-		EC0D8D1D175E7F5F00EEAEC3 /* saveMathOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0D8D1B175E7F5F00EEAEC3 /* saveMathOne.cpp */; };
 		EC2DEAA41729E262004F16DA /* uiCreate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA21729E262004F16DA /* uiCreate.cpp */; };
 		EC2DEAA91729E4B1004F16DA /* uiPresent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA51729E4B1004F16DA /* uiPresent.cpp */; };
 		EC2DEAAA1729E4B1004F16DA /* uiReflect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA71729E4B1004F16DA /* uiReflect.cpp */; };
 		EC2DEAB01729E6C7004F16DA /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAAC1729E6C7004F16DA /* button.cpp */; };
 		EC2DEAB11729E6C7004F16DA /* nav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAAE1729E6C7004F16DA /* nav.cpp */; };
-		EC2DEAB51729E9B0004F16DA /* problemMathOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */; };
 		EC308C0617274A3600E0F06F /* ofxEasyRetina.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */; };
 		EC308C0717274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0217274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm */; };
 		EC308C0817274A3600E0F06F /* ofxRetinaTrueTypeFont.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0517274A3600E0F06F /* ofxRetinaTrueTypeFont.mm */; };
-		EC31140C171F3940001D2F35 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */; };
-		EC31140E171F3944001D2F35 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */; };
-		EC8D772C174E7389006F428F /* problemMathThree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7727174E7389006F428F /* problemMathThree.cpp */; };
-		EC8D772D174E7389006F428F /* problemMathTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC8D7729174E7389006F428F /* problemMathTwo.cpp */; };
+		EC4A408617F472B300063AA8 /* xmlParty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4A408417F472B300063AA8 /* xmlParty.cpp */; };
+		EC670812180B3A48001A8437 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC670811180B3A48001A8437 /* Default-Landscape@2x~ipad.png */; };
+		EC670814180B3A4D001A8437 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC670813180B3A4D001A8437 /* Default-Landscape~ipad.png */; };
 		EC978E7617345146002A7612 /* flagState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC978E7417345146002A7612 /* flagState.cpp */; };
 		EC9D031E1713312200591838 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D031C1713312200591838 /* drawing.cpp */; };
-		ECC7379B175D07A800C7DE79 /* splashSection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC73799175D07A800C7DE79 /* splashSection.cpp */; };
-		ECDA31C9176120D40040ECA9 /* app-icon2-72.png in Resources */ = {isa = PBXBuildFile; fileRef = ECDA31C8176120D40040ECA9 /* app-icon2-72.png */; };
-		ECDA31CB176120D70040ECA9 /* app-icon2-144.png in Resources */ = {isa = PBXBuildFile; fileRef = ECDA31CA176120D70040ECA9 /* app-icon2-144.png */; };
+		ECB6D83217F332DA00BA9E4A /* app-icon2-72.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB6D83117F332DA00BA9E4A /* app-icon2-72.png */; };
+		ECB6D83417F332DE00BA9E4A /* app-icon2-144.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB6D83317F332DE00BA9E4A /* app-icon2-144.png */; };
+		ECB6D83B17F34DA800BA9E4A /* userName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB6D83817F34DA800BA9E4A /* userName.cpp */; };
+		ECC61A5F17D52EB800B957BB /* ofxTextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC61A5C17D52EB800B957BB /* ofxTextBlock.cpp */; };
+		ECC61A6417D5669D00B957BB /* problemMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC61A6217D5669D00B957BB /* problemMath.cpp */; };
+		ECC61A6717D569F600B957BB /* saveMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC61A6517D569F400B957BB /* saveMath.cpp */; };
 		ECDA3AD01714D4DD000036C2 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3AC91714D4DD000036C2 /* tinyxml.cpp */; };
 		ECDA3AD11714D4DD000036C2 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACB1714D4DD000036C2 /* tinyxmlerror.cpp */; };
 		ECDA3AD21714D4DD000036C2 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACC1714D4DD000036C2 /* tinyxmlparser.cpp */; };
 		ECDA3AD31714D4DD000036C2 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACE1714D4DD000036C2 /* ofxXmlSettings.cpp */; };
-		ECEE463817604B5900A167DD /* saveMathThree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEE463417604B5900A167DD /* saveMathThree.cpp */; };
-		ECEE463917604B5900A167DD /* saveMathTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEE463617604B5900A167DD /* saveMathTwo.cpp */; };
+		ECFD800718162AD300405063 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = ECFD800618162AD300405063 /* Default-Portrait~ipad.png */; };
+		ECFD800918162ADA00405063 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = ECFD800818162ADA00405063 /* Default-Portrait@2x~ipad.png */; };
 		ECFFE939175CFAA500980F00 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = ECFFE92E175CFAA500980F00 /* .gitignore */; };
 		ECFFE93A175CFAA500980F00 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ECFFE92F175CFAA500980F00 /* README.md */; };
 		ECFFE93B175CFAA500980F00 /* ofPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFE932175CFAA500980F00 /* ofPanGestureRecognizer.m */; };
@@ -100,8 +100,6 @@
 		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
 		E4D8936C11527B74007E1F53 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
 		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
-		EC0D8D1B175E7F5F00EEAEC3 /* saveMathOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saveMathOne.cpp; sourceTree = "<group>"; };
-		EC0D8D1C175E7F5F00EEAEC3 /* saveMathOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveMathOne.h; sourceTree = "<group>"; };
 		EC2DEAA21729E262004F16DA /* uiCreate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiCreate.cpp; sourceTree = "<group>"; };
 		EC2DEAA31729E262004F16DA /* uiCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiCreate.h; sourceTree = "<group>"; };
 		EC2DEAA51729E4B1004F16DA /* uiPresent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiPresent.cpp; sourceTree = "<group>"; };
@@ -112,38 +110,39 @@
 		EC2DEAAD1729E6C7004F16DA /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
 		EC2DEAAE1729E6C7004F16DA /* nav.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nav.cpp; sourceTree = "<group>"; };
 		EC2DEAAF1729E6C7004F16DA /* nav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nav.h; sourceTree = "<group>"; };
-		EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathOne.cpp; sourceTree = "<group>"; };
-		EC2DEAB41729E9B0004F16DA /* problemMathOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathOne.h; sourceTree = "<group>"; };
 		EC308BFF17274A3600E0F06F /* ofxEasyRetina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyRetina.h; sourceTree = "<group>"; };
 		EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxEasyRetina.mm; sourceTree = "<group>"; };
 		EC308C0117274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ofxiOSEAGLView+retinaPatch.h"; sourceTree = "<group>"; };
 		EC308C0217274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ofxiOSEAGLView+retinaPatch.mm"; sourceTree = "<group>"; };
 		EC308C0417274A3600E0F06F /* ofxRetinaTrueTypeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRetinaTrueTypeFont.h; sourceTree = "<group>"; };
 		EC308C0517274A3600E0F06F /* ofxRetinaTrueTypeFont.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxRetinaTrueTypeFont.mm; sourceTree = "<group>"; };
-		EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		EC8D7727174E7389006F428F /* problemMathThree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathThree.cpp; sourceTree = "<group>"; };
-		EC8D7728174E7389006F428F /* problemMathThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathThree.h; sourceTree = "<group>"; };
-		EC8D7729174E7389006F428F /* problemMathTwo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathTwo.cpp; sourceTree = "<group>"; };
-		EC8D772A174E7389006F428F /* problemMathTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathTwo.h; sourceTree = "<group>"; };
+		EC4A408417F472B300063AA8 /* xmlParty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xmlParty.cpp; sourceTree = "<group>"; };
+		EC4A408517F472B300063AA8 /* xmlParty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xmlParty.h; sourceTree = "<group>"; };
+		EC670811180B3A48001A8437 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		EC670813180B3A4D001A8437 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		EC978E7417345146002A7612 /* flagState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flagState.cpp; path = src/tools/flagState.cpp; sourceTree = SOURCE_ROOT; };
 		EC978E7517345146002A7612 /* flagState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flagState.h; path = src/tools/flagState.h; sourceTree = SOURCE_ROOT; };
 		EC9D031C1713312200591838 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = drawing.cpp; path = src/tools/drawing.cpp; sourceTree = SOURCE_ROOT; };
 		EC9D031D1713312200591838 /* drawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = drawing.h; path = src/tools/drawing.h; sourceTree = SOURCE_ROOT; };
-		ECC73799175D07A800C7DE79 /* splashSection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = splashSection.cpp; sourceTree = "<group>"; };
-		ECC7379A175D07A800C7DE79 /* splashSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = splashSection.h; sourceTree = "<group>"; };
-		ECDA31C8176120D40040ECA9 /* app-icon2-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon2-72.png"; sourceTree = "<group>"; };
-		ECDA31CA176120D70040ECA9 /* app-icon2-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon2-144.png"; sourceTree = "<group>"; };
+		ECB6D83117F332DA00BA9E4A /* app-icon2-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon2-72.png"; sourceTree = "<group>"; };
+		ECB6D83317F332DE00BA9E4A /* app-icon2-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon2-144.png"; sourceTree = "<group>"; };
+		ECB6D83817F34DA800BA9E4A /* userName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = userName.cpp; sourceTree = "<group>"; };
+		ECB6D83917F34DA800BA9E4A /* userName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userName.h; sourceTree = "<group>"; };
+		ECC61A5C17D52EB800B957BB /* ofxTextBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextBlock.cpp; sourceTree = "<group>"; };
+		ECC61A5D17D52EB800B957BB /* ofxTextBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextBlock.h; sourceTree = "<group>"; };
+		ECC61A5E17D52EB800B957BB /* ofxTextSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextSuite.h; sourceTree = "<group>"; };
+		ECC61A6217D5669D00B957BB /* problemMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMath.cpp; sourceTree = "<group>"; };
+		ECC61A6317D5669D00B957BB /* problemMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMath.h; sourceTree = "<group>"; };
+		ECC61A6517D569F400B957BB /* saveMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saveMath.cpp; sourceTree = "<group>"; };
+		ECC61A6617D569F500B957BB /* saveMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveMath.h; sourceTree = "<group>"; };
 		ECDA3AC91714D4DD000036C2 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		ECDA3ACA1714D4DD000036C2 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		ECDA3ACB1714D4DD000036C2 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
 		ECDA3ACC1714D4DD000036C2 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		ECDA3ACE1714D4DD000036C2 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		ECDA3ACF1714D4DD000036C2 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
-		ECEE463417604B5900A167DD /* saveMathThree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saveMathThree.cpp; sourceTree = "<group>"; };
-		ECEE463517604B5900A167DD /* saveMathThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveMathThree.h; sourceTree = "<group>"; };
-		ECEE463617604B5900A167DD /* saveMathTwo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saveMathTwo.cpp; sourceTree = "<group>"; };
-		ECEE463717604B5900A167DD /* saveMathTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveMathTwo.h; sourceTree = "<group>"; };
+		ECFD800618162AD300405063 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		ECFD800818162ADA00405063 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		ECFFE92E175CFAA500980F00 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		ECFFE92F175CFAA500980F00 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		ECFFE931175CFAA500980F00 /* ofPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPanGestureRecognizer.h; sourceTree = "<group>"; };
@@ -163,7 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E41D421413B3A95300A75A5D /* libofxiPhone_iphoneos_Debug.a in Frameworks */,
+				E41D421413B3A95300A75A5D /* libofxiOS_iphoneos_Debug.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -194,10 +193,12 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				ECDA31CA176120D70040ECA9 /* app-icon2-144.png */,
-				ECDA31C8176120D40040ECA9 /* app-icon2-72.png */,
-				EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */,
-				EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */,
+				ECFD800818162ADA00405063 /* Default-Portrait@2x~ipad.png */,
+				ECFD800618162AD300405063 /* Default-Portrait~ipad.png */,
+				EC670813180B3A4D001A8437 /* Default-Landscape~ipad.png */,
+				EC670811180B3A48001A8437 /* Default-Landscape@2x~ipad.png */,
+				ECB6D83317F332DE00BA9E4A /* app-icon2-144.png */,
+				ECB6D83117F332DA00BA9E4A /* app-icon2-72.png */,
 				E4D8936A11527B74007E1F53 /* src */,
 				BB24E1F710DAA51900E9C588 /* openFrameworks */,
 				BB16F26B0F2B646B00518274 /* addons */,
@@ -238,6 +239,7 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				ECC61A5A17D52EB800B957BB /* ofxTextSuite */,
 				ECFFE92D175CFAA500980F00 /* ofxGestureRecognizer */,
 				EC308BFE17274A3600E0F06F /* ofxEasyRetina */,
 				EC308C0317274A3600E0F06F /* ofxRetinaTrueTypeFont */,
@@ -269,7 +271,7 @@
 		E41D40FE13B3A0D800A75A5D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E41D410213B3A0D800A75A5D /* libofxiPhone_iphoneos_Debug.a */,
+				E41D410213B3A0D800A75A5D /* libofxiOS_iphoneos_Debug.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,10 +283,12 @@
 				E4D8936D11527B74007E1F53 /* testApp.mm */,
 				E4D8936C11527B74007E1F53 /* testApp.h */,
 				EC2DEAAB1729E6C7004F16DA /* mainNav */,
+				ECB6D83517F34DA800BA9E4A /* userName */,
 				ECFFE93F175CFAC800980F00 /* splash */,
 				EC2DEAB21729E9B0004F16DA /* problems */,
 				EC2DEAA11729E262004F16DA /* stages */,
 				ECA9A4A7170E45DE009F748E /* tools */,
+				EC4A408317F472B300063AA8 /* xml */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -316,18 +320,10 @@
 		EC2DEAB21729E9B0004F16DA /* problems */ = {
 			isa = PBXGroup;
 			children = (
-				EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */,
-				EC2DEAB41729E9B0004F16DA /* problemMathOne.h */,
-				EC8D7729174E7389006F428F /* problemMathTwo.cpp */,
-				EC8D772A174E7389006F428F /* problemMathTwo.h */,
-				EC8D7727174E7389006F428F /* problemMathThree.cpp */,
-				EC8D7728174E7389006F428F /* problemMathThree.h */,
-				EC0D8D1B175E7F5F00EEAEC3 /* saveMathOne.cpp */,
-				EC0D8D1C175E7F5F00EEAEC3 /* saveMathOne.h */,
-				ECEE463617604B5900A167DD /* saveMathTwo.cpp */,
-				ECEE463717604B5900A167DD /* saveMathTwo.h */,
-				ECEE463417604B5900A167DD /* saveMathThree.cpp */,
-				ECEE463517604B5900A167DD /* saveMathThree.h */,
+				ECC61A6217D5669D00B957BB /* problemMath.cpp */,
+				ECC61A6317D5669D00B957BB /* problemMath.h */,
+				ECC61A6517D569F400B957BB /* saveMath.cpp */,
+				ECC61A6617D569F500B957BB /* saveMath.h */,
 			);
 			path = problems;
 			sourceTree = "<group>";
@@ -354,6 +350,15 @@
 			path = ../../../addons/ofxRetinaTrueTypeFont;
 			sourceTree = "<group>";
 		};
+		EC4A408317F472B300063AA8 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				EC4A408417F472B300063AA8 /* xmlParty.cpp */,
+				EC4A408517F472B300063AA8 /* xmlParty.h */,
+			);
+			path = xml;
+			sourceTree = "<group>";
+		};
 		ECA9A4A7170E45DE009F748E /* tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +369,34 @@
 			);
 			name = tools;
 			path = drawings;
+			sourceTree = "<group>";
+		};
+		ECB6D83517F34DA800BA9E4A /* userName */ = {
+			isa = PBXGroup;
+			children = (
+				ECB6D83817F34DA800BA9E4A /* userName.cpp */,
+				ECB6D83917F34DA800BA9E4A /* userName.h */,
+			);
+			path = userName;
+			sourceTree = "<group>";
+		};
+		ECC61A5A17D52EB800B957BB /* ofxTextSuite */ = {
+			isa = PBXGroup;
+			children = (
+				ECC61A5B17D52EB800B957BB /* src */,
+			);
+			name = ofxTextSuite;
+			path = ../../../addons/ofxTextSuite;
+			sourceTree = "<group>";
+		};
+		ECC61A5B17D52EB800B957BB /* src */ = {
+			isa = PBXGroup;
+			children = (
+				ECC61A5C17D52EB800B957BB /* ofxTextBlock.cpp */,
+				ECC61A5D17D52EB800B957BB /* ofxTextBlock.h */,
+				ECC61A5E17D52EB800B957BB /* ofxTextSuite.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		ECDA3AC71714D4DD000036C2 /* ofxXmlSettings */ = {
@@ -427,8 +460,6 @@
 			children = (
 				ECFFE940175CFAC800980F00 /* splashNav.cpp */,
 				ECFFE941175CFAC800980F00 /* splashNav.h */,
-				ECC73799175D07A800C7DE79 /* splashSection.cpp */,
-				ECC7379A175D07A800C7DE79 /* splashSection.h */,
 			);
 			path = splash;
 			sourceTree = "<group>";
@@ -436,9 +467,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Breadcrumbs */ = {
+		1D6058900D05DD3D006BFB54 /* breadcrumbs */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Breadcrumbs" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "breadcrumbs" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -450,7 +481,7 @@
 			dependencies = (
 				E41D410413B3A11300A75A5D /* PBXTargetDependency */,
 			);
-			name = Breadcrumbs;
+			name = breadcrumbs;
 			productName = iPhone;
 			productReference = 1D6058910D05DD3D006BFB54 /* Breadcrumbs.app */;
 			productType = "com.apple.product-type.application";
@@ -460,7 +491,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Breadcrumbs" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "breadcrumbs" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -480,16 +511,16 @@
 			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Breadcrumbs */,
+				1D6058900D05DD3D006BFB54 /* breadcrumbs */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E41D410213B3A0D800A75A5D /* libofxiPhone_iphoneos_Debug.a */ = {
+		E41D410213B3A0D800A75A5D /* libofxiOS_iphoneos_Debug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libofxiPhone_iphoneos_Debug.a;
+			path = libofxiOS_iphoneos_Debug.a;
 			remoteRef = E41D410113B3A0D800A75A5D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -503,12 +534,14 @@
 				BB24DDCA10DA781C00E9C588 /* ofxiphone-Info.plist in Resources */,
 				E41D3ED713B38FB500A75A5D /* Project.xcconfig in Resources */,
 				E41D3EE613B3906D00A75A5D /* CoreOF.xcconfig in Resources */,
-				EC31140C171F3940001D2F35 /* Default-Portrait~ipad.png in Resources */,
-				EC31140E171F3944001D2F35 /* Default-Portrait@2x~ipad.png in Resources */,
 				ECFFE939175CFAA500980F00 /* .gitignore in Resources */,
 				ECFFE93A175CFAA500980F00 /* README.md in Resources */,
-				ECDA31C9176120D40040ECA9 /* app-icon2-72.png in Resources */,
-				ECDA31CB176120D70040ECA9 /* app-icon2-144.png in Resources */,
+				ECB6D83217F332DA00BA9E4A /* app-icon2-72.png in Resources */,
+				ECB6D83417F332DE00BA9E4A /* app-icon2-144.png in Resources */,
+				EC670812180B3A48001A8437 /* Default-Landscape@2x~ipad.png in Resources */,
+				EC670814180B3A4D001A8437 /* Default-Landscape~ipad.png in Resources */,
+				ECFD800718162AD300405063 /* Default-Portrait~ipad.png in Resources */,
+				ECFD800918162ADA00405063 /* Default-Portrait@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,19 +583,17 @@
 				EC2DEAAA1729E4B1004F16DA /* uiReflect.cpp in Sources */,
 				EC2DEAB01729E6C7004F16DA /* button.cpp in Sources */,
 				EC2DEAB11729E6C7004F16DA /* nav.cpp in Sources */,
-				EC2DEAB51729E9B0004F16DA /* problemMathOne.cpp in Sources */,
 				EC978E7617345146002A7612 /* flagState.cpp in Sources */,
-				EC8D772C174E7389006F428F /* problemMathThree.cpp in Sources */,
-				EC8D772D174E7389006F428F /* problemMathTwo.cpp in Sources */,
 				ECFFE93B175CFAA500980F00 /* ofPanGestureRecognizer.m in Sources */,
 				ECFFE93C175CFAA500980F00 /* ofPinchGestureRecognizer.m in Sources */,
 				ECFFE93D175CFAA500980F00 /* ofSwipeGestureRecognizer.m in Sources */,
 				ECFFE93E175CFAA500980F00 /* ofTapGestureRecognizer.m in Sources */,
 				ECFFE942175CFAC800980F00 /* splashNav.cpp in Sources */,
-				ECC7379B175D07A800C7DE79 /* splashSection.cpp in Sources */,
-				EC0D8D1D175E7F5F00EEAEC3 /* saveMathOne.cpp in Sources */,
-				ECEE463817604B5900A167DD /* saveMathThree.cpp in Sources */,
-				ECEE463917604B5900A167DD /* saveMathTwo.cpp in Sources */,
+				ECC61A5F17D52EB800B957BB /* ofxTextBlock.cpp in Sources */,
+				ECC61A6417D5669D00B957BB /* problemMath.cpp in Sources */,
+				ECC61A6717D569F600B957BB /* saveMath.cpp in Sources */,
+				ECB6D83B17F34DA800BA9E4A /* userName.cpp in Sources */,
+				EC4A408617F472B300063AA8 /* xmlParty.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +612,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;
 				INFOPLIST_FILE = "ofxiphone-Info.plist";
@@ -595,6 +627,7 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;
 				INFOPLIST_FILE = "ofxiphone-Info.plist";
@@ -674,7 +707,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Breadcrumbs" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "breadcrumbs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -683,7 +716,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Breadcrumbs" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "breadcrumbs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

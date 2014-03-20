@@ -16,6 +16,9 @@
 #include "flagState.h"
 
 #include "ofxXmlSettings.h"
+#include "xmlParty.h"
+
+#include "ofxRetinaTrueTypeFont.h"
 
 class uiPresent {
 	
@@ -25,8 +28,7 @@ public:
     ~uiPresent();
     
     void update();
-    void draw(ofTrueTypeFont& basicFont);
-    void draw(ofTrueTypeFont& basicFont, ofImage& questionImage);
+    void draw(ofxRetinaTrueTypeFont& quicksandBold60, ofxRetinaTrueTypeFont& quicksandBold36, ofxRetinaTrueTypeFont& quicksandBook36, bool loadedImage, ofImage& grid);
     
 //-----------------------------------------------
 //tracking touch events
@@ -36,16 +38,7 @@ public:
     void doubleTap(ofTouchEventArgs &touch);
     void exit();
     
-    void playData();
-    void setPoints(vector <drawing> theDrawings, vector<flagState> theFlagStates);
-    
-    
-//-----------------------------------------------
-//XML
-
-    void xmlSetupThang(string iPhoneDocumentsDirectory, string xmlFileOne, string xmlFileTwo);
-    void getXML (string xmlFileOne, string XMLFileTwo);
-    void saveXML(string iPhoneDocumentsDirectory, string xmlFileOne, string xmlFileTwo);
+    void playData();    
     
 //-----------------------------------------------
 //how initial spots are drawn
@@ -57,7 +50,6 @@ public:
     
     vector <drawing> drawThese;
 
-    
 //-----------------------------------------------
 //This is the drawing that is tracked and then pushed on the stack
 
@@ -72,12 +64,16 @@ public:
 //-----------------------------------------------
 //uiPresent
 
-    button*          scrubBox;
-    ofPoint*         scrubLocation;
+    button           scrubBox;
+    ofPoint          scrubLocation;
     ofPoint          scrubPos;
     vector <ofPoint> scrubFeedback;
     int              scrubWidth;
+    int              scrubHeight;
     
+    float            _srubBoxPosEnd;
+    
+    button*          leftSide;
     button*          rightSide;
     
     
@@ -91,7 +87,8 @@ public:
     
     button*         playPauseButton;
     button*         markerButton;
-    bool*           markerButtonSelected;
+    button*         questionButton;
+    ofImage*        FAQ;
     
 //-----------------------------------------------
 //shows where pointer last left

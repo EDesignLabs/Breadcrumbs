@@ -9,8 +9,21 @@
 
 
 #include "ofMain.h"
-#include "splashSection.h"
 #include "button.h"
+
+typedef struct {
+    
+    ofPoint     pos;
+    
+    ofPoint     pageStage0;  //when page should start to be shown
+    ofPoint     pageStage1;  //when page should start to be shown
+    ofPoint     pageStage2;  //when page should start to be shown
+    ofPoint     pageStage3;  //when page should start to be shown
+    ofPoint     pageStage4;  //when page should start to be shown
+    ofPoint     pageStage5;  //when page should start to be shown
+    
+}	splashPage;
+
 
 class splashNav {
 	
@@ -18,17 +31,8 @@ class splashNav {
         splashNav();
         ~splashNav();
 
-		void update(int section);
+		void update(int section, bool panning, ofPoint _currentLocation);
 		void draw();
-    
-        void makeSectionZero();
-        void makeSectionOne();
-        void makeSectionTwo();
-        void makeSectionThree();
-        void makeSectionFour();
-        void makeSectionFive();
-        void makeSectionSix();
-        void makeSectionSeven();
     
         //tracking touch events
         void touchingDown(ofTouchEventArgs &touch);
@@ -37,28 +41,38 @@ class splashNav {
         void doubleTap(ofTouchEventArgs &touch);
 
         void getThere(ofPoint& current, ofPoint& ideal);
-    
-        splashSection*  splashZero;
-        splashSection*  splashOne;
-        splashSection*  splashTwo;
-        splashSection*  splashThree;
-        splashSection*  splashFour;
-        splashSection*  splashFive;
-        splashSection*  splashSix;
-        splashSection*  splashSeven;
-    
+        
         int section;
-
-        ofPoint*     storyAction;
-        ofPoint*     storyZeroActive;
-        ofPoint*     storyOneActive;
-        ofPoint*     storyTwoActive;
-        ofPoint*     storyThreeActive;
-        ofPoint*     storyFourActive;
-        ofPoint*     storyFiveActive;
-        ofPoint*     storySixActive;
-        ofPoint*     storySevenActive;
     
+        splashPage      splashPageOne;
+        splashPage      splashPageTwo;
+    
+        ofImage*        layerOne;
+        ofImage*        layerTwoA;
+        ofImage*        layerTwoB;
+        ofImage*        layerTwoC;
+        ofImage*        layerTwoD;
+        ofImage*        layerTwoE;
+        ofImage*        layerTwoF;
+    
+        ofPoint         locationB;
+        ofPoint         locationC;
+        ofPoint         locationD;
+        ofPoint         locationE;
+        ofPoint         locationF;
+    
+        ofPoint*        storyAction;
+        ofPoint*        storyZeroActive;
+        ofPoint*        storyOneActive;
+        ofPoint*        storyTwoActive;
+        ofPoint*        storyThreeActive;
+        ofPoint*        storyFourActive;
+        ofPoint*        storyFiveActive;
+
+        //for monitoring when pan stops
+        ofPoint         newLocation;
+        bool            previousState;
+
 };
 
 #endif
